@@ -12,7 +12,43 @@ framework's official documentation, and checked by one shared correctness spec. 
 - **Startup**: a todo app on a cold cache with a throttled network and CPU, until the first
   todo can be added.
 
-Results: [`results/`](results/) (one folder per run, with every sample in `results.json`).
+## Results, 2026-10-05
+
+Full tables: [results/2026-10-05/results.md](results/2026-10-05/results.md). Every sample is in
+`results.json`. Headline numbers, Gyral 0.1.0 (on Effect 3) against the current releases:
+
+|                                                    | Solid | Preact |  Lit | Svelte |  Vue | **Gyral** | React |
+| -------------------------------------------------- | ----: | -----: | ---: | -----: | ---: | --------: | ----: |
+| JS, gzip KiB: floor (framework alone)              |   3.7 |    4.7 |  5.8 |    9.0 | 23.0 |  **49.3** |  66.1 |
+| JS, gzip KiB: todo app                             |   6.6 |    6.1 |  7.3 |   14.2 | 25.0 |  **51.0** |  66.6 |
+| Todo app interactive, cold, throttled (ms, median) |   450 |    445 |  438 |    475 |  533 |   **725** |   801 |
+| Table runtime, geometric mean vs fastest           |  1.07 |   1.61 | 3.09 |   1.30 | 1.43 |  **3.03** |  1.90 |
+| JS heap after load (MB)                            |  1.13 |   1.17 | 1.20 |   1.19 | 1.32 |  **1.71** |  1.55 |
+
+What the numbers say:
+
+- **Size is Gyral's weak point.** Its floor is 49.3 KiB gzip, second only to React and about
+  43.5 KiB more than Lit, which it renders with. Gyral's runtime-size spike (ADR 0015 in the
+  Gyral repo) attributes about 38 KiB of that to the Effect 3 runtime and measured, in its own
+  setup, a counter at about 23 KiB with Effect 4, 15 KiB with Effect Micro and 10 KiB without
+  Effect. Those are context from that spike, not results of this repository.
+- **Startup follows size.** On a cold cache with a throttled network and CPU, the Gyral todo
+  app becomes interactive about 290 ms after Lit, Preact and Solid, and about 75 ms before
+  React.
+- **Runtime is Lit's.** Gyral is within a few percent of plain Lit in every table operation:
+  intents, messages and the Effect-based interpreter add no visible interaction cost here.
+- **lit-html 3.3.3 has a leak that dominates two operations.** Every row `repeat` removes leaves
+  an empty comment node behind ([lit/lit#5010](https://github.com/lit/lit/issues/5010)), so
+  after the warm-up cycles "clear 1,000 rows" takes about 3.7 s for Lit and Gyral (others: 26–40
+  ms) and "replace" about 2.2 s (others: 306–353 ms). With lit-html pinned to 3.3.0
+  ([variant run](results/2026-10-05-lit-html-3.3.0/results.md)), Gyral's clear is 56 ms and
+  replace 414 ms. Lit-based apps are still somewhat slower than the others at bulk creation
+  and removal.
+- **Memory:** Gyral starts with the largest JS heap (1.71 MB, the Effect runtime) but holds
+  1,000 rows in less heap than React, Preact, Vue or Solid.
+
+The runtime numbers move in steps of about one frame; differences under ~17 ms (as in
+"select row") are not meaningful. See the methodology for this and other limits.
 How each number is measured, and the limits of the method:
 [docs/methodology.md](docs/methodology.md). The apps and per-framework choices:
 [docs/apps.md](docs/apps.md).
