@@ -33,10 +33,12 @@ What the numbers say:
   setup, a counter at about 23 KiB with Effect 4, 15 KiB with Effect Micro and 10 KiB without
   Effect. Those are context from that spike, not results of this repository.
 - **Startup follows size.** On a cold cache with a throttled network and CPU, the Gyral todo
-  app becomes interactive about 290 ms after Lit, Preact and Solid, and about 75 ms before
+  app becomes interactive 275–290 ms after Lit, Preact and Solid, and about 75 ms before
   React.
-- **Runtime is Lit's.** Gyral is within a few percent of plain Lit in every table operation:
-  intents, messages and the Effect-based interpreter add no visible interaction cost here.
+- **Runtime is Lit's.** Gyral tracks plain Lit: within 3% on create, replace, update, remove,
+  create 10,000 and clear; 16% slower on swap and 17% faster on append (under one frame and
+  about 90 ms respectively, in opposite directions). Intents, messages and the Effect-based
+  interpreter add no consistent interaction cost here.
 - **lit-html 3.3.3 has a leak that dominates two operations.** Every row `repeat` removes leaves
   an empty comment node behind ([lit/lit#5010](https://github.com/lit/lit/issues/5010)), so
   after the warm-up cycles "clear 1,000 rows" takes about 3.7 s for Lit and Gyral (others: 26–40
