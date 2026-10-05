@@ -5,8 +5,9 @@ Purpose: show how much of Lit's and Gyral's "clear" and "replace" times in the m
 ([lit/lit#5010](https://github.com/lit/lit/issues/5010),
 [lit/lit#5298](https://github.com/lit/lit/issues/5298)), present in lit-html 3.3.1 to 3.3.3.
 
-- Harness: commit `dc601a6` plus one uncommitted change in a separate worktree, which is
-  why the results say `dc601a6-dirty`: `package.json` got
+- Harness: commit `cc346e1` (same harness code as `dc601a6`; it only adds the main results)
+  plus one uncommitted change in a separate worktree, which is
+  why the results say `cc346e1-dirty`: `package.json` got
   `"pnpm": { "overrides": { "lit-html": "3.3.0" } }`, the last release without the leak.
 - `pnpm install`, then `pnpm bench --only=gyral,lit --label=lit-html-3.3.0` with the same
   settings as the main run (15 runs after 5 warm-up, CPU 4x).
