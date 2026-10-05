@@ -17,6 +17,7 @@ spec for all. This file is a map; the linked docs are the system of record.
 | `pnpm bench --timing=frame`       | Use the older in-page end point instead of trace timing (comparison runs)                        |
 | `pnpm validate:timing`            | Check the timing method: synthetic busy loop (±2 ms) and both methods on real operations         |
 | `node scripts/rank-compare.mjs`   | Rank changes between two runs (`<out.md> <old dir> <new dir>`)                                   |
+| `pnpm profile:*`                  | Profiling variants of the table app: build, nodes, run, cpu ([docs/profile.md](docs/profile.md)) |
 
 First run needs `pnpm exec playwright install chromium`. A full `pnpm bench` takes about an hour.
 
@@ -26,6 +27,7 @@ First run needs `pnpm exec playwright install chromium`. A full `pnpm bench` tak
 | ------------------------------------------ | --------------------------------------------------------------------- |
 | [docs/methodology.md](docs/methodology.md) | How each number is measured, and its limits                           |
 | [docs/apps.md](docs/apps.md)               | The six apps, their shared DOM contract, per-framework idioms         |
+| [docs/profile.md](docs/profile.md)         | Profiling variants: what they change, commands, method notes          |
 | `shared/src`                               | Shared app code: table data, fake search API, signup validation       |
 | `frameworks/<name>`                        | One package per framework: `vite.config.ts`, `apps/<app>/`            |
 | `scripts/`                                 | build, sizes, serve, bench; `scripts/lib/` holds the measurement code |

@@ -5,6 +5,7 @@
   "exports": {
     "./data": "./src/data.ts",
     "./search": "./src/search.ts",
-    "./signup": "./src/signup.ts"
+    "./signup": "./src/signup.ts",
+    "./profile": "./src/profile.ts"
   }
 }

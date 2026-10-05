@@ -1,0 +1,130 @@
+{
+  "lit (app)": {
+    "shadow": true,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 12002,
+    "comments": 4001
+  },
+  "lit shadow": {
+    "shadow": true,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 12002,
+    "comments": 4001
+  },
+  "lit light": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 12002,
+    "comments": 4001
+  },
+  "lit shadow compact": {
+    "shadow": true,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 2,
+    "comments": 4001
+  },
+  "lit light compact": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 2,
+    "comments": 4001
+  },
+  "lit shadow css": {
+    "shadow": true,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 12002,
+    "comments": 4001
+  },
+  "lit light css": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 12002,
+    "comments": 4001
+  },
+  "gyral shadow": {
+    "shadow": true,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 12002,
+    "comments": 4001
+  },
+  "gyral light": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 12002,
+    "comments": 4001
+  },
+  "gyral light compact": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 2,
+    "comments": 4001
+  },
+  "svelte": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 1,
+    "comments": 0
+  },
+  "solid": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 0,
+    "comments": 0
+  },
+  "gyral": {
+    "shadow": true,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 12002,
+    "comments": 4001
+  },
+  "react": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 0,
+    "comments": 0
+  },
+  "preact": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 0,
+    "comments": 0
+  },
+  "vue": {
+    "shadow": false,
+    "rows": 1000,
+    "elements": 6000,
+    "text": 3000,
+    "whitespace": 2,
+    "comments": 0
+  }
+}

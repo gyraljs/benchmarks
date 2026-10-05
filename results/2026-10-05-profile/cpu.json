@@ -1,0 +1,495 @@
+{
+  "n": 7,
+  "targets": {
+    "gyral": "u-gyral/table/?shadow=1",
+    "lit": "u-lit/table/?shadow=1"
+  },
+  "out": {
+    "create1k": {
+      "gyral": {
+        "buckets": {
+          "program": 266.7472824287029,
+          "idle": 45.88894117647059,
+          "native DOM": 55.9111660412758,
+          "app": 1.0843385464581416,
+          "lit": 14.367810457516342,
+          "gc": 11.85344362745098,
+          "gyral core": 0.3529918552036199
+        },
+        "top": [
+          [
+            "importNode :0 [native DOM]",
+            25.662678932842688
+          ],
+          [
+            "insertBefore :0 [native DOM]",
+            14.966857142857142
+          ],
+          [
+            "setAttribute :0 [native DOM]",
+            5.612571428571428
+          ],
+          [
+            "u lit-html/lit-html-RMLDE0lA.js:124 [lit]",
+            3.9378301544050864
+          ],
+          [
+            "nextNode :0 [native DOM]",
+            3.1984528301886788
+          ],
+          [
+            "createTextNode :0 [native DOM]",
+            2.5301232750689975
+          ],
+          [
+            "createComment :0 [native DOM]",
+            1.4617298311444653
+          ],
+          [
+            "$ lit-html/lit-html-RMLDE0lA.js:172 [lit]",
+            1.0843385464581416
+          ],
+          [
+            "holds :14 [native DOM]",
+            1.0775857843137255
+          ],
+          [
+            "_ lit-html/lit-html-RMLDE0lA.js:169 [lit]",
+            0.7483428571428571
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:211 [lit]",
+            0.7308649155722327
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:160 [lit]",
+            0.7308649155722327
+          ]
+        ]
+      },
+      "lit": {
+        "buckets": {
+          "program": 259.0425730735164,
+          "idle": 41.11140928270042,
+          "app": 0.6909119170984456,
+          "lit": 18.30916580310881,
+          "native DOM": 52.25185171790234,
+          "gc": 13.818238341968911
+        },
+        "top": [
+          [
+            "importNode :0 [native DOM]",
+            23.49100518134715
+          ],
+          [
+            "insertBefore :0 [native DOM]",
+            13.037904340124005
+          ],
+          [
+            "addEventListener :0 [native DOM]",
+            5.181839378238342
+          ],
+          [
+            "u lit-html/lit-html-RMLDE0lA.js:124 [lit]",
+            4.416928270042194
+          ],
+          [
+            "nextNode :0 [native DOM]",
+            3.415153707052441
+          ],
+          [
+            "createTextNode :0 [native DOM]",
+            2.6951055004508566
+          ],
+          [
+            "p lit-html/lit-html-RMLDE0lA.js:137 [lit]",
+            1.7155137289636846
+          ],
+          [
+            "setAttribute :0 [native DOM]",
+            1.3660614828209765
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:246 [lit]",
+            1.3660614828209765
+          ],
+          [
+            "createComment :0 [native DOM]",
+            1.3230533807829181
+          ],
+          [
+            "_ lit-html/lit-html-RMLDE0lA.js:169 [lit]",
+            1.0293887530562347
+          ],
+          [
+            "$ lit-html/lit-html-RMLDE0lA.js:172 [lit]",
+            1.0245461121157324
+          ]
+        ]
+      }
+    },
+    "update10th": {
+      "gyral": {
+        "buckets": {
+          "program": 112.55589873417722,
+          "idle": 82.43747334754798,
+          "native DOM": 0.8667930283224401,
+          "gyral core": 0.8667930283224401,
+          "app": 0.43160980810234545,
+          "lit": 5.179317697228146
+        },
+        "top": [
+          [
+            "p lit-html/lit-html-RMLDE0lA.js:137 [lit]",
+            1.308516129032258
+          ],
+          [
+            "_ lit-html/lit-html-RMLDE0lA.js:169 [lit]",
+            0.8814881720430108
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:211 [lit]",
+            0.8490546218487395
+          ],
+          [
+            "S lit-html/lit-html-RMLDE0lA.js:108 [lit]",
+            0.4407440860215054
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:160 [lit]",
+            0.4361720430107527
+          ],
+          [
+            "indentedRow table/main-DGZe2A1o.js:10 [app]",
+            0.43160980810234545
+          ],
+          [
+            "$ lit-html/lit-html-RMLDE0lA.js:172 [lit]",
+            0.4263481012658228
+          ],
+          [
+            "update directives/repeat-CRifemuh.js:33 [lit]",
+            0.42452731092436974
+          ],
+          [
+            "listener :7995 [native DOM]",
+            0
+          ],
+          [
+            "handleIntent dist/intent-BOB2fk7Q.js:115 [gyral core]",
+            0
+          ],
+          [
+            "Update table/main-DGZe2A1o.js:71 [app]",
+            0
+          ],
+          [
+            "get dist/intent-BOB2fk7Q.js:108 [gyral core]",
+            0
+          ]
+        ]
+      },
+      "lit": {
+        "buckets": {
+          "program": 92.94669757174393,
+          "idle": 74.29685111111111,
+          "lit": 5.172205882352941,
+          "native DOM": 0.7699155555555556,
+          "app": 0.3805280172413793
+        },
+        "top": [
+          [
+            "_ lit-html/lit-html-RMLDE0lA.js:169 [lit]",
+            1.1415840517241378
+          ],
+          [
+            "p lit-html/lit-html-RMLDE0lA.js:137 [lit]",
+            0.7702004454342984
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:160 [lit]",
+            0.7573605150214593
+          ],
+          [
+            "S lit-html/lit-html-RMLDE0lA.js:108 [lit]",
+            0.3864186046511628
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:246 [lit]",
+            0.3851002227171492
+          ],
+          [
+            "evaluate :305 [native DOM]",
+            0.3849577777777778
+          ],
+          [
+            "dt directives/repeat-CRifemuh.js:19 [lit]",
+            0.38407726269315673
+          ],
+          [
+            "_$EM reactive-element/reactive-element-Bv7rsefd.js:212 [lit]",
+            0
+          ],
+          [
+            "update directives/repeat-CRifemuh.js:33 [lit]",
+            0
+          ],
+          [
+            "(anonymous) :1 [native DOM]",
+            0
+          ],
+          [
+            "(anonymous) :0 [native DOM]",
+            0
+          ],
+          [
+            "indentedRow table/main-CSNeCSlc.js:12 [app]",
+            0
+          ]
+        ]
+      }
+    },
+    "select": {
+      "gyral": {
+        "buckets": {
+          "program": 22.3121975308642,
+          "idle": 100.4048888888889,
+          "gyral core": 1.0712439024390243,
+          "lit": 4.282811715481172,
+          "app": 0.5312427983539095,
+          "native DOM": 0.5356219512195122
+        },
+        "top": [
+          [
+            "S lit-html/lit-html-RMLDE0lA.js:108 [lit]",
+            0.550727659574468
+          ],
+          [
+            "p lit-html/lit-html-RMLDE0lA.js:137 [lit]",
+            0.550727659574468
+          ],
+          [
+            "$ lit-html/lit-html-RMLDE0lA.js:172 [lit]",
+            0.5353514644351465
+          ],
+          [
+            "findIntentElement dist/intent-BOB2fk7Q.js:76 [gyral core]",
+            0.5327603305785124
+          ],
+          [
+            "indentedRow table/main-DGZe2A1o.js:10 [app]",
+            0.5312427983539095
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:211 [lit]",
+            0.5312427983539095
+          ],
+          [
+            "c lit-html/lit-html-RMLDE0lA.js:16 [lit]",
+            0.5253015873015873
+          ],
+          [
+            "Element.#deliver dist/define-BkEB3Dv2.js:64 [gyral core]",
+            0
+          ],
+          [
+            "update directives/repeat-CRifemuh.js:33 [lit]",
+            0
+          ],
+          [
+            "performUpdate reactive-element/reactive-element-Bv7rsefd.js:186 [lit]",
+            0
+          ],
+          [
+            "(anonymous) :0 [native DOM]",
+            0
+          ],
+          [
+            "defaultTrigger dist/intent-BOB2fk7Q.js:36 [gyral core]",
+            0
+          ]
+        ]
+      },
+      "lit": {
+        "buckets": {
+          "program": 18.055677966101694,
+          "idle": 86.06240444444445,
+          "lit": 4.166694915254237,
+          "native DOM": 0.884656,
+          "app": 0.4432579365079365
+        },
+        "top": [
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:246 [lit]",
+            0.8742661290322581
+          ],
+          [
+            "S lit-html/lit-html-RMLDE0lA.js:108 [lit]",
+            0.4807955555555556
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:160 [lit]",
+            0.44905349794238686
+          ],
+          [
+            "$ lit-html/lit-html-RMLDE0lA.js:172 [lit]",
+            0.44905349794238686
+          ],
+          [
+            "(anonymous) :0 [native DOM]",
+            0.44905349794238686
+          ],
+          [
+            "evaluate :305 [native DOM]",
+            0.4432579365079365
+          ],
+          [
+            "indentedRow table/main-CSNeCSlc.js:12 [app]",
+            0.4432579365079365
+          ],
+          [
+            "p lit-html/lit-html-RMLDE0lA.js:137 [lit]",
+            0.4432579365079365
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:211 [lit]",
+            0.4432579365079365
+          ],
+          [
+            "set reactive-element/reactive-element-Bv7rsefd.js:63 [lit]",
+            0
+          ],
+          [
+            "performUpdate reactive-element/reactive-element-Bv7rsefd.js:186 [lit]",
+            0
+          ],
+          [
+            "dt directives/repeat-CRifemuh.js:19 [lit]",
+            0
+          ]
+        ]
+      }
+    },
+    "swap": {
+      "gyral": {
+        "buckets": {
+          "program": 60.65425766871165,
+          "idle": 88.82931861198739,
+          "gyral core": 0.9031129476584021,
+          "app": 0.46973432835820894,
+          "lit": 3.6124517906336084,
+          "native DOM": 2.398482972136223
+        },
+        "top": [
+          [
+            "rowAt :9 [native DOM]",
+            1.4723091482649844
+          ],
+          [
+            "S lit-html/lit-html-RMLDE0lA.js:108 [lit]",
+            0.9031129476584021
+          ],
+          [
+            "p lit-html/lit-html-RMLDE0lA.js:137 [lit]",
+            0.48914723926380366
+          ],
+          [
+            "$ lit-html/lit-html-RMLDE0lA.js:172 [lit]",
+            0.47410670731707316
+          ],
+          [
+            "c lit-html/lit-html-RMLDE0lA.js:16 [lit]",
+            0.4620386904761905
+          ],
+          [
+            "evaluate :305 [native DOM]",
+            0.45155647382920105
+          ],
+          [
+            "indentedRow table/main-DGZe2A1o.js:10 [app]",
+            0.45155647382920105
+          ],
+          [
+            "defaultTrigger dist/intent-BOB2fk7Q.js:36 [gyral core]",
+            0
+          ],
+          [
+            "valueOf dist/intent-BOB2fk7Q.js:82 [gyral core]",
+            0
+          ],
+          [
+            "view table/main-DGZe2A1o.js:95 [app]",
+            0
+          ],
+          [
+            "r lit-html/directive-helpers-B0WjmYWh.js:7 [lit]",
+            0
+          ],
+          [
+            "readIntent dist/intent-BOB2fk7Q.js:86 [gyral core]",
+            0
+          ]
+        ]
+      },
+      "lit": {
+        "buckets": {
+          "program": 52.45720118343195,
+          "idle": 80.20844036697247,
+          "lit": 4.066449704142012,
+          "native DOM": 2.0657614942528735,
+          "app": 0.8132899408284023
+        },
+        "top": [
+          [
+            "rowAt :9 [native DOM]",
+            0.8355045871559632
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:246 [lit]",
+            0.42296716417910446
+          ],
+          [
+            "p lit-html/lit-html-RMLDE0lA.js:137 [lit]",
+            0.4131522988505747
+          ],
+          [
+            "_$AI lit-html/lit-html-RMLDE0lA.js:160 [lit]",
+            0.4080903614457831
+          ],
+          [
+            "$ lit-html/lit-html-RMLDE0lA.js:172 [lit]",
+            0.4080903614457831
+          ],
+          [
+            "S lit-html/lit-html-RMLDE0lA.js:108 [lit]",
+            0.40664497041420117
+          ],
+          [
+            "evaluate :305 [native DOM]",
+            0.40664497041420117
+          ],
+          [
+            "indentedRow table/main-CSNeCSlc.js:12 [app]",
+            0.40664497041420117
+          ],
+          [
+            "dt directives/repeat-CRifemuh.js:19 [lit]",
+            0.3996510263929619
+          ],
+          [
+            "parseEvaluationResultValue :106 [native DOM]",
+            0.3996510263929619
+          ],
+          [
+            "set reactive-element/reactive-element-Bv7rsefd.js:63 [lit]",
+            0
+          ],
+          [
+            "update directives/repeat-CRifemuh.js:33 [lit]",
+            0
+          ]
+        ]
+      }
+    }
+  }
+}
