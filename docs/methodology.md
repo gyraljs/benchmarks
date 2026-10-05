@@ -44,6 +44,10 @@ select, swap, remove, create 10,000, append 1,000, clear 1,000 (`scripts/lib/run
 - This is not js-framework-benchmark's trace-based measurement (it reads paint events from a
   Chrome performance trace). The `requestAnimationFrame` + `MessageChannel` end point
   approximates "next frame painted"; it can be up to one frame late, the same for everyone.
+- Because the end point is "the next frame has rendered", every time moves in steps of about
+  one frame (16.7 ms at 60 Hz). For operations that take less than a frame ("select row"), the
+  result mostly shows whether the work finished before the next frame began; differences
+  smaller than a frame are not meaningful. A trace-based end point would remove this.
 - The MutationObserver check runs as a microtask after DOM changes and costs a little time,
   again the same for every framework.
 - Headless Chromium on one Linux desktop. Absolute numbers depend on the machine; compare

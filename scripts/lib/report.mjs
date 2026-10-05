@@ -92,10 +92,15 @@ export function markdown(results) {
           .join(', ')}`,
     )
     .join('\n');
-  return `# Benchmark results, ${m.date}
+  const notes = [
+    m.quick ? '> **Quick run** (few samples): for checking the harness, not for conclusions.' : '',
+    m.label
+      ? `> **Variant run: ${m.label}.** Compare only the frameworks measured in this run.`
+      : '',
+  ].filter((n) => n !== '');
+  return `# Benchmark results, ${m.date}${m.label ? ` (${m.label})` : ''}
 
-${m.quick ? '> **Quick run** (few samples): for checking the harness, not for conclusions.\n' : ''}
-- Machine: ${m.machine.cpu} (${m.machine.cores} cores), ${m.machine.memoryGiB} GiB RAM, ${m.machine.os}
+${notes.length > 0 ? `${notes.join('\n>\n')}\n\n` : ''}- Machine: ${m.machine.cpu} (${m.machine.cores} cores), ${m.machine.memoryGiB} GiB RAM, ${m.machine.os}
 - Browser: Chromium ${m.browser} (Playwright ${m.playwright}), headless
 - Node ${m.node}, Vite ${m.vite}; commit ${m.commit}
 - Runtime: ${m.settings.runs} runs after ${m.settings.warmup} warm-up per operation, CPU throttled ${m.settings.cpu}x
@@ -124,6 +129,10 @@ ${sizeTable(results, 'min', 'js').join('\n')}
 ${sizeTable(results, 'gzip', 'total').join('\n')}
 
 ## Runtime: keyed table app (lower is better; fastest in bold)
+
+Each time ends when the frame after the change has rendered, so it moves in steps of about
+one frame (16.7 ms at 60 Hz). Differences smaller than a frame, as in "select row", mostly
+reflect whether the work finished before the next frame started.
 
 ${runtimeTable(results).join('\n')}
 

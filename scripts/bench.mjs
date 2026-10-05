@@ -1,6 +1,7 @@
-// pnpm bench [--quick] [--only=gyral,react]
+// pnpm bench [--quick] [--only=gyral,react] [--label=name]
 // Builds every app, measures bundle sizes, then runtime, memory and startup in Chromium, and
-// writes results/<date>/results.json + results.md (results/quick/ for --quick runs).
+// writes results/<date>/results.json + results.md (results/quick/ for --quick runs;
+// results/<date>-<label>/ for a labelled variant run, e.g. with a dependency pinned).
 import { execSync, spawnSync } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { cpus, platform, release, totalmem } from 'node:os';
@@ -15,6 +16,7 @@ import { startServer } from './serve.mjs';
 import { sizes } from './sizes.mjs';
 
 const quick = process.argv.includes('--quick');
+const label = process.argv.find((a) => a.startsWith('--label='))?.slice('--label='.length);
 const frameworks = selectedFrameworks();
 const CPU = 4;
 const settings = quick
@@ -42,6 +44,7 @@ const results = {
   meta: {
     date,
     quick,
+    label: label ?? null,
     frameworks,
     commit: commit(),
     machine: {
@@ -85,7 +88,11 @@ try {
   await server.close();
 }
 
-const dir = join(ROOT, 'results', quick ? 'quick' : date);
+const dir = join(
+  ROOT,
+  'results',
+  quick ? 'quick' : label === undefined ? date : `${date}-${label}`,
+);
 mkdirSync(dir, { recursive: true });
 writeFileSync(join(dir, 'results.json'), `${JSON.stringify(results, null, 2)}\n`);
 writeFileSync(join(dir, 'results.md'), markdown(results));
