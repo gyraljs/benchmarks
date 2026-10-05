@@ -32,5 +32,12 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.0",
     "vite": "8.3.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "lit-html": "3.3.0",
+      "@gyral/core": "file:vendor/gyral-core-0.1.0-exp-effect4.tgz",
+      "@gyral/time": "file:vendor/gyral-time-0.1.0-exp-effect4.tgz"
+    }
   }
 }
