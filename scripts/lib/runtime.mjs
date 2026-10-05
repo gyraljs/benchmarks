@@ -1,7 +1,10 @@
 // Runtime of the keyed table app (js-framework-benchmark operations). Every sample uses a fresh
 // page: prepare unthrottled, collect garbage, then throttle the CPU and time one operation.
+// Timing is trace-based by default (trace.mjs); `timing: 'frame'` keeps the older in-page
+// "next frame rendered" end point for comparison.
 import { summarize } from './stats.mjs';
 import { tableHelpers } from './page.mjs';
+import { analyzeTrace, TRACE_CATEGORIES } from './trace.mjs';
 
 // One step = click `target`, wait until `cond(ctx)` holds. `ctx` holds ids read just before
 // the step ({ first, id998 }), for conditions that depend on the current rows.
@@ -58,13 +61,52 @@ export const OPERATIONS = [
   { key: 'clear1k', name: 'clear 1,000 rows', prep: [...times(5, [RUN, CLEAR]), RUN], step: CLEAR },
 ];
 
-/** Runs one step in the page and returns its duration in ms. */
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const rowIds = (page) =>
+  page.evaluate(() => ({ first: window.__bench.rowId(0), id998: window.__bench.rowId(998) }));
+
+/** Runs one step in the page and returns its duration in ms (in-page, next-frame end point). */
 async function runStep(page, step) {
-  const ctx = await page.evaluate(() => ({
-    first: window.__bench.rowId(0),
-    id998: window.__bench.rowId(998),
-  }));
+  const ctx = await rowIds(page);
   return page.evaluate(([t, c]) => window.__bench.measure(t, c), [step.target, step.cond(ctx)]);
+}
+
+/**
+ * Runs one step with a real mouse click inside a Chrome trace and returns `analyzeTrace`'s
+ * breakdown. Nothing of ours runs in the page during the trace except the polling below
+ * (CDP evaluations, which show up only as tiny RunMicrotasks entries).
+ */
+async function tracedStep(page, step) {
+  const cond = step.cond(await rowIds(page));
+  const at = await page.evaluate((t) => window.__bench.point(t), step.target);
+  if (at === null) throw new Error(`target not found: ${JSON.stringify(step.target)}`);
+  return traceClick(page, at, () => page.evaluate((c) => window.__bench.holds(c), cond));
+}
+
+/**
+ * Clicks the viewport point `at` with the mouse while Chrome traces, polls `done()` until it
+ * is true, waits for the frame that shows the result, and returns `analyzeTrace`'s result.
+ */
+export async function traceClick(page, at, done) {
+  const browser = page.context().browser();
+  await browser.startTracing(page, { categories: TRACE_CATEGORIES });
+  let events;
+  try {
+    await page.mouse.click(at.x, at.y);
+    const deadline = Date.now() + 60000;
+    while (!(await done())) {
+      if (Date.now() > deadline) throw new Error('timed out waiting for the result');
+      await sleep(10);
+    }
+    // The DOM is right; let the frame that shows it start, then wait (an evaluation queues
+    // behind that frame's style, layout, paint and commit on the main thread).
+    await sleep(50);
+    await page.evaluate(() => 0);
+    await sleep(50);
+  } finally {
+    events = JSON.parse((await browser.stopTracing()).toString()).traceEvents;
+  }
+  return analyzeTrace(events);
 }
 
 /** Opens the table app with the helpers installed and waits until it has rendered. */
@@ -76,16 +118,20 @@ export async function openTable(context, url) {
   return page;
 }
 
-async function sample(context, url, op, cpu) {
+/** One sample: `{ total }` with frame timing, or the full trace breakdown. */
+async function sample(context, url, op, cpu, timing) {
   const page = await openTable(context, url);
   const cdp = await context.newCDPSession(page);
   try {
     for (const step of op.prep) await runStep(page, step);
     await cdp.send('HeapProfiler.collectGarbage');
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: cpu });
-    const ms = await runStep(page, op.step);
+    const result =
+      timing === 'frame'
+        ? { total: await runStep(page, op.step) }
+        : await tracedStep(page, op.step);
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
-    return ms;
+    return result;
   } finally {
     await cdp.detach();
     await page.close();
@@ -104,30 +150,51 @@ export function shuffled(items, seed) {
   return out;
 }
 
+/** Per-sample fields summarised separately (trace timing has a breakdown; frame only total). */
+const FIELDS = ['total', 'script', 'styleLayout', 'paint', 'idle'];
+
+function summarizeSamples(list) {
+  const out = summarize(list.map((s) => s.total));
+  if (list[0]?.script !== undefined) {
+    out.breakdown = Object.fromEntries(
+      FIELDS.slice(1).map((f) => [f, summarize(list.map((s) => s[f])).median]),
+    );
+    out.maxRafDelay = Math.max(...list.map((s) => s.rafDelay));
+    out.commits = summarize(list.map((s) => s.commits)).median;
+  }
+  return out;
+}
+
 /**
- * `{ gyral: { create1k: {median, p90, ...}, ... }, ... }`. Frameworks are interleaved: each
- * round times every framework once, in a shuffled order, so drift during the run (thermal,
- * background load) spreads over all of them instead of hitting whichever runs last.
+ * `{ gyral: { create1k: {median, p90, ..., breakdown}, ... }, ... }`. Frameworks are
+ * interleaved: each round times every framework once, in a shuffled order, so drift during
+ * the run (thermal, background load) spreads over all of them instead of hitting whichever
+ * runs last. `afterOperation(op)` runs between operations (machine-state probes).
  */
-export async function runtime(browser, baseUrl, frameworks, { warmup, runs, cpu, log }) {
+export async function runtime(browser, baseUrl, frameworks, options) {
+  const { warmup, runs, cpu, log, timing = 'trace', afterOperation, operations } = options;
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
   const url = (fw) => `${baseUrl}/${fw}/table/`;
+  const ops = operations ?? OPERATIONS;
   const samples = Object.fromEntries(frameworks.map((fw) => [fw, {}]));
   try {
-    for (const op of OPERATIONS) {
+    for (const op of ops) {
       for (const fw of frameworks) {
-        for (let i = 0; i < warmup; i++) await sample(context, url(fw), op, cpu);
+        for (let i = 0; i < warmup; i++) await sample(context, url(fw), op, cpu, timing);
         samples[fw][op.key] = [];
       }
       for (let round = 0; round < runs; round++) {
         for (const fw of shuffled(frameworks, round + 1)) {
-          samples[fw][op.key].push(await sample(context, url(fw), op, cpu));
+          samples[fw][op.key].push(await sample(context, url(fw), op, cpu, timing));
         }
       }
       log(
         `  ${op.name}: ` +
-          frameworks.map((fw) => `${fw} ${summarize(samples[fw][op.key]).median}`).join(', '),
+          frameworks
+            .map((fw) => `${fw} ${summarize(samples[fw][op.key].map((s) => s.total)).median}`)
+            .join(', '),
       );
+      await afterOperation?.(op);
     }
   } finally {
     await context.close();
@@ -135,7 +202,7 @@ export async function runtime(browser, baseUrl, frameworks, { warmup, runs, cpu,
   return Object.fromEntries(
     frameworks.map((fw) => [
       fw,
-      Object.fromEntries(OPERATIONS.map((op) => [op.key, summarize(samples[fw][op.key])])),
+      Object.fromEntries(ops.map((op) => [op.key, summarizeSamples(samples[fw][op.key])])),
     ]),
   );
 }

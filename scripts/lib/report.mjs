@@ -46,6 +46,42 @@ function runtimeTable(results) {
   return lines;
 }
 
+/** Median script / style+layout / paint / idle per operation (trace timing only). */
+function breakdownTable(results) {
+  const fws = results.meta.frameworks;
+  const lines = header(['Operation: script / style+layout / paint / idle (ms)', ...fws]);
+  for (const op of OPERATIONS) {
+    lines.push(
+      row([
+        op.name,
+        ...fws.map((fw) => {
+          const b = results.runtime[fw][op.key].breakdown;
+          return [b.script, b.styleLayout, b.paint, b.idle].map((x) => x.toFixed(1)).join(' / ');
+        }),
+      ]),
+    );
+  }
+  return lines;
+}
+
+const RUNTIME_NOTE = {
+  trace: `Trace-based timing: from the click's dispatch to the end of the Commit of the frame that
+shows the result, read from a Chrome performance trace (as js-framework-benchmark does).`,
+  frame: `Each time ends when the frame after the change has rendered, so it moves in steps of about
+one frame (16.7 ms at 60 Hz). Differences smaller than a frame, as in "select row", mostly
+reflect whether the work finished before the next frame started.`,
+};
+
+function driftLine(m) {
+  if (m.drift === undefined) return '';
+  const d = m.drift;
+  const why = [d.spread > d.limit ? 'speed drifted' : '', d.busy ? 'machine busy' : '']
+    .filter((w) => w !== '')
+    .join(', ');
+  const note = d.flagged ? ` **FLAGGED (${why}): compare frameworks within this run only.**` : '';
+  return `- Machine during the run: calibration spread ${(d.spread * 100).toFixed(1)}% (limit ${d.limit * 100}%), max 1-min load ${d.maxLoad1}${note}\n`;
+}
+
 function memoryTable(results) {
   const fws = results.meta.frameworks;
   const label = {
@@ -105,7 +141,7 @@ ${notes.length > 0 ? `${notes.join('\n>\n')}\n\n` : ''}- Machine: ${m.machine.cp
 - Node ${m.node}, Vite ${m.vite}; commit ${m.commit}
 - Runtime: ${m.settings.runs} runs after ${m.settings.warmup} warm-up per operation, CPU throttled ${m.settings.cpu}x
 - Memory: ${m.settings.memoryRuns} runs. Startup: ${m.settings.startupRuns} runs, CPU ${m.settings.cpu}x, ${m.settings.network}
-
+${driftLine(m)}
 Framework versions:
 
 ${versions}
@@ -130,18 +166,36 @@ ${sizeTable(results, 'gzip', 'total').join('\n')}
 
 ## Runtime: keyed table app (lower is better; fastest in bold)
 
-Each time ends when the frame after the change has rendered, so it moves in steps of about
-one frame (16.7 ms at 60 Hz). Differences smaller than a frame, as in "select row", mostly
-reflect whether the work finished before the next frame started.
+${RUNTIME_NOTE[m.settings.timing ?? 'frame']}
 
 ${runtimeTable(results).join('\n')}
+${
+  m.settings.timing === 'trace'
+    ? `
+### Where the time goes (medians)
 
+Script includes event handling, microtasks and timers; style+layout and paint are the
+browser's rendering work. They can overlap where script forces a layout; idle is the part
+of the total covered by none of them (mostly waiting for the next frame to start).
+
+${breakdownTable(results).join('\n')}
+`
+    : ''
+}${
+    results.memory === undefined
+      ? ''
+      : `
 ## Memory: keyed table app
 
 ${memoryTable(results).join('\n')}
-
+`
+  }${
+    results.startup === undefined
+      ? ''
+      : `
 ## Startup: todo app, cold cache, throttled network and CPU
 
 ${startupTable(results).join('\n')}
-`;
+`
+  }`;
 }

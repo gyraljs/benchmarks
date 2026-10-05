@@ -77,10 +77,24 @@ export function tableHelpers() {
       check();
     });
 
+  /** The target's centre in viewport pixels, scrolled into view first (for a real click). */
+  const point = (target) => {
+    const el =
+      target.row === undefined
+        ? root()?.querySelector(target.sel)
+        : rowAt(target.row)?.querySelector(target.sel);
+    if (el === null || el === undefined) return null;
+    el.scrollIntoView({ block: 'nearest' });
+    const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  };
+
   window.__bench = {
     ready: () => (root()?.querySelector('#run') ?? null) !== null,
     rowId,
     measure,
+    holds,
+    point,
   };
 }
 

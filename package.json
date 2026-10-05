@@ -18,7 +18,8 @@
     "format:fix": "prettier --write .",
     "check": "pnpm typecheck && pnpm lint && pnpm format && pnpm build && pnpm test",
     "bench": "node scripts/bench.mjs",
-    "report": "node scripts/report.mjs"
+    "report": "node scripts/report.mjs",
+    "validate:timing": "node scripts/validate-timing.mjs"
   },
   "devDependencies": {
     "@bench/shared": "workspace:*",
