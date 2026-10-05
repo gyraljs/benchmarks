@@ -35,7 +35,7 @@ What the numbers say:
 - **Startup follows size.** On a cold cache with a throttled network and CPU, the Gyral todo
   app becomes interactive 275–290 ms after Lit, Preact and Solid, and about 75 ms before
   React.
-- **Runtime is Lit's.** Gyral tracks plain Lit: within 3% on create, replace, update, remove,
+- **Runtime is Lit's.** Gyral tracks plain Lit: within 4% on create, replace, update, remove,
   create 10,000 and clear; 16% slower on swap and 17% faster on append (under one frame and
   about 90 ms respectively, in opposite directions). Intents, messages and the Effect-based
   interpreter add no consistent interaction cost here.
