@@ -1,0 +1,12 @@
+{
+  "name": "@bench/gyral-twotrack",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@bench/shared": "workspace:*",
+    "@gyral/core": "file:../../vendor/gyral-core-0.1.0-exp-effect4.tgz",
+    "@gyral/core-twotrack": "file:../../vendor-twotrack/gyral-core-0.1.0-exp-twotrack.tgz",
+    "@gyral/time": "file:../../vendor/gyral-time-0.1.0-exp-effect4.tgz",
+    "lit": "3.3.3"
+  }
+}

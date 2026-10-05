@@ -10,6 +10,7 @@ export const DIST = join(ROOT, 'dist');
 export const FRAMEWORKS = [
   'gyral',
   'gyral-noeffect',
+  'gyral-twotrack',
   'lit',
   'react',
   'preact',
@@ -23,6 +24,7 @@ export const APPS = ['floor', 'counter', 'todo', 'search', 'form', 'table'];
 const MAIN_PACKAGES = {
   gyral: ['@gyral/core', '@gyral/time', 'effect', 'lit', 'lit-html'],
   'gyral-noeffect': ['@gyral/core-noeffect', '@gyral/time', 'lit', 'lit-html'],
+  'gyral-twotrack': ['@gyral/core-twotrack', 'two-track', '@gyral/time', 'lit', 'lit-html'],
   lit: ['lit', 'lit-html'],
   react: ['react', 'react-dom'],
   preact: ['preact'],

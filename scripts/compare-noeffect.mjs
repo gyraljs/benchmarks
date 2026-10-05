@@ -13,10 +13,7 @@ const FWS = ['gyral', 'gyral-noeffect', 'lit', 'svelte', 'solid'].filter((fw) =>
 const NAMES = { gyral: 'Gyral (Effect 4)', 'gyral-noeffect': 'Gyral (no Effect)' };
 const name = (fw) => NAMES[fw] ?? fw[0].toUpperCase() + fw.slice(1);
 const row = (cells) => `| ${cells.join(' | ')} |`;
-const header = (first) => [
-  row([first, ...FWS.map(name)]),
-  row(['---', ...FWS.map(() => '---:')]),
-];
+const header = (first) => [row([first, ...FWS.map(name)]), row(['---', ...FWS.map(() => '---:')])];
 const kib = (bytes) => (bytes / 1024).toFixed(1);
 const ms = (n) => (n === undefined ? '—' : n.toFixed(1));
 
@@ -68,9 +65,7 @@ for (const op of Object.keys(data.runtime.gyral)) {
       op,
       ...FWS.map((fw) => {
         const b = data.runtime[fw][op].breakdown;
-        return b === undefined
-          ? '—'
-          : `${ms(b.script)} / ${ms(b.styleLayout)} / ${ms(b.paint)}`;
+        return b === undefined ? '—' : `${ms(b.script)} / ${ms(b.styleLayout)} / ${ms(b.paint)}`;
       }),
     ]),
   );

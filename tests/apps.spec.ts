@@ -6,6 +6,7 @@ import { expect, test, type Page } from '@playwright/test';
 const FRAMEWORKS = [
   'gyral',
   'gyral-noeffect',
+  'gyral-twotrack',
   'lit',
   'react',
   'preact',
