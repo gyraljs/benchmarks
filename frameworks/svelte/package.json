@@ -1,0 +1,13 @@
+{
+  "name": "@bench/svelte",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@bench/shared": "workspace:*",
+    "svelte": "5.57.1"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "svelte-check": "4.7.6"
+  }
+}

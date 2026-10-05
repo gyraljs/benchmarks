@@ -1,0 +1,41 @@
+# AGENTS.md — gyral-benchmarks
+
+A reproducible benchmark of Gyral against React, Preact, Vue, Svelte, Solid and Lit: the same
+six apps in every framework, bundle sizes, runtime, memory and startup, plus one correctness
+spec for all. This file is a map; the linked docs are the system of record.
+
+## Commands
+
+| Command                           | What it does                                                                                     |
+| --------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `pnpm install`                    | Install (pnpm workspace: `shared`, `frameworks/*`)                                               |
+| `pnpm check`                      | **The gate.** typecheck (tsc, vue-tsc, svelte-check) + lint + format + build + correctness tests |
+| `pnpm build [--only=gyral,react]` | Production Vite build of every app → `dist/<framework>/<app>/`                                   |
+| `pnpm sizes`                      | Bundle sizes of the current build                                                                |
+| `pnpm test`                       | The correctness spec against every production build (Playwright)                                 |
+| `pnpm bench [--quick] [--only=…]` | Build, then measure everything → `results/<date>/` (`results/quick/` for `--quick`)              |
+
+First run needs `pnpm exec playwright install chromium`. A full `pnpm bench` takes about an hour.
+
+## Where things are
+
+| Path                                       | Contents                                                              |
+| ------------------------------------------ | --------------------------------------------------------------------- |
+| [docs/methodology.md](docs/methodology.md) | How each number is measured, and its limits                           |
+| [docs/apps.md](docs/apps.md)               | The six apps, their shared DOM contract, per-framework idioms         |
+| `shared/src`                               | Shared app code: table data, fake search API, signup validation       |
+| `frameworks/<name>`                        | One package per framework: `vite.config.ts`, `apps/<app>/`            |
+| `scripts/`                                 | build, sizes, serve, bench; `scripts/lib/` holds the measurement code |
+| `tests/apps.spec.ts`                       | One behavioural spec for every implementation                         |
+| `results/<date>/`                          | Committed results: `results.json` (all samples) and `results.md`      |
+
+## Rules
+
+- **Fairness first.** Each implementation follows its framework's official docs. Don't tune
+  one framework (or skip a documented best practice for another) to change a result. If a
+  change is needed for one framework, explain it in `docs/apps.md`.
+- Every app passes `tests/apps.spec.ts` before it is benchmarked.
+- Never edit committed results by hand. Re-run `pnpm bench` and commit the new folder.
+- Report results as measured, including where Gyral loses. Cite context (e.g. Gyral's ADR 0015
+  runtime spike) as context, never as a measured result of this repo.
+- Files ≤ 300 lines; no `any`.

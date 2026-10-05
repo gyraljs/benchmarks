@@ -1,0 +1,9 @@
+{
+  "name": "@bench/lit",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@bench/shared": "workspace:*",
+    "lit": "3.3.3"
+  }
+}

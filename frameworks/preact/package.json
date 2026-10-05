@@ -1,0 +1,13 @@
+{
+  "name": "@bench/preact",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@bench/shared": "workspace:*",
+    "preact": "11.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.29.7",
+    "@preact/preset-vite": "2.10.6"
+  }
+}

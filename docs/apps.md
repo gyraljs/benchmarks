@@ -1,0 +1,35 @@
+# The apps and their shared contract
+
+Every framework implements the same six apps with the same DOM contract, so one Playwright
+spec (`tests/apps.spec.ts`) checks them all and the benchmark can drive them all the same way.
+Each implementation follows its framework's official documentation. No UI or form libraries
+are used anywhere; data generation, the fake search API and the validation rules are shared
+code (`shared/src`) so the comparison is about the frameworks, not about app code.
+
+| App       | What it does                                                                            | Contract (ids and classes the tests use)                                                                                                    |
+| --------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `floor`   | Renders `Hello`: the framework's minimum cost                                           | `#hello`                                                                                                                                    |
+| `counter` | Increment and decrement                                                                 | `#inc`, `#dec`, `#count`                                                                                                                    |
+| `todo`    | Add (form submit), toggle, delete, filter all/active/completed                          | `#new-todo` in `#add-form`, `#todo-list li[.completed]`, `.toggle`, `.title`, `.destroy`, `[data-filter]` with `aria-pressed`, `#remaining` |
+| `search`  | Debounced (150 ms) search against a fake API; only the latest query may show            | `#q`, `#status`, `#results li`                                                                                                              |
+| `form`    | Signup: email, password, confirm, terms; errors after the first submit, live afterwards | `#signup`, `#email`, `#password`, `#confirm`, `#terms`, `#<field>-error`, `#submit`, `#success`                                             |
+| `table`   | The js-framework-benchmark keyed table                                                  | `#run`, `#runlots`, `#add`, `#update`, `#clear`, `#swaprows`, `#tbody tr[.danger]`, `.col-id`, `.lbl`, `.remove`                            |
+
+The fake search API answers a 1-character query in 300 ms, 2 characters in 200 ms and 3 or more
+in 100 ms, so an earlier query answers after a later one. An implementation that doesn't keep
+only the latest answer shows stale results and fails the test.
+
+Row actions in the table use `<button>` elements (js-framework-benchmark uses `<a>`): buttons
+are the correct element for actions, and Gyral reads a button's `value` in its intent parser.
+
+## Per-framework choices
+
+| Framework   | Rendering                               | List, state and async idioms used                                                                                                                                                                                                                                                      |
+| ----------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Gyral 0.1.0 | `define()` (Lit underneath), shadow DOM | One message per intent, pure `update`, `repeat` for keyed lists, `debounce` from `@gyral/time`, the fake API as a driver in a `switch` lane. Validation uses the shared rules through plain intents, not Gyral's `form()` + Standard Schema helper, to keep validation code identical. |
+| Lit 3       | `LitElement`, shadow DOM                | `static properties` with `declare` fields (no decorators, so no decorator config), `repeat` for keyed lists, `live()` for the draft input, `AbortController` for search.                                                                                                               |
+| React 19    | `createRoot`                            | `useState`/`useReducer`, `memo` for table rows, `useEffect` cleanup for debounce and abort. No React Compiler (opt-in).                                                                                                                                                                |
+| Preact 11   | `render`                                | Hooks from `preact/hooks`. No `memo` for table rows: it lives in `preact/compat`, which a plain Preact app doesn't load.                                                                                                                                                               |
+| Vue 3.5     | SFCs with `<script setup>`              | `ref`/`reactive`/`computed`, `watch` with `onCleanup`, `shallowRef` + `v-memo` for the table (Vue's documented tools for large lists).                                                                                                                                                 |
+| Svelte 5    | Runes                                   | `$state`, `$derived`, `$effect` teardown, `$state.raw` for the table rows.                                                                                                                                                                                                             |
+| Solid 1.9   | JSX, fine-grained                       | Signals, `createStore` for todos and rows (fine-grained label updates), `createSelector` for the selected row.                                                                                                                                                                         |

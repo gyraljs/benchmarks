@@ -1,0 +1,12 @@
+{
+  "name": "@bench/solid",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@bench/shared": "workspace:*",
+    "solid-js": "1.9.15"
+  },
+  "devDependencies": {
+    "vite-plugin-solid": "2.11.14"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@bench/gyral",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@bench/shared": "workspace:*",
+    "@gyral/core": "0.1.0",
+    "@gyral/time": "0.1.0",
+    "lit": "3.3.3"
+  }
+}
