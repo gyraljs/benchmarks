@@ -3,7 +3,16 @@ import { expect, test, type Page } from '@playwright/test';
 
 // One behavioural spec for every implementation. Locators pierce open shadow roots, so the
 // same selectors work for Lit and Gyral (shadow DOM) and the others (light DOM).
-const FRAMEWORKS = ['gyral', 'lit', 'react', 'preact', 'vue', 'svelte', 'solid'] as const;
+const FRAMEWORKS = [
+  'gyral',
+  'gyral-ws',
+  'lit',
+  'react',
+  'preact',
+  'vue',
+  'svelte',
+  'solid',
+] as const;
 
 const open = async (page: Page, fw: string, app: string) => {
   const errors: string[] = [];

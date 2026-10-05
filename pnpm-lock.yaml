@@ -62,6 +62,24 @@ importers:
         specifier: 3.3.3
         version: 3.3.3
 
+  frameworks/gyral-ws:
+    dependencies:
+      '@bench/shared':
+        specifier: workspace:*
+        version: link:../../shared
+      '@gyral/core':
+        specifier: file:../../vendor/gyral-core-0.1.0-exp-effect4.tgz
+        version: file:vendor/gyral-core-0.1.0-exp-effect4.tgz(lit@3.3.3)
+      '@gyral/core-ws':
+        specifier: file:../../vendor-whitespace/gyral-core-0.1.0-exp-whitespace.tgz
+        version: '@gyral/core@file:vendor-whitespace/gyral-core-0.1.0-exp-whitespace.tgz(lit@3.3.3)'
+      '@gyral/time':
+        specifier: file:../../vendor/gyral-time-0.1.0-exp-effect4.tgz
+        version: file:vendor/gyral-time-0.1.0-exp-effect4.tgz(lit@3.3.3)
+      lit:
+        specifier: 3.3.3
+        version: 3.3.3
+
   frameworks/lit:
     dependencies:
       '@bench/shared':
@@ -299,6 +317,12 @@ packages:
   '@eslint/plugin-kit@0.7.3':
     resolution: {integrity: sha512-IkO+/KEUvwbVpiURZg+P7zF74z5Jxe0UgJxVni+RtoHQ6IZieXaO02kmadomap/q+l6bc/jdPGGqTjhuZnuz1Q==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+
+  '@gyral/core@file:vendor-whitespace/gyral-core-0.1.0-exp-whitespace.tgz':
+    resolution: {integrity: sha512-fIwqcgr6OSl1P3r8sjAiYWNhYf6H495q0yL6K/tv4aR8jmzR2333QsfkbG00zbrSAL/yIx6Ywk/ZXeGRRtJe6Q==, tarball: file:vendor-whitespace/gyral-core-0.1.0-exp-whitespace.tgz}
+    version: 0.1.0
+    peerDependencies:
+      lit: ^3.3.0
 
   '@gyral/core@file:vendor/gyral-core-0.1.0-exp-effect4.tgz':
     resolution: {integrity: sha512-SJharXLrK7kQ16871C2evCi2WEb+2BdMg8Jx7sjHVRBAjsbrpMVsBA+ymnzK4Yl8ELc2siX4GmBp+otO24nKMg==, tarball: file:vendor/gyral-core-0.1.0-exp-effect4.tgz}
@@ -1647,6 +1671,12 @@ snapshots:
     dependencies:
       '@eslint/core': 1.2.1
       levn: 0.4.1
+
+  '@gyral/core@file:vendor-whitespace/gyral-core-0.1.0-exp-whitespace.tgz(lit@3.3.3)':
+    dependencies:
+      '@standard-schema/spec': 1.1.0
+      effect: 4.0.1
+      lit: 3.3.3
 
   '@gyral/core@file:vendor/gyral-core-0.1.0-exp-effect4.tgz(lit@3.3.3)':
     dependencies:

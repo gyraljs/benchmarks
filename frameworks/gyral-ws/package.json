@@ -1,0 +1,12 @@
+{
+  "name": "@bench/gyral-ws",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@bench/shared": "workspace:*",
+    "@gyral/core": "file:../../vendor/gyral-core-0.1.0-exp-effect4.tgz",
+    "@gyral/core-ws": "file:../../vendor-whitespace/gyral-core-0.1.0-exp-whitespace.tgz",
+    "@gyral/time": "file:../../vendor/gyral-time-0.1.0-exp-effect4.tgz",
+    "lit": "3.3.3"
+  }
+}

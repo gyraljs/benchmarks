@@ -7,12 +7,13 @@ import { fileURLToPath } from 'node:url';
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const DIST = join(ROOT, 'dist');
 
-export const FRAMEWORKS = ['gyral', 'lit', 'react', 'preact', 'vue', 'svelte', 'solid'];
+export const FRAMEWORKS = ['gyral', 'gyral-ws', 'lit', 'react', 'preact', 'vue', 'svelte', 'solid'];
 export const APPS = ['floor', 'counter', 'todo', 'search', 'form', 'table'];
 
 /** The framework packages each implementation depends on, for the results metadata. */
 const MAIN_PACKAGES = {
   gyral: ['@gyral/core', '@gyral/time', 'effect', 'lit', 'lit-html'],
+  'gyral-ws': ['@gyral/core-ws', '@gyral/time', 'effect', 'lit', 'lit-html'],
   lit: ['lit', 'lit-html'],
   react: ['react', 'react-dom'],
   preact: ['preact'],
