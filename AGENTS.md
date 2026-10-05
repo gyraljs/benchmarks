@@ -14,6 +14,9 @@ spec for all. This file is a map; the linked docs are the system of record.
 | `pnpm sizes`                      | Bundle sizes of the current build                                                                |
 | `pnpm test`                       | The correctness spec against every production build (Playwright)                                 |
 | `pnpm bench [--quick] [--only=…]` | Build, then measure everything → `results/<date>/` (`results/quick/` for `--quick`)              |
+| `pnpm bench --timing=frame`       | Use the older in-page end point instead of trace timing (comparison runs)                        |
+| `pnpm validate:timing`            | Check the timing method: synthetic busy loop (±2 ms) and both methods on real operations         |
+| `node scripts/rank-compare.mjs`   | Rank changes between two runs (`<out.md> <old dir> <new dir>`)                                   |
 
 First run needs `pnpm exec playwright install chromium`. A full `pnpm bench` takes about an hour.
 

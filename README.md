@@ -7,7 +7,8 @@ framework's official documentation, and checked by one shared correctness spec. 
 - **Bundle size** of every app: minified, gzip and brotli, plus the framework's floor (an app
   that renders one paragraph).
 - **Runtime**: the nine js-framework-benchmark operations on a keyed table, with in-page
-  warm-up, under 4x CPU throttling, 15 interleaved runs each.
+  warm-up, under 4x CPU throttling, 15 interleaved runs each, timed from Chrome performance
+  traces with a script / style+layout / paint breakdown.
 - **Memory**: JS heap of the table app after load, with 1,000 rows, and after clearing.
 - **Startup**: a todo app on a cold cache with a throttled network and CPU, until the first
   todo can be added.
@@ -49,8 +50,13 @@ What the numbers say:
 - **Memory:** Gyral starts with the largest JS heap (1.71 MB, the Effect runtime) but holds
   1,000 rows in less heap than React, Preact, Vue or Solid.
 
-The runtime numbers move in steps of about one frame; differences under ~17 ms (as in
-"select row") are not meaningful. See the methodology for this and other limits.
+These runtime numbers use the older in-page "next frame" end point, which often missed the
+repaint for operations shorter than a frame (so "select row" is not meaningful there). Runtime
+timing is now **trace-based**, like js-framework-benchmark's
+([methodology](docs/methodology.md#trace-based-timing-default-since-2026-10-05)). A trace-based
+run on Gyral's experiment builds (Effect 4, lit-html 3.3.0; not the published 0.1.0) gives a
+geometric mean of Svelte 1.05, Solid 1.07, Vue 1.19, Lit 1.31, Gyral 1.33, Preact 1.40, React
+1.54: [results and notes](results/2026-10-05-lit-html-3.3.0-effect4-trace/NOTES.md).
 How each number is measured, and the limits of the method:
 [docs/methodology.md](docs/methodology.md). The apps and per-framework choices:
 [docs/apps.md](docs/apps.md).

@@ -27,11 +27,6 @@ select, swap, remove, create 10,000, append 1,000, clear 1,000 (`scripts/lib/run
   without throttling (for example five create+clear cycles before timing create), forces a
   garbage collection, then throttles the CPU 4x (CDP `Emulation.setCPUThrottlingRate`) and
   times one operation.
-- **What is timed:** from just before the button's `click()` until the DOM shows the expected
-  result (checked by a MutationObserver) and the following frame has rendered
-  (`requestAnimationFrame`, then a `MessageChannel` task, which runs after that frame's
-  style, layout and paint). This includes the framework's event handling, its rendering
-  (synchronous or scheduled), and the browser's layout and paint.
 - **Runs:** 5 warm-up samples, then 15 measured samples per operation and framework. The
   frameworks are interleaved: each round times every framework once, in a shuffled order, so
   drift during the run spreads over all of them. Reported: median and p90 (nearest rank), with
@@ -39,19 +34,78 @@ select, swap, remove, create 10,000, append 1,000, clear 1,000 (`scripts/lib/run
   each framework's median divided by the fastest median, per operation (1.00 = fastest at
   everything).
 
+### Trace-based timing (default since 2026-10-05)
+
+`scripts/lib/trace.mjs` follows js-framework-benchmark's `webdriver-ts`
+(`src/timeline.ts`, `computeResultsCPU`):
+
+- The timed click is a **real mouse click** (CDP input via `page.mouse.click` at the target's
+  centre, found and scrolled into view before tracing starts), recorded in a **Chrome
+  performance trace** (`devtools.timeline`, `disabled-by-default-devtools.timeline`,
+  `v8.execute`).
+- **Start:** the start of the click's `EventDispatch` on the renderer main thread. Pointer,
+  mouse-down and focus events before it are excluded, as in js-framework-benchmark.
+- **End:** the end of the first `Commit` after the last `FireAnimationFrame`, `TimerFire`,
+  `Layout` or `FunctionCall` that follows the click (falling back to the last `Commit`), the
+  same rule as js-framework-benchmark. Work the framework defers to a timer or animation frame
+  is therefore included.
+- **Breakdown** per sample, stored in `results.json` (`breakdown`: medians per operation):
+  **script** (`EventDispatch`, `FunctionCall`, `TimerFire`, `FireAnimationFrame`,
+  `RunMicrotasks`, `V8.Execute`, `EvaluateScript`, …), **style+layout**
+  (`UpdateLayoutTree`, `Layout`), **paint** (`PrePaint`, `Paint`, `Layerize`, `Commit`), each
+  the union of its intervals, and **idle**: the part of the total covered by none of them
+  (mostly waiting for the next frame to begin). Script and style+layout can overlap where
+  script forces a layout.
+- The harness waits for the result by polling the DOM through CDP evaluations every 10 ms;
+  these show up in the trace only as `RunMicrotasks` entries of a few microseconds.
+- `--timing=frame` keeps the older end point (below) for comparison runs.
+
+Where we differ from js-framework-benchmark:
+
+- We keep events of the renderer **main thread** (the click's process and thread);
+  js-framework-benchmark keeps the whole renderer process. Chrome reports `Commit` on the main
+  thread, so the end point is the same.
+- js-framework-benchmark subtracts `requestAnimationFrame` → `FireAnimationFrame` delays over
+  16 ms (a headless-Chrome artefact). We record the largest such delay per operation
+  (`maxRafDelay`) but subtract nothing; none of the apps here schedules work with
+  `requestAnimationFrame`.
+- Playwright and headless Chromium instead of Puppeteer/WebDriver and headful Chrome; our own
+  apps, warm-ups and 15 samples instead of its configuration.
+
+**Validation** (`pnpm validate:timing`, results in `results/<date>-timing-validation/`): a
+synthetic page whose click handler busy-waits a known time measures within ±2 ms of it at
+CPU 1x and 4x (median error under 0.7 ms on 2026-10-05), and `tests/trace.spec.ts` checks a
+20 ms handler on every `pnpm check`.
+
+### The older end point (`--timing=frame`, runs before 2026-10-05 trace runs)
+
+From just before the button's `click()` (a synthetic click) until the DOM shows the expected
+result (checked by a MutationObserver) and a `requestAnimationFrame` callback plus a
+`MessageChannel` task have run. The validation run showed what was wrong with it:
+
+- It did **not** move in ~16.7 ms frame steps on this machine, as this document used to say:
+  for long operations it agrees with trace timing within a few milliseconds.
+- For operations shorter than a frame it was **bimodal and often missed the paint**: "select
+  row" for Solid measured 1.0–2.4 ms in most samples and 13.6–18.5 ms in a few, where the
+  trace shows 7–21 ms because repainting the selected row (about 7 ms at 4x) is part of the
+  work. That under-counting reversed at least one ranking (see the trace run's notes).
+
+### Machine state
+
+`scripts/lib/drift.mjs` times a fixed CPU workload (median of 5, after warm-up) and records the
+1-minute load average and mean CPU frequency at the start, after each runtime operation and at
+the end. A run is **flagged** in `results.md` when the workload's time spreads by more than 5%
+or the load average exceeds half the cores; `--strict-drift` makes `pnpm bench` exit 1 then.
+Flagged runs are still comparable within the run (frameworks are interleaved) but not across
+runs.
+
 ### Limits
 
-- This is not js-framework-benchmark's trace-based measurement (it reads paint events from a
-  Chrome performance trace). The `requestAnimationFrame` + `MessageChannel` end point
-  approximates "next frame painted"; it can be up to one frame late, the same for everyone.
-- Because the end point is "the next frame has rendered", every time moves in steps of about
-  one frame (16.7 ms at 60 Hz). For operations that take less than a frame ("select row"), the
-  result mostly shows whether the work finished before the next frame began; differences
-  smaller than a frame are not meaningful. A trace-based end point would remove this.
-- The MutationObserver check runs as a microtask after DOM changes and costs a little time,
-  again the same for every framework.
 - Headless Chromium on one Linux desktop. Absolute numbers depend on the machine; compare
   frameworks within one run, not across runs.
+- Operations that take less than a frame include waiting for the frame that paints them
+  (the **idle** column), as in js-framework-benchmark; read small differences there from the
+  breakdown, not the total.
 
 ## Memory (keyed table app)
 
