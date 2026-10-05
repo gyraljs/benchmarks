@@ -9,6 +9,7 @@ overrides:
   '@gyral/core': file:vendor/gyral-core-0.1.0-exp-effect4.tgz
   '@gyral/time': file:vendor/gyral-time-0.1.0-exp-effect4.tgz
   two-track: file:vendor-twotrack/two-track-0.1.0.tgz
+  pipewise: file:vendor-pipewise/pipewise-1.0.0.tgz
 
 importers:
 
@@ -63,6 +64,24 @@ importers:
         specifier: 3.3.3
         version: 3.3.3
 
+  frameworks/gyral-combo:
+    dependencies:
+      '@bench/shared':
+        specifier: workspace:*
+        version: link:../../shared
+      '@gyral/core':
+        specifier: file:../../vendor/gyral-core-0.1.0-exp-effect4.tgz
+        version: file:vendor/gyral-core-0.1.0-exp-effect4.tgz(lit@3.3.3)
+      '@gyral/core-combo':
+        specifier: file:../../vendor-combo/gyral-core-0.1.0-exp-combo.tgz
+        version: '@gyral/core@file:vendor-combo/gyral-core-0.1.0-exp-combo.tgz(lit@3.3.3)'
+      '@gyral/time':
+        specifier: file:../../vendor/gyral-time-0.1.0-exp-effect4.tgz
+        version: file:vendor/gyral-time-0.1.0-exp-effect4.tgz(lit@3.3.3)
+      lit:
+        specifier: 3.3.3
+        version: 3.3.3
+
   frameworks/gyral-noeffect:
     dependencies:
       '@bench/shared':
@@ -74,6 +93,24 @@ importers:
       '@gyral/core-noeffect':
         specifier: file:../../vendor-noeffect/gyral-core-0.1.0-exp-noeffect.tgz
         version: '@gyral/core@file:vendor-noeffect/gyral-core-0.1.0-exp-noeffect.tgz(lit@3.3.3)'
+      '@gyral/time':
+        specifier: file:../../vendor/gyral-time-0.1.0-exp-effect4.tgz
+        version: file:vendor/gyral-time-0.1.0-exp-effect4.tgz(lit@3.3.3)
+      lit:
+        specifier: 3.3.3
+        version: 3.3.3
+
+  frameworks/gyral-pipewise:
+    dependencies:
+      '@bench/shared':
+        specifier: workspace:*
+        version: link:../../shared
+      '@gyral/core':
+        specifier: file:../../vendor/gyral-core-0.1.0-exp-effect4.tgz
+        version: file:vendor/gyral-core-0.1.0-exp-effect4.tgz(lit@3.3.3)
+      '@gyral/core-pipewise':
+        specifier: file:../../vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz
+        version: '@gyral/core@file:vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz(lit@3.3.3)'
       '@gyral/time':
         specifier: file:../../vendor/gyral-time-0.1.0-exp-effect4.tgz
         version: file:vendor/gyral-time-0.1.0-exp-effect4.tgz(lit@3.3.3)
@@ -337,8 +374,20 @@ packages:
     resolution: {integrity: sha512-IkO+/KEUvwbVpiURZg+P7zF74z5Jxe0UgJxVni+RtoHQ6IZieXaO02kmadomap/q+l6bc/jdPGGqTjhuZnuz1Q==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
+  '@gyral/core@file:vendor-combo/gyral-core-0.1.0-exp-combo.tgz':
+    resolution: {integrity: sha512-dmzLAf7YY2AEM0YscTPIGkChvZQi7J/xS2XL16Wmlc4L3O0YcsWTLAel/sFR+sjYa0lxUJm4MI6OYh+HXwE1Aw==, tarball: file:vendor-combo/gyral-core-0.1.0-exp-combo.tgz}
+    version: 0.1.0
+    peerDependencies:
+      lit: ^3.3.0
+
   '@gyral/core@file:vendor-noeffect/gyral-core-0.1.0-exp-noeffect.tgz':
     resolution: {integrity: sha512-6U3B1Br9X7wg3ieHjKM1e0pFKinSfysHadG3QZZpuEYtBrvFThPVf0Rzh5ikFIL5hHhC4GM1jJTtzjbocsv2Pg==, tarball: file:vendor-noeffect/gyral-core-0.1.0-exp-noeffect.tgz}
+    version: 0.1.0
+    peerDependencies:
+      lit: ^3.3.0
+
+  '@gyral/core@file:vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz':
+    resolution: {integrity: sha512-3o7EbmSi7PxyN8EP5IE9gugv5vxg8ofIquuvkP3EMOQ7nOz6Tb7H5cTMa9hUTVmV4QW4HRGTtbXyWUT0ebb5vw==, tarball: file:vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz}
     version: 0.1.0
     peerDependencies:
       lit: ^3.3.0
@@ -1243,6 +1292,11 @@ packages:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
 
+  pipewise@file:vendor-pipewise/pipewise-1.0.0.tgz:
+    resolution: {integrity: sha512-/Sx31s1KjgY9+K3A7qGaneoXGHYZ2HQJl10+9iz8yghSgxrhEwHdIw9G+oCJx+R5KkAk/3hEcZDruebBkJ3UkA==, tarball: file:vendor-pipewise/pipewise-1.0.0.tgz}
+    version: 1.0.0
+    engines: {node: '>=20'}
+
   playwright-core@1.63.0:
     resolution: {integrity: sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==}
     engines: {node: '>=20'}
@@ -1702,10 +1756,23 @@ snapshots:
       '@eslint/core': 1.2.1
       levn: 0.4.1
 
+  '@gyral/core@file:vendor-combo/gyral-core-0.1.0-exp-combo.tgz(lit@3.3.3)':
+    dependencies:
+      '@standard-schema/spec': 1.1.0
+      lit: 3.3.3
+      pipewise: file:vendor-pipewise/pipewise-1.0.0.tgz
+      two-track: file:vendor-twotrack/two-track-0.1.0.tgz
+
   '@gyral/core@file:vendor-noeffect/gyral-core-0.1.0-exp-noeffect.tgz(lit@3.3.3)':
     dependencies:
       '@standard-schema/spec': 1.1.0
       lit: 3.3.3
+
+  '@gyral/core@file:vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz(lit@3.3.3)':
+    dependencies:
+      '@standard-schema/spec': 1.1.0
+      lit: 3.3.3
+      pipewise: file:vendor-pipewise/pipewise-1.0.0.tgz
 
   '@gyral/core@file:vendor-twotrack/gyral-core-0.1.0-exp-twotrack.tgz(lit@3.3.3)':
     dependencies:
@@ -2563,6 +2630,8 @@ snapshots:
   picomatch@2.3.2: {}
 
   picomatch@4.0.7: {}
+
+  pipewise@file:vendor-pipewise/pipewise-1.0.0.tgz: {}
 
   playwright-core@1.63.0: {}
 

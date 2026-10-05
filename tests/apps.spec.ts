@@ -7,6 +7,8 @@ const FRAMEWORKS = [
   'gyral',
   'gyral-noeffect',
   'gyral-twotrack',
+  'gyral-pipewise',
+  'gyral-combo',
   'lit',
   'react',
   'preact',

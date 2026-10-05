@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "useDefineForClassFields": false,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true
+  },
+  "include": ["apps", "vite.config.ts"]
+}
