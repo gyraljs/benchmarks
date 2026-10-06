@@ -1,0 +1,1145 @@
+
+## gyral swap #1: total 42.218 ms (script 2.548, style+layout 16.971, paint 20.979, idle 1.72)
+  -5.43  38.82 TASK
+  -2.20   0.78   UpdateLayoutTree
+  -1.39   0.02   PrePaint frame
+  -1.37   0.01   HitTest
+  -1.35          ScheduleStyleRecalculation frame
+  -1.34   0.01   UpdateLayoutTree
+  -1.32   0.00   EventDispatch focus
+  -1.32   0.11   EventDispatch focusin
+  -1.28   0.07   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+  -1.21   0.00   EventDispatch DOMFocusIn
+  -0.53   0.01   PrePaint frame
+  -0.49   0.00   PrePaint frame
+  -0.48   0.01   HitTest
+  -0.47          ScheduleStyleRecalculation frame
+  -0.44   0.02   EventDispatch pointerup
+  -0.44   0.01   FunctionCall listener frame
+  -0.41   0.41   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   2.55   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   0.37   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+   0.39   2.14   RunMicrotasks
+   2.53   0.01   FunctionCall index-0tvT-Mvb.js:1:1990 frame
+   2.54   0.00   EventDispatch DOMActivate
+   2.55   1.86   UpdateLayoutTree
+   4.42  15.11   Layout
+  19.56  13.79   PrePaint frame
+  33.42   0.29 TASK
+  33.73   8.49 TASK
+  33.74          BeginMainThreadFrame
+  33.78   0.01   PrePaint frame
+  33.79   0.02   HitTest
+  33.85   0.00   PrePaint frame
+  34.95   5.48   Paint frame
+  35.04   5.38   Paint frame
+  40.46   1.05   Layerize frame
+  41.56   0.66   Commit
+  42.26   2.50 TASK
+
+## gyral swap #2: total 55.158 ms (script 5.34, style+layout 19.255, paint 26.54, idle 4.023)
+  -5.45  46.07 TASK
+  -2.03   0.64   UpdateLayoutTree
+  -1.38   0.02   PrePaint frame
+  -1.36   0.01   HitTest
+  -1.34          ScheduleStyleRecalculation frame
+  -1.34   0.02   UpdateLayoutTree
+  -1.31   0.00   EventDispatch focus
+  -1.30   0.80   EventDispatch focusin
+  -1.27   0.76   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+  -0.49   0.00   EventDispatch DOMFocusIn
+  -0.17   0.02   PrePaint frame
+  -0.12   0.00   PrePaint frame
+  -0.11   0.01   HitTest
+  -0.10          ScheduleStyleRecalculation frame
+  -0.06   0.04   EventDispatch pointerup
+  -0.05   0.02   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   5.34   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   1.02   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+   1.04   4.24   RunMicrotasks
+   5.30   0.02   FunctionCall index-0tvT-Mvb.js:1:1990 frame
+   5.33   0.01   EventDispatch DOMActivate
+   5.35   2.39   UpdateLayoutTree
+   7.76  16.86   Layout
+  24.65  15.93   PrePaint frame
+  40.68  14.65 TASK
+  40.69          BeginMainThreadFrame
+  41.32   0.01   PrePaint frame
+  41.33   0.02   HitTest
+  41.38   0.00   PrePaint frame
+  42.10   8.99   Paint frame
+  42.12   8.96   Paint frame
+  53.49   0.79   Layerize frame
+  54.33   0.82   Commit
+  55.38   2.12 TASK
+
+## gyral swap #3: total 42.756 ms (script 3.122, style+layout 16.242, paint 20.8, idle 2.592)
+  -4.40  37.92 TASK
+  -2.62   0.66   PrePaint frame
+  -1.97   0.01   HitTest
+  -1.95   0.02   PrePaint frame
+  -1.93          HitTest
+  -1.92          ScheduleStyleRecalculation frame
+  -1.89   0.39   EventDispatch pointerdown
+  -1.51   0.01   FunctionCall listener frame
+  -1.49   0.02   EventDispatch mousedown
+  -1.49   0.01   FunctionCall listener frame
+  -1.47   0.07   UpdateLayoutTree
+  -1.40   0.01   PrePaint frame
+  -1.38   0.01   HitTest
+  -1.37          ScheduleStyleRecalculation frame
+  -0.91   0.01   UpdateLayoutTree
+  -0.80   0.00   EventDispatch focus
+  -0.80   0.10   EventDispatch focusin
+  -0.77   0.06   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+  -0.69   0.00   EventDispatch DOMFocusIn
+  -0.67   0.01   PrePaint frame
+  -0.63   0.00   PrePaint frame
+  -0.63   0.01   HitTest
+  -0.08          ScheduleStyleRecalculation frame
+  -0.04   0.02   EventDispatch pointerup
+  -0.04   0.01   FunctionCall listener frame
+  -0.01   0.01   EventDispatch mouseup
+  -0.01   0.00   FunctionCall listener frame
+   0.00   3.12   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   0.09   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+   0.11   2.98   RunMicrotasks
+   3.09   0.01   FunctionCall index-0tvT-Mvb.js:1:1990 frame
+   3.11   0.01   EventDispatch DOMActivate
+   3.30   1.51   UpdateLayoutTree
+   4.82  14.73   Layout
+  19.59  13.90   PrePaint frame
+  33.57   9.19 TASK
+  33.57          BeginMainThreadFrame
+  33.60   0.00   PrePaint frame
+  33.61   0.01   HitTest
+  33.66   0.00   PrePaint frame
+  35.07   5.67   Paint frame
+  35.08   5.22   Paint frame
+  40.77   0.53   Layerize frame
+  42.06   0.70   Commit
+  42.80   1.72 TASK
+
+## gyral-next swap #1: total 45.678 ms (script 4.11, style+layout 17.303, paint 21.75, idle 2.515)
+  -2.19  33.24 TASK
+  -2.16   0.26   PrePaint frame
+  -1.90   0.01   HitTest
+  -1.78   0.00   PrePaint frame
+  -1.78   0.00   HitTest
+  -1.77          ScheduleStyleRecalculation frame
+  -1.74   0.02   EventDispatch pointerdown
+  -1.74   0.01   FunctionCall listener frame
+  -1.72   0.02   EventDispatch mousedown
+  -1.72   0.01   FunctionCall listener frame
+  -1.70   0.60   UpdateLayoutTree
+  -1.09   0.01   PrePaint frame
+  -1.08   0.01   HitTest
+  -1.07          ScheduleStyleRecalculation frame
+  -1.06   0.01   UpdateLayoutTree
+  -1.04   0.00   EventDispatch focus
+  -1.04   0.12   EventDispatch focusin
+  -1.01   0.09   FunctionCall #v index-BG909_Io.js:1:33730 frame
+  -0.91   0.00   EventDispatch DOMFocusIn
+  -0.89   0.01   PrePaint frame
+  -0.08   0.00   PrePaint frame
+  -0.08   0.01   HitTest
+  -0.07          ScheduleStyleRecalculation frame
+  -0.03   0.01   EventDispatch pointerup
+  -0.03   0.01   FunctionCall listener frame
+  -0.01   0.01   EventDispatch mouseup
+  -0.01   0.00   FunctionCall listener frame
+   0.00   4.11   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.02   0.11   FunctionCall #v index-BG909_Io.js:1:33730 frame
+   0.13   3.93   RunMicrotasks
+   0.14   3.91   FunctionCall J index-BG909_Io.js:1:20515 frame
+   4.08   0.02   FunctionCall index-BG909_Io.js:1:2766 frame
+   4.11   0.01   EventDispatch DOMActivate
+   4.12   0.99   UpdateLayoutTree
+   5.11  16.31   Layout
+  21.46   9.54   PrePaint frame
+  31.10  14.58 TASK
+  31.12          BeginMainThreadFrame
+  31.16   0.01   PrePaint frame
+  31.16   0.63   HitTest
+  31.84   0.01   PrePaint frame
+  32.55  10.84   Paint frame
+  32.58  10.81   Paint frame
+  43.46   1.21   Layerize frame
+  45.52   0.15   Commit
+  45.73   2.37 TASK
+
+## gyral-next swap #2: total 33.003 ms (script 3.679, style+layout 14.73, paint 12.833, idle 1.761)
+  -3.87  28.33 TASK
+  -1.32   0.00   PrePaint frame
+  -1.31   0.00   HitTest
+  -1.30          ScheduleStyleRecalculation frame
+  -1.27   0.02   EventDispatch pointerdown
+  -1.26   0.01   FunctionCall listener frame
+  -1.25   0.26   EventDispatch mousedown
+  -1.25   0.26   FunctionCall listener frame
+  -0.93   0.08   UpdateLayoutTree
+  -0.85   0.01   PrePaint frame
+  -0.84   0.01   HitTest
+  -0.82          ScheduleStyleRecalculation frame
+  -0.82   0.01   UpdateLayoutTree
+  -0.80   0.00   EventDispatch focus
+  -0.80   0.65   EventDispatch focusin
+  -0.24   0.09   FunctionCall #v index-BG909_Io.js:1:33730 frame
+  -0.15   0.00   EventDispatch DOMFocusIn
+  -0.13   0.01   PrePaint frame
+  -0.09   0.00   PrePaint frame
+  -0.09   0.01   HitTest
+  -0.08          ScheduleStyleRecalculation frame
+  -0.04   0.02   EventDispatch pointerup
+  -0.04   0.01   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.00   FunctionCall listener frame
+   0.00   3.68   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.79   0.12   FunctionCall #v index-BG909_Io.js:1:33730 frame
+   0.91   2.75   RunMicrotasks
+   0.91   2.74   FunctionCall J index-BG909_Io.js:1:20515 frame
+   3.66   0.01   FunctionCall index-BG909_Io.js:1:2766 frame
+   3.67   0.00   EventDispatch DOMActivate
+   3.69   1.16   UpdateLayoutTree
+   4.85  13.57   Layout
+  18.45   5.98   PrePaint frame
+  25.22   7.78 TASK
+  25.23          BeginMainThreadFrame
+  25.35   0.01   PrePaint frame
+  25.36   0.01   HitTest
+  25.41   0.00   PrePaint frame
+  26.06   5.30   Paint frame
+  26.08   5.28   Paint frame
+  31.41   1.43   Layerize frame
+  32.88   0.12   Commit
+
+## gyral-next swap #3: total 45.744 ms (script 4.982, style+layout 23.993, paint 15.25, idle 1.519)
+  -6.10  41.84 TASK
+  -2.50   1.10   EventDispatch focusin
+  -2.12   0.14   FunctionCall #v index-BG909_Io.js:1:33730 frame
+  -1.40   0.00   EventDispatch DOMFocusIn
+  -1.34   0.05   PrePaint frame
+  -1.22   0.00   PrePaint frame
+  -1.22   0.02   HitTest
+  -1.19          ScheduleStyleRecalculation frame
+  -0.42   0.38   EventDispatch pointerup
+  -0.41   0.26   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   4.98   EventDispatch click
+   0.00   0.03   FunctionCall listener frame
+   0.04   0.76   FunctionCall #v index-BG909_Io.js:1:33730 frame
+   0.81   4.13   RunMicrotasks
+   0.81   4.10   FunctionCall J index-BG909_Io.js:1:20515 frame
+   4.95   0.02   FunctionCall index-BG909_Io.js:1:2766 frame
+   4.97   0.01   EventDispatch DOMActivate
+   4.99   1.66   UpdateLayoutTree
+   6.66  22.33   Layout
+  29.03   6.67   PrePaint frame
+  35.78   9.97 TASK
+  35.79          BeginMainThreadFrame
+  36.43   0.00   PrePaint frame
+  36.43   0.01   HitTest
+  36.48   0.00   PrePaint frame
+  37.05   6.56   Paint frame
+  37.31   6.30   Paint frame
+  43.68   1.18   Layerize frame
+  44.91   0.84   Commit
+  45.81   1.23 TASK
+
+## solid swap #1: total 35.897 ms (script 7.912, style+layout 13.884, paint 12.911, idle 1.19)
+  -3.49  31.09 TASK
+  -3.37   1.73   EventDispatch mousemove
+  -3.35   1.70   FunctionCall listener frame
+  -1.59   0.03   PrePaint frame
+  -1.56   0.01   HitTest
+  -1.55   0.00   PrePaint frame
+  -1.54          HitTest
+  -1.53          ScheduleStyleRecalculation frame
+  -0.89   0.02   EventDispatch pointerdown
+  -0.88   0.01   FunctionCall listener frame
+  -0.86   0.02   EventDispatch mousedown
+  -0.86   0.01   FunctionCall listener frame
+  -0.84   0.07   UpdateLayoutTree
+  -0.77   0.01   PrePaint frame
+  -0.75   0.00   HitTest
+  -0.74          ScheduleStyleRecalculation frame
+  -0.23   0.08   UpdateLayoutTree
+  -0.15   0.00   EventDispatch focus
+  -0.14   0.00   EventDispatch focusin
+  -0.14   0.00   EventDispatch DOMFocusIn
+  -0.12   0.01   PrePaint frame
+  -0.08   0.00   PrePaint frame
+  -0.08   0.01   HitTest
+  -0.07          ScheduleStyleRecalculation frame
+  -0.03   0.02   EventDispatch pointerup
+  -0.03   0.01   FunctionCall listener frame
+  -0.01   0.01   EventDispatch mouseup
+  -0.01   0.00   FunctionCall listener frame
+   0.00   7.91   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   7.88   FunctionCall be index-C-WBVM4u.js:1:9737 frame
+   7.91   0.01   EventDispatch DOMActivate
+   7.92   0.70   UpdateLayoutTree
+   8.63  13.19   Layout
+  21.83   5.74   PrePaint frame
+  27.64   8.26 TASK
+  27.65          BeginMainThreadFrame
+  27.67   0.00   PrePaint frame
+  27.68   0.01   HitTest
+  27.72   0.48   PrePaint frame
+  28.32   5.12   Paint frame
+  28.34   5.10   Paint frame
+  34.27   1.12   Layerize frame
+  35.44   0.45   Commit
+
+## solid swap #2: total 35.042 ms (script 7.016, style+layout 13.895, paint 12.178, idle 1.953)
+  -3.67  30.48 TASK
+  -3.03   1.05   EventDispatch mousemove
+  -3.02   1.02   FunctionCall listener frame
+  -1.94   0.03   PrePaint frame
+  -1.91   0.01   HitTest
+  -1.25   0.00   PrePaint frame
+  -1.25   0.00   HitTest
+  -1.24          ScheduleStyleRecalculation frame
+  -1.21   0.02   EventDispatch pointerdown
+  -1.20   0.01   FunctionCall listener frame
+  -1.19   0.02   EventDispatch mousedown
+  -1.19   0.01   FunctionCall listener frame
+  -0.84   0.07   UpdateLayoutTree
+  -0.77   0.01   PrePaint frame
+  -0.76   0.00   HitTest
+  -0.74          ScheduleStyleRecalculation frame
+  -0.74   0.01   UpdateLayoutTree
+  -0.73   0.00   EventDispatch focus
+  -0.73   0.00   EventDispatch focusin
+  -0.72   0.00   EventDispatch DOMFocusIn
+  -0.70   0.01   PrePaint frame
+  -0.67   0.00   PrePaint frame
+  -0.67   0.01   HitTest
+  -0.66          ScheduleStyleRecalculation frame
+  -0.03   0.02   EventDispatch pointerup
+  -0.03   0.01   FunctionCall listener frame
+  -0.01   0.01   EventDispatch mouseup
+  -0.01   0.00   FunctionCall listener frame
+   0.00   7.02   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   7.00   FunctionCall be index-C-WBVM4u.js:1:9737 frame
+   7.01   0.00   EventDispatch DOMActivate
+   7.02   0.89   UpdateLayoutTree
+   7.91  13.01   Layout
+  20.94   5.82   PrePaint frame
+  27.57   7.48 TASK
+  27.58          BeginMainThreadFrame
+  27.60   0.18   PrePaint frame
+  27.79   0.01   HitTest
+  28.03   0.00   PrePaint frame
+  28.46   4.62   Paint frame
+  28.48   4.60   Paint frame
+  33.45   0.76   Layerize frame
+  34.25   0.79   Commit
+  35.10   1.39 TASK
+
+## solid swap #3: total 35.27 ms (script 7.027, style+layout 14.193, paint 12.881, idle 1.169)
+  -3.68  30.92 TASK
+  -1.99   0.59   PrePaint frame
+  -1.40   0.01   HitTest
+  -1.39   0.00   PrePaint frame
+  -1.38   0.00   HitTest
+  -1.37          ScheduleStyleRecalculation frame
+  -1.33   0.02   EventDispatch pointerdown
+  -1.32   0.01   FunctionCall listener frame
+  -1.31   0.02   EventDispatch mousedown
+  -1.31   0.01   FunctionCall listener frame
+  -1.28   0.70   UpdateLayoutTree
+  -0.57   0.01   PrePaint frame
+  -0.56   0.00   HitTest
+  -0.55          ScheduleStyleRecalculation frame
+  -0.55   0.01   UpdateLayoutTree
+  -0.53   0.00   EventDispatch focus
+  -0.53   0.00   EventDispatch focusin
+  -0.53   0.00   EventDispatch DOMFocusIn
+  -0.51   0.01   PrePaint frame
+  -0.47   0.00   PrePaint frame
+  -0.47   0.00   HitTest
+  -0.06          ScheduleStyleRecalculation frame
+  -0.03   0.02   EventDispatch pointerup
+  -0.03   0.01   FunctionCall listener frame
+  -0.01   0.01   EventDispatch mouseup
+  -0.01   0.00   FunctionCall listener frame
+   0.00   7.03   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   7.00   FunctionCall be index-C-WBVM4u.js:1:9737 frame
+   7.02   0.00   EventDispatch DOMActivate
+   7.03   1.14   UpdateLayoutTree
+   8.18  13.05   Layout
+  21.28   5.93   PrePaint frame
+  28.05   7.22 TASK
+  28.06          BeginMainThreadFrame
+  28.08   0.00   PrePaint frame
+  28.09   0.01   HitTest
+  28.13   0.00   PrePaint frame
+  28.25   5.90   Paint frame
+  28.27   5.27   Paint frame
+  34.18   0.92   Layerize frame
+  35.15   0.12   Commit
+
+## gyral update10th #1: total 101.462 ms (script 5.414, style+layout 56.873, paint 36.86, idle 2.315)
+  -4.82  94.84 TASK
+  -1.97   0.02   EventDispatch pointerdown
+  -1.96   0.01   FunctionCall listener frame
+  -1.93   0.35   EventDispatch mousedown
+  -1.93   0.34   FunctionCall listener frame
+  -1.58   0.08   UpdateLayoutTree
+  -1.50   0.02   PrePaint frame
+  -1.48   0.01   HitTest
+  -1.47          ScheduleStyleRecalculation frame
+  -1.46   0.01   UpdateLayoutTree
+  -0.94   0.00   EventDispatch focus
+  -0.94   0.17   EventDispatch focusin
+  -0.82   0.05   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+  -0.76   0.00   EventDispatch DOMFocusIn
+  -0.73   0.02   PrePaint frame
+  -0.69   0.00   PrePaint frame
+  -0.68   0.01   HitTest
+  -0.67          ScheduleStyleRecalculation frame
+  -0.05   0.02   EventDispatch pointerup
+  -0.04   0.01   FunctionCall listener frame
+  -0.02   0.02   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   5.41   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.01   0.66   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+   0.67   4.09   RunMicrotasks
+   4.78   0.02   FunctionCall index-0tvT-Mvb.js:1:1990 frame
+   5.40   0.01   EventDispatch DOMActivate
+   5.43   0.05   UpdateLayoutTree
+   5.49  56.82   Layout
+  62.84  27.11   PrePaint frame
+  90.07   0.64 TASK
+  90.71  10.75 TASK
+  90.72          BeginMainThreadFrame
+  90.75   0.02   PrePaint frame
+  90.78   0.02   HitTest
+  90.83   0.43   PrePaint frame
+  91.71   7.91   Paint frame
+  91.73   7.89   Paint frame
+  99.68   1.25   Layerize frame
+ 101.32   0.14   Commit
+
+## gyral update10th #2: total 83.446 ms (script 4.365, style+layout 45.393, paint 32.03, idle 1.658)
+  -2.63   0.65 TASK
+  -1.97  73.59 TASK
+  -1.95   0.03   PrePaint frame
+  -1.92   0.01   HitTest
+  -1.89   0.00   PrePaint frame
+  -1.88   0.00   HitTest
+  -1.55          ScheduleStyleRecalculation frame
+  -1.52   0.01   EventDispatch pointerdown
+  -1.52   0.00   FunctionCall listener frame
+  -1.50   0.01   EventDispatch mousedown
+  -1.50   0.00   FunctionCall listener frame
+  -1.49   0.08   UpdateLayoutTree
+  -1.40   0.01   PrePaint frame
+  -1.39   0.01   HitTest
+  -1.38          ScheduleStyleRecalculation frame
+  -1.37   0.59   UpdateLayoutTree
+  -0.77   0.00   EventDispatch focus
+  -0.77   0.08   EventDispatch focusin
+  -0.74   0.04   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+  -0.69   0.00   EventDispatch DOMFocusIn
+  -0.67   0.01   PrePaint frame
+  -0.64   0.00   PrePaint frame
+  -0.63   0.01   HitTest
+  -0.63          ScheduleStyleRecalculation frame
+  -0.04   0.01   EventDispatch pointerup
+  -0.03   0.00   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   4.37   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.02   0.67   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+   0.69   3.64   RunMicrotasks
+   4.34   0.01   FunctionCall index-0tvT-Mvb.js:1:1990 frame
+   4.36   0.00   EventDispatch DOMActivate
+   4.37   0.24   UpdateLayoutTree
+   4.61  45.16   Layout
+  49.81  21.76   PrePaint frame
+  72.02  11.43 TASK
+  72.03          BeginMainThreadFrame
+  72.08   0.01   PrePaint frame
+  72.08   0.02   HitTest
+  72.54   0.00   PrePaint frame
+  73.05   8.44   Paint frame
+  73.06   8.41   Paint frame
+  81.55   0.75   Layerize frame
+  82.37   1.07   Commit
+  83.49   2.00 TASK
+
+## gyral update10th #3: total 79.706 ms (script 4.275, style+layout 44.929, paint 28.157, idle 2.345)
+  -4.00  73.50 TASK
+  -1.98   0.26   PrePaint frame
+  -1.72   0.01   HitTest
+  -1.61   0.00   PrePaint frame
+  -1.61   0.00   HitTest
+  -1.59          ScheduleStyleRecalculation frame
+  -1.56   0.02   EventDispatch pointerdown
+  -1.56   0.01   FunctionCall listener frame
+  -1.54   0.01   EventDispatch mousedown
+  -1.54   0.00   FunctionCall listener frame
+  -1.53   0.07   UpdateLayoutTree
+  -1.46   0.01   PrePaint frame
+  -0.90   0.01   HitTest
+  -0.89          ScheduleStyleRecalculation frame
+  -0.88   0.01   UpdateLayoutTree
+  -0.86   0.00   EventDispatch focus
+  -0.86   0.07   EventDispatch focusin
+  -0.83   0.04   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+  -0.79   0.00   EventDispatch DOMFocusIn
+  -0.76   0.01   PrePaint frame
+  -0.73   0.00   PrePaint frame
+  -0.73   0.00   HitTest
+  -0.72          ScheduleStyleRecalculation frame
+  -0.70   0.67   EventDispatch pointerup
+  -0.69   0.01   FunctionCall listener frame
+  -0.02   0.02   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   4.28   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.01   0.41   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+   0.43   3.79   RunMicrotasks
+   4.23   0.02   FunctionCall index-0tvT-Mvb.js:1:1990 frame
+   4.27   0.01   EventDispatch DOMActivate
+   4.29   0.81   UpdateLayoutTree
+   5.10  44.12   Layout
+  49.26  20.22   PrePaint frame
+  70.22   9.49 TASK
+  70.23          BeginMainThreadFrame
+  70.29   0.00   PrePaint frame
+  70.29   0.29   HitTest
+  70.61   0.00   PrePaint frame
+  70.76   7.16   Paint frame
+  70.78   7.12   Paint frame
+  78.26   0.17   Layerize frame
+  79.10   0.60   Commit
+  79.84   2.13 TASK
+
+## gyral-next update10th #1: total 82.636 ms (script 4.12, style+layout 45.826, paint 31.61, idle 1.08)
+  -4.91  77.75 TASK
+  -1.93   0.02   EventDispatch pointerdown
+  -1.92   0.01   FunctionCall listener frame
+  -1.90   0.01   EventDispatch mousedown
+  -1.90   0.00   FunctionCall listener frame
+  -1.89   0.38   UpdateLayoutTree
+  -1.51   0.01   PrePaint frame
+  -1.50   0.01   HitTest
+  -1.48          ScheduleStyleRecalculation frame
+  -1.48   0.01   UpdateLayoutTree
+  -1.46   0.00   EventDispatch focus
+  -1.46   0.80   EventDispatch focusin
+  -1.42   0.76   FunctionCall #v index-BG909_Io.js:1:33730 frame
+  -0.65   0.00   EventDispatch DOMFocusIn
+  -0.63   0.20   PrePaint frame
+  -0.40   0.00   PrePaint frame
+  -0.40   0.01   HitTest
+  -0.39          ScheduleStyleRecalculation frame
+  -0.14   0.02   EventDispatch pointerup
+  -0.13   0.01   FunctionCall listener frame
+  -0.02   0.02   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   4.12   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.01   0.72   FunctionCall #v index-BG909_Io.js:1:33730 frame
+   0.74   3.36   RunMicrotasks
+   0.74   3.35   FunctionCall J index-BG909_Io.js:1:20515 frame
+   4.10   0.01   FunctionCall index-BG909_Io.js:1:2766 frame
+   4.12   0.00   EventDispatch DOMActivate
+   4.13   0.29   UpdateLayoutTree
+   4.42  45.53   Layout
+  49.99  22.82   PrePaint frame
+  72.90   9.74 TASK
+  72.91          BeginMainThreadFrame
+  72.94   0.00   PrePaint frame
+  72.94   0.01   HitTest
+  73.64   0.00   PrePaint frame
+  73.75   7.31   Paint frame
+  74.14   6.89   Paint frame
+  81.10   0.92   Layerize frame
+  82.07   0.56   Commit
+  82.79   1.44 TASK
+
+## gyral-next update10th #2: total 82.325 ms (script 4.353, style+layout 47.865, paint 28.627, idle 1.48)
+  -3.21  74.84 TASK
+  -1.36   0.06   PrePaint frame
+  -1.30   0.01   HitTest
+  -1.28          ScheduleStyleRecalculation frame
+  -1.28   0.01   UpdateLayoutTree
+  -1.26   0.00   EventDispatch focus
+  -1.25   0.12   EventDispatch focusin
+  -1.22   0.08   FunctionCall #v index-BG909_Io.js:1:33730 frame
+  -1.13   0.00   EventDispatch DOMFocusIn
+  -1.10   0.01   PrePaint frame
+  -0.37   0.00   PrePaint frame
+  -0.37   0.01   HitTest
+  -0.36          ScheduleStyleRecalculation frame
+  -0.32   0.30   EventDispatch pointerup
+  -0.32   0.01   FunctionCall listener frame
+  -0.02   0.02   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   4.35   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.02   0.17   FunctionCall #v index-BG909_Io.js:1:33730 frame
+   0.19   4.12   RunMicrotasks
+   0.90   3.41   FunctionCall J index-BG909_Io.js:1:20515 frame
+   4.33   0.01   FunctionCall index-BG909_Io.js:1:2766 frame
+   4.35   0.01   EventDispatch DOMActivate
+   4.36   0.04   UpdateLayoutTree
+   4.41  47.83   Layout
+  52.26  19.34   PrePaint frame
+  71.67  10.66 TASK
+  72.16          BeginMainThreadFrame
+  72.19   0.11   PrePaint frame
+  72.30   0.01   HitTest
+  72.35   0.00   PrePaint frame
+  73.04   7.56   Paint frame
+  73.06   7.54   Paint frame
+  80.65   0.47   Layerize frame
+  81.18   1.15   Commit
+  82.38   1.22 TASK
+
+## gyral-next update10th #3: total 92.808 ms (script 4.033, style+layout 58.199, paint 29.44, idle 1.136)
+  -2.46  85.90 TASK
+  -2.40   0.55   HitTest
+  -1.83   0.00   PrePaint frame
+  -1.83   0.00   HitTest
+  -1.82          ScheduleStyleRecalculation frame
+  -1.80   0.02   EventDispatch pointerdown
+  -1.79   0.01   FunctionCall listener frame
+  -1.78   0.01   EventDispatch mousedown
+  -1.78   0.00   FunctionCall listener frame
+  -1.77   0.07   UpdateLayoutTree
+  -1.69   0.01   PrePaint frame
+  -1.68   0.00   HitTest
+  -1.67          ScheduleStyleRecalculation frame
+  -1.66   0.64   UpdateLayoutTree
+  -1.02   0.00   EventDispatch focus
+  -1.02   0.11   EventDispatch focusin
+  -0.99   0.07   FunctionCall #v index-BG909_Io.js:1:33730 frame
+  -0.91   0.00   EventDispatch DOMFocusIn
+  -0.50   0.01   PrePaint frame
+  -0.47   0.00   PrePaint frame
+  -0.46   0.01   HitTest
+  -0.45          ScheduleStyleRecalculation frame
+  -0.42   0.01   EventDispatch pointerup
+  -0.42   0.01   FunctionCall listener frame
+  -0.41   0.01   EventDispatch mouseup
+  -0.41   0.01   FunctionCall listener frame
+   0.00   4.03   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.02   0.43   FunctionCall #v index-BG909_Io.js:1:33730 frame
+   0.46   3.56   RunMicrotasks
+   0.46   3.54   FunctionCall J index-BG909_Io.js:1:20515 frame
+   4.02   0.01   FunctionCall index-BG909_Io.js:1:2766 frame
+   4.03   0.00   EventDispatch DOMActivate
+   4.04   0.02   UpdateLayoutTree
+   4.06  58.18   Layout
+  62.28  21.14   PrePaint frame
+  83.48   9.33 TASK
+  83.49          BeginMainThreadFrame
+  84.06   0.00   PrePaint frame
+  84.07   0.01   HitTest
+  84.11   0.00   PrePaint frame
+  84.22   7.16   Paint frame
+  84.24   7.14   Paint frame
+  91.42   0.87   Layerize frame
+  92.54   0.27   Commit
+  92.96   1.23 TASK
+
+## solid update10th #1: total 80.803 ms (script 3.481, style+layout 44.207, paint 31.417, idle 1.698)
+  -3.16  72.69 TASK
+  -3.04   1.29   EventDispatch mousemove
+  -3.02   1.27   FunctionCall listener frame
+  -0.98   0.13   PrePaint frame
+  -0.85   0.01   HitTest
+  -0.84   0.00   PrePaint frame
+  -0.83   0.00   HitTest
+  -0.82          ScheduleStyleRecalculation frame
+  -0.79   0.01   EventDispatch pointerdown
+  -0.78   0.01   FunctionCall listener frame
+  -0.77   0.01   EventDispatch mousedown
+  -0.77   0.00   FunctionCall listener frame
+  -0.76   0.58   UpdateLayoutTree
+  -0.18   0.01   PrePaint frame
+  -0.17   0.00   HitTest
+  -0.15          ScheduleStyleRecalculation frame
+  -0.15   0.01   UpdateLayoutTree
+  -0.14   0.00   EventDispatch focus
+  -0.14   0.00   EventDispatch focusin
+  -0.13   0.00   EventDispatch DOMFocusIn
+  -0.11   0.01   PrePaint frame
+  -0.08   0.00   PrePaint frame
+  -0.08   0.01   HitTest
+  -0.07          ScheduleStyleRecalculation frame
+  -0.04   0.01   EventDispatch pointerup
+  -0.03   0.01   FunctionCall listener frame
+  -0.02   0.02   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   3.48   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.01   3.45   FunctionCall be index-C-WBVM4u.js:1:9737 frame
+   3.48   0.00   EventDispatch DOMActivate
+   3.48   0.01   UpdateLayoutTree
+   3.50  44.19   Layout
+  47.73  21.74   PrePaint frame
+  70.08  10.72 TASK
+  70.09          BeginMainThreadFrame
+  70.12   0.01   PrePaint frame
+  70.12   0.01   HitTest
+  70.17   0.00   PrePaint frame
+  71.04   7.44   Paint frame
+  71.07   7.41   Paint frame
+  78.54   1.30   Layerize frame
+  79.87   0.93   Commit
+  80.88   1.91 TASK
+
+## solid update10th #2: total 78.452 ms (script 3.074, style+layout 43.496, paint 29.35, idle 2.532)
+  -3.27  69.82 TASK
+  -2.85   1.63   EventDispatch mousemove
+  -2.84   1.60   FunctionCall listener frame
+  -1.01   0.03   PrePaint frame
+  -0.98   0.01   HitTest
+  -0.97   0.00   PrePaint frame
+  -0.97   0.00   HitTest
+  -0.75          ScheduleStyleRecalculation frame
+  -0.72   0.02   EventDispatch pointerdown
+  -0.72   0.01   FunctionCall listener frame
+  -0.71   0.18   EventDispatch mousedown
+  -0.70   0.18   FunctionCall listener frame
+  -0.52   0.07   UpdateLayoutTree
+  -0.20   0.04   PrePaint frame
+  -0.15   0.00   HitTest
+  -0.14          ScheduleStyleRecalculation frame
+  -0.14   0.01   UpdateLayoutTree
+  -0.12   0.00   EventDispatch focus
+  -0.12   0.00   EventDispatch focusin
+  -0.12   0.00   EventDispatch DOMFocusIn
+  -0.10   0.01   PrePaint frame
+  -0.07   0.00   PrePaint frame
+  -0.07   0.00   HitTest
+  -0.06          ScheduleStyleRecalculation frame
+  -0.03   0.01   EventDispatch pointerup
+  -0.03   0.00   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00   3.07   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.01   3.04   FunctionCall be index-C-WBVM4u.js:1:9737 frame
+   3.07   0.00   EventDispatch DOMActivate
+   3.08   0.02   UpdateLayoutTree
+   3.10  43.48   Layout
+  46.61  19.24   PrePaint frame
+  66.64  11.82 TASK
+  66.64          BeginMainThreadFrame
+  66.68   0.01   PrePaint frame
+  66.69   0.46   HitTest
+  67.20   0.00   PrePaint frame
+  68.10   8.68   Paint frame
+  68.13   8.43   Paint frame
+  76.99   0.52   Layerize frame
+  77.55   0.91   Commit
+  78.52   2.06 TASK
+
+## solid update10th #3: total 74.565 ms (script 3.064, style+layout 41.826, paint 27.126, idle 2.549)
+  -3.54  68.67 TASK
+  -3.43   1.87   EventDispatch mousemove
+  -3.41   1.81   FunctionCall listener frame
+  -1.51   0.04   PrePaint frame
+  -1.48   0.01   HitTest
+  -1.45   0.00   PrePaint frame
+  -1.45   0.00   HitTest
+  -1.44          ScheduleStyleRecalculation frame
+  -1.40   0.02   EventDispatch pointerdown
+  -1.40   0.01   FunctionCall listener frame
+  -1.38   0.01   EventDispatch mousedown
+  -1.38   0.00   FunctionCall listener frame
+  -1.37   0.77   UpdateLayoutTree
+  -0.60   0.01   PrePaint frame
+  -0.58   0.00   HitTest
+  -0.40          ScheduleStyleRecalculation frame
+  -0.39   0.01   UpdateLayoutTree
+  -0.38   0.00   EventDispatch focus
+  -0.38   0.00   EventDispatch focusin
+  -0.37   0.00   EventDispatch DOMFocusIn
+  -0.35   0.01   PrePaint frame
+  -0.32   0.00   PrePaint frame
+  -0.08   0.00   HitTest
+  -0.07          ScheduleStyleRecalculation frame
+  -0.04   0.01   EventDispatch pointerup
+  -0.04   0.01   FunctionCall listener frame
+  -0.03   0.02   EventDispatch mouseup
+  -0.02   0.02   FunctionCall listener frame
+   0.00   3.06   EventDispatch click
+   0.00   0.01   FunctionCall listener frame
+   0.01   3.03   FunctionCall be index-C-WBVM4u.js:1:9737 frame
+   3.06   0.00   EventDispatch DOMActivate
+   3.07   0.02   UpdateLayoutTree
+   3.09  41.81   Layout
+  45.63  19.48   PrePaint frame
+  65.56   9.01 TASK
+  65.57          BeginMainThreadFrame
+  65.59   0.00   PrePaint frame
+  65.59   0.01   HitTest
+  65.64   0.00   PrePaint frame
+  66.27   6.28   Paint frame
+  66.29   6.25   Paint frame
+  73.17   0.83   Layerize frame
+  74.03   0.54   Commit
+  74.79   1.79 TASK
+
+## gyral create1k #1: total 243.31 ms (script 40.946, style+layout 158.757, paint 39.715, idle 3.892)
+  -4.09 234.24 TASK
+  -2.31   0.71   PrePaint frame
+  -1.59   0.01   HitTest
+  -1.55   0.00   PrePaint frame
+  -1.55   0.01   HitTest
+  -1.35          ScheduleStyleRecalculation frame
+  -1.32   0.02   EventDispatch pointerdown
+  -1.31   0.01   FunctionCall listener frame
+  -1.29   0.01   EventDispatch mousedown
+  -1.29   0.00   FunctionCall listener frame
+  -1.28   0.44   UpdateLayoutTree
+  -0.83   0.02   PrePaint frame
+  -0.82   0.01   HitTest
+  -0.81          ScheduleStyleRecalculation frame
+  -0.80   0.01   UpdateLayoutTree
+  -0.78   0.00   EventDispatch focus
+  -0.77   0.61   EventDispatch focusin
+  -0.74   0.58   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+  -0.16   0.00   EventDispatch DOMFocusIn
+  -0.13   0.02   PrePaint frame
+  -0.08   0.00   PrePaint frame
+  -0.08   0.01   HitTest
+  -0.07          ScheduleStyleRecalculation frame
+  -0.04   0.01   EventDispatch pointerup
+  -0.03   0.01   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.01   0.00   FunctionCall listener frame
+   0.00  40.95   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   1.05   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+   1.07  39.83   RunMicrotasks
+  40.91   0.01   FunctionCall index-0tvT-Mvb.js:1:1990 frame
+  40.94   0.01   EventDispatch DOMActivate
+  40.95  35.25   UpdateLayoutTree
+  76.90 123.50   Layout
+ 200.44  29.68   PrePaint frame
+ 230.20  13.12 TASK
+ 230.21          BeginMainThreadFrame
+ 230.75   0.00   PrePaint frame
+ 230.76   0.01   HitTest
+ 230.81   0.00   PrePaint frame
+ 231.76   8.55   Paint frame
+ 241.79   0.82   Layerize frame
+ 242.65   0.66   Commit
+ 243.37   2.87 TASK
+
+## gyral create1k #2: total 284.109 ms (script 43.989, style+layout 194.934, paint 41.911, idle 3.275)
+  -4.04 274.02 TASK
+  -1.69   0.03   PrePaint frame
+  -1.65   0.01   HitTest
+  -1.63   0.01   PrePaint frame
+  -1.62          HitTest
+  -1.61          ScheduleStyleRecalculation frame
+  -1.58   0.02   EventDispatch pointerdown
+  -1.57   0.01   FunctionCall listener frame
+  -1.56   0.01   EventDispatch mousedown
+  -1.55   0.00   FunctionCall listener frame
+  -1.55   0.62   UpdateLayoutTree
+  -0.92   0.01   PrePaint frame
+  -0.91   0.01   HitTest
+  -0.90          ScheduleStyleRecalculation frame
+  -0.89   0.01   UpdateLayoutTree
+  -0.87   0.00   EventDispatch focus
+  -0.87   0.08   EventDispatch focusin
+  -0.84   0.04   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+  -0.79   0.00   EventDispatch DOMFocusIn
+  -0.77   0.01   PrePaint frame
+  -0.07   0.00   PrePaint frame
+  -0.06   0.01   HitTest
+  -0.05          ScheduleStyleRecalculation frame
+  -0.03   0.01   EventDispatch pointerup
+  -0.02   0.00   FunctionCall listener frame
+  -0.01   0.01   EventDispatch mouseup
+  -0.01   0.00   FunctionCall listener frame
+   0.00  43.99   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   0.50   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+   0.51  43.42   RunMicrotasks
+  43.95   0.02   FunctionCall index-0tvT-Mvb.js:1:1990 frame
+  43.98   0.01   EventDispatch DOMActivate
+  44.00  36.57   UpdateLayoutTree
+  80.58 158.36   Layout
+ 238.99  30.95   PrePaint frame
+ 270.34  13.77 TASK
+ 270.35          BeginMainThreadFrame
+ 270.39   0.00   PrePaint frame
+ 270.39   0.02   HitTest
+ 270.45   0.00   PrePaint frame
+ 271.60   9.43   Paint frame
+ 282.55   0.98   Layerize frame
+ 283.56   0.55   Commit
+ 284.39   4.65 TASK
+
+## gyral create1k #3: total 398.088 ms (script 59.7, style+layout 260.411, paint 75.819, idle 2.158)
+  -5.69 376.25 TASK
+  -2.29   0.88   UpdateLayoutTree
+  -1.40   0.02   PrePaint frame
+  -1.37   0.01   HitTest
+  -1.35          ScheduleStyleRecalculation frame
+  -1.34   0.02   UpdateLayoutTree
+  -1.31   0.00   EventDispatch focus
+  -1.31   0.78   EventDispatch focusin
+  -1.27   0.06   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+  -0.52   0.00   EventDispatch DOMFocusIn
+  -0.49   0.02   PrePaint frame
+  -0.10   0.00   PrePaint frame
+  -0.10   0.01   HitTest
+  -0.09          ScheduleStyleRecalculation frame
+  -0.04   0.02   EventDispatch pointerup
+  -0.04   0.01   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.00   FunctionCall listener frame
+   0.00  59.70   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   0.77   FunctionCall #g index-0tvT-Mvb.js:2:15081 frame
+   1.56  57.44   RunMicrotasks
+  59.03   0.02   FunctionCall index-0tvT-Mvb.js:1:1990 frame
+  59.69   0.01   EventDispatch DOMActivate
+  59.72  39.28   UpdateLayoutTree
+  99.01 221.13   Layout
+ 320.19  50.33   PrePaint frame
+ 371.04  27.07 TASK
+ 371.05          BeginMainThreadFrame
+ 371.09   0.01   PrePaint frame
+ 371.10   0.03   HitTest
+ 371.17   0.00   PrePaint frame
+ 372.17  25.03   Paint frame
+ 397.61   0.29   Layerize frame
+ 397.93   0.16   Commit
+ 398.15   0.06 TASK
+ 398.24  29.79 TASK
+
+## gyral-next create1k #1: total 288.617 ms (script 53.742, style+layout 175.594, paint 56.11, idle 3.171)
+  -9.74   8.65 TASK
+  -1.89   0.04   PrePaint frame
+  -1.02 266.64 TASK
+  -0.99   0.00   PrePaint frame
+  -0.98   0.02   HitTest
+  -0.92          ScheduleStyleRecalculation frame
+  -0.87   0.83   EventDispatch pointerup
+  -0.86   0.80   FunctionCall listener frame
+  -0.03   0.02   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00  53.74   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   1.67   FunctionCall #v index-BG909_Io.js:1:33730 frame
+   1.69  52.00   RunMicrotasks
+   1.70  51.70   FunctionCall J index-BG909_Io.js:1:20515 frame
+  53.71   0.02   FunctionCall index-BG909_Io.js:1:2766 frame
+  53.74   0.00   EventDispatch DOMActivate
+  53.75  35.89   UpdateLayoutTree
+  89.65 139.71   Layout
+ 229.39  35.37   PrePaint frame
+ 265.70  22.92 TASK
+ 265.72          BeginMainThreadFrame
+ 265.76   0.01   PrePaint frame
+ 265.77   0.60   HitTest
+ 266.43   0.00   PrePaint frame
+ 267.26  19.74   Paint frame
+ 287.07   0.84   Layerize frame
+ 288.48   0.14   Commit
+ 288.76   3.21 TASK
+
+## gyral-next create1k #2: total 374.413 ms (script 57.949, style+layout 254.308, paint 59.855, idle 2.301)
+  -7.41 358.50 TASK
+  -2.38   1.09   EventDispatch focusin
+  -2.33   1.03   FunctionCall #v index-BG909_Io.js:1:33730 frame
+  -0.82   0.01   EventDispatch DOMFocusIn
+  -0.76   0.23   PrePaint frame
+  -0.17   0.01   PrePaint frame
+  -0.17   0.03   HitTest
+  -0.13          ScheduleStyleRecalculation frame
+  -0.07   0.04   EventDispatch pointerup
+  -0.05   0.01   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.00   FunctionCall listener frame
+   0.00  57.95   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   2.21   FunctionCall #v index-BG909_Io.js:1:33730 frame
+   2.25  54.18   RunMicrotasks
+   2.26  54.14   FunctionCall J index-BG909_Io.js:1:20515 frame
+  56.45   1.47   FunctionCall index-BG909_Io.js:1:2766 frame
+  57.94   0.01   EventDispatch DOMActivate
+  57.97  53.84   UpdateLayoutTree
+ 111.82 200.46   Layout
+ 312.36  38.27   PrePaint frame
+ 351.46  22.96 TASK
+ 351.47          BeginMainThreadFrame
+ 351.50   0.01   PrePaint frame
+ 351.51   0.02   HitTest
+ 351.58   0.00   PrePaint frame
+ 352.68  18.63   Paint frame
+ 371.39   2.10   Layerize frame
+ 373.57   0.84   Commit
+ 374.70   3.42 TASK
+
+## gyral-next create1k #3: total 455.568 ms (script 73.334, style+layout 305.793, paint 71.067, idle 5.374)
+ -10.89   9.36 TASK
+  -1.65   0.07   PrePaint frame
+  -1.07 432.01 TASK
+  -1.02   0.00   PrePaint frame
+  -1.01   0.48   HitTest
+  -0.52          ScheduleStyleRecalculation frame
+  -0.25   0.22   EventDispatch pointerup
+  -0.23   0.01   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.01   FunctionCall listener frame
+   0.00  73.33   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01   1.68   FunctionCall #v index-BG909_Io.js:1:33730 frame
+   1.71  71.25   RunMicrotasks
+   1.72  71.20   FunctionCall J index-BG909_Io.js:1:20515 frame
+  73.21   0.11   FunctionCall index-BG909_Io.js:1:2766 frame
+  73.33   0.01   EventDispatch DOMActivate
+  73.35  65.68   UpdateLayoutTree
+ 139.04 240.11   Layout
+ 379.22  51.65   PrePaint frame
+ 432.62  22.95 TASK
+ 432.63          BeginMainThreadFrame
+ 433.01   0.01   PrePaint frame
+ 433.02   0.02   HitTest
+ 433.13   0.00   PrePaint frame
+ 434.34  17.81   Paint frame
+ 452.91   0.70   Layerize frame
+ 454.68   0.89   Commit
+ 455.66   5.34 TASK
+
+## solid create1k #1: total 392.44 ms (script 72.112, style+layout 234.411, paint 81.972, idle 3.945)
+  -4.45 372.23 TASK
+  -1.50          ScheduleStyleRecalculation frame
+  -1.44   0.04   EventDispatch pointerdown
+  -1.43   0.01   FunctionCall listener frame
+  -1.40   0.01   EventDispatch mousedown
+  -1.40   0.00   FunctionCall listener frame
+  -1.38   0.10   UpdateLayoutTree
+  -0.58   0.03   PrePaint frame
+  -0.55   0.01   HitTest
+  -0.53          ScheduleStyleRecalculation frame
+  -0.53   0.01   UpdateLayoutTree
+  -0.51   0.00   EventDispatch focus
+  -0.50   0.24   EventDispatch focusin
+  -0.26   0.00   EventDispatch DOMFocusIn
+  -0.17   0.01   PrePaint frame
+  -0.10   0.00   PrePaint frame
+  -0.10   0.01   HitTest
+  -0.09          ScheduleStyleRecalculation frame
+  -0.04   0.02   EventDispatch pointerup
+  -0.04   0.01   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.00   FunctionCall listener frame
+   0.00  72.11   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01  71.89   FunctionCall be index-C-WBVM4u.js:1:9737 frame
+  72.11   0.01   EventDispatch DOMActivate
+  72.12  41.28   UpdateLayoutTree
+ 113.46 193.13   Layout
+ 306.66  60.79   PrePaint frame
+ 367.86   0.37 TASK
+ 368.26  24.18 TASK
+ 368.27          BeginMainThreadFrame
+ 368.31   0.01   PrePaint frame
+ 368.32   0.02   HitTest
+ 368.39   0.00   PrePaint frame
+ 369.63  18.79   Paint frame
+ 389.99   2.12   Layerize frame
+ 392.18   0.26   Commit
+ 392.39   0.02   HitTest
+ 392.42   0.00   HitTest
+
+## solid create1k #2: total 507.249 ms (script 74.84, style+layout 338.253, paint 91.594, idle 2.562)
+  -6.59 488.81 TASK
+  -2.24   0.59   UpdateLayoutTree
+  -1.48   0.04   PrePaint frame
+  -1.43   0.02   HitTest
+  -1.39          ScheduleStyleRecalculation frame
+  -1.38   0.41   UpdateLayoutTree
+  -0.96   0.00   EventDispatch focus
+  -0.95   0.00   EventDispatch focusin
+  -0.95   0.00   EventDispatch DOMFocusIn
+  -0.91   0.03   PrePaint frame
+  -0.42   0.00   PrePaint frame
+  -0.41   0.01   HitTest
+  -0.40          ScheduleStyleRecalculation frame
+  -0.35   0.32   EventDispatch pointerup
+  -0.05   0.01   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.02   0.00   FunctionCall listener frame
+   0.00  74.84   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01  74.78   FunctionCall be index-C-WBVM4u.js:1:9737 frame
+  74.83   0.01   EventDispatch DOMActivate
+  74.86  58.78   UpdateLayoutTree
+ 133.65 279.47   Layout
+ 413.27  68.87   PrePaint frame
+ 482.34  24.91 TASK
+ 482.35          BeginMainThreadFrame
+ 483.19   0.01   PrePaint frame
+ 483.20   0.02   HitTest
+ 483.28   0.00   PrePaint frame
+ 484.36  20.16   Paint frame
+ 504.63   1.87   Layerize frame
+ 506.56   0.69   Commit
+ 507.20   0.02   HitTest
+ 507.23   0.00   HitTest
+ 507.37   4.45 TASK
+
+## solid create1k #3: total 411.329 ms (script 60.21, style+layout 286.295, paint 61.386, idle 3.438)
+  -3.15 395.41 TASK
+  -1.09   0.03   HitTest
+  -1.02          ScheduleStyleRecalculation frame
+  -1.00   0.05   UpdateLayoutTree
+  -0.94   0.01   EventDispatch focus
+  -0.93   0.00   EventDispatch focusin
+  -0.93   0.00   EventDispatch DOMFocusIn
+  -0.26   0.04   PrePaint frame
+  -0.16   0.00   PrePaint frame
+  -0.15   0.01   HitTest
+  -0.14          ScheduleStyleRecalculation frame
+  -0.07   0.04   EventDispatch pointerup
+  -0.06   0.02   FunctionCall listener frame
+  -0.02   0.01   EventDispatch mouseup
+  -0.01   0.00   FunctionCall listener frame
+   0.00  60.21   EventDispatch click
+   0.00   0.00   FunctionCall listener frame
+   0.01  60.16   FunctionCall be index-C-WBVM4u.js:1:9737 frame
+  60.20   0.01   EventDispatch DOMActivate
+  61.00  59.24   UpdateLayoutTree
+ 120.28 227.05   Layout
+ 347.50  43.95   PrePaint frame
+ 392.35  18.98 TASK
+ 392.36          BeginMainThreadFrame
+ 392.40   0.01   PrePaint frame
+ 392.41   0.02   HitTest
+ 392.47   0.00   PrePaint frame
+ 393.47  14.86   Paint frame
+ 408.69   1.44   Layerize frame
+ 410.20   1.13   Commit
+ 411.44   2.10 TASK

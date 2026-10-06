@@ -1,0 +1,8 @@
+CPU 4x, 3 s windows, median of 3 rounds
+| source | flush | msgs/s handled | renders/s | frames/s | worst frame gap ms | main-thread busy % | script % |
+| 60/s (1 per 16 ms) | microtask | 37 | 37 | 50.6 | 83 | 86 | 4 |
+| 60/s (1 per 16 ms) | lane | 39 | 28 | 50.4 | 83 | 84 | 4 |
+| 250/s (1 per 4 ms) | microtask | 62 | 62 | 49.2 | 67 | 88 | 6 |
+| 250/s (1 per 4 ms) | lane | 66 | 27 | 49.7 | 67 | 86 | 5 |
+| 2000/s (8 per 4 ms) | microtask | 188 | 188 | 31.2 | 67 | 101 | 14 |
+| 2000/s (8 per 4 ms) | lane | 383 | 26 | 40.4 | 83 | 94 | 9 |

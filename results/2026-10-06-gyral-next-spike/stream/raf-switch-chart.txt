@@ -1,0 +1,11 @@
+CPU 4x, 3 s windows, median of 3 rounds
+| source | flush | msgs/s handled | renders/s | frames/s | worst frame gap ms | main-thread busy % | script % |
+| 60/s (1 per 16 ms) | microtask | 61 | 61 | 59.7 | 33 | 76 | 3 |
+| 60/s (1 per 16 ms) | raf | 61 | 56 | 59.7 | 33 | 75 | 3 |
+| 60/s (1 per 16 ms) | task | 62 | 62 | 59.7 | 33 | 73 | 3 |
+| 250/s (1 per 4 ms) | microtask | 116 | 116 | 59.6 | 33 | 78 | 5 |
+| 250/s (1 per 4 ms) | raf | 117 | 57 | 59.7 | 33 | 76 | 4 |
+| 250/s (1 per 4 ms) | task | 117 | 117 | 59.7 | 33 | 80 | 5 |
+| 2000/s (8 per 4 ms) | microtask | 467 | 467 | 55.9 | 50 | 99 | 17 |
+| 2000/s (8 per 4 ms) | raf | 812 | 42 | 59.7 | 33 | 81 | 8 |
+| 2000/s (8 per 4 ms) | task | 766 | 184 | 59.7 | 33 | 93 | 12 |
