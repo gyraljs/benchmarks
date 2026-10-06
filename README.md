@@ -92,6 +92,9 @@ The packs get the version `0.3.0-next` (root `pnpm.overrides` keep them apart fr
 `@gyral/time@<version>>@gyral/core` override so `@gyral/time` gets the same core. Currently
 installed: 0.3.0-next.6, Gyral `next` 2cc2704. First results:
 [results/2026-10-06-gyral-next-spike/NOTES.md](results/2026-10-06-gyral-next-spike/NOTES.md).
+The speed-gate run for 0.3 against 0.2.0 and the other frameworks (same run, drift not
+flagged):
+[results/2026-10-06-gyral-0.3-final/NOTES.md](results/2026-10-06-gyral-0.3-final/NOTES.md).
 
 ## Ground rules
 
