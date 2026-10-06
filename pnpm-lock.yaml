@@ -6,10 +6,10 @@ settings:
 
 overrides:
   lit-html: 3.3.0
-  '@gyral/core': file:vendor/gyral-core-0.2.0-rc.tgz
-  '@gyral/time': file:vendor/gyral-time-0.2.0-rc.tgz
-  two-track: file:vendor-twotrack/two-track-0.1.0.tgz
-  pipewise: file:vendor-pipewise/pipewise-1.0.0.tgz
+  '@gyral/core': 0.2.0
+  '@gyral/time': 0.2.0
+  two-track: file:vendor-twotrack-v2/two-track-0.1.0.tgz
+  pipewise: file:vendor-pipewise-v2/pipewise-1.0.0.tgz
 
 importers:
 
@@ -55,11 +55,11 @@ importers:
         specifier: workspace:*
         version: link:../../shared
       '@gyral/core':
-        specifier: file:../../vendor/gyral-core-0.2.0-rc.tgz
-        version: file:vendor/gyral-core-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       '@gyral/time':
-        specifier: file:../../vendor/gyral-time-0.2.0-rc.tgz
-        version: file:vendor/gyral-time-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       lit:
         specifier: 3.3.3
         version: 3.3.3
@@ -70,14 +70,14 @@ importers:
         specifier: workspace:*
         version: link:../../shared
       '@gyral/core':
-        specifier: file:../../vendor/gyral-core-0.2.0-rc.tgz
-        version: file:vendor/gyral-core-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       '@gyral/core-combo':
         specifier: file:../../vendor-combo/gyral-core-0.1.0-exp-combo.tgz
         version: '@gyral/core@file:vendor-combo/gyral-core-0.1.0-exp-combo.tgz(lit@3.3.3)'
       '@gyral/time':
-        specifier: file:../../vendor/gyral-time-0.2.0-rc.tgz
-        version: file:vendor/gyral-time-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       lit:
         specifier: 3.3.3
         version: 3.3.3
@@ -88,14 +88,14 @@ importers:
         specifier: workspace:*
         version: link:../../shared
       '@gyral/core':
-        specifier: file:../../vendor/gyral-core-0.2.0-rc.tgz
-        version: file:vendor/gyral-core-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       '@gyral/core-noeffect':
         specifier: file:../../vendor-noeffect/gyral-core-0.1.0-exp-noeffect.tgz
         version: '@gyral/core@file:vendor-noeffect/gyral-core-0.1.0-exp-noeffect.tgz(lit@3.3.3)'
       '@gyral/time':
-        specifier: file:../../vendor/gyral-time-0.2.0-rc.tgz
-        version: file:vendor/gyral-time-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       lit:
         specifier: 3.3.3
         version: 3.3.3
@@ -106,14 +106,14 @@ importers:
         specifier: workspace:*
         version: link:../../shared
       '@gyral/core':
-        specifier: file:../../vendor/gyral-core-0.2.0-rc.tgz
-        version: file:vendor/gyral-core-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       '@gyral/core-pipewise':
-        specifier: file:../../vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz
-        version: '@gyral/core@file:vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz(lit@3.3.3)'
+        specifier: file:../../vendor-pipewise-v2/gyral-core-0.2.0-pipewise-v2.tgz
+        version: '@gyral/core@file:vendor-pipewise-v2/gyral-core-0.2.0-pipewise-v2.tgz(lit@3.3.3)'
       '@gyral/time':
-        specifier: file:../../vendor/gyral-time-0.2.0-rc.tgz
-        version: file:vendor/gyral-time-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       lit:
         specifier: 3.3.3
         version: 3.3.3
@@ -124,14 +124,14 @@ importers:
         specifier: workspace:*
         version: link:../../shared
       '@gyral/core':
-        specifier: file:../../vendor/gyral-core-0.2.0-rc.tgz
-        version: file:vendor/gyral-core-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       '@gyral/core-twotrack':
-        specifier: file:../../vendor-twotrack/gyral-core-0.1.0-exp-twotrack.tgz
-        version: '@gyral/core@file:vendor-twotrack/gyral-core-0.1.0-exp-twotrack.tgz(lit@3.3.3)'
+        specifier: file:../../vendor-twotrack-v2/gyral-core-0.2.0-twotrack-v2.tgz
+        version: '@gyral/core@file:vendor-twotrack-v2/gyral-core-0.2.0-twotrack-v2.tgz(lit@3.3.3)'
       '@gyral/time':
-        specifier: file:../../vendor/gyral-time-0.2.0-rc.tgz
-        version: file:vendor/gyral-time-0.2.0-rc.tgz(lit@3.3.3)
+        specifier: 0.2.0
+        version: 0.2.0(lit@3.3.3)
       lit:
         specifier: 3.3.3
         version: 3.3.3
@@ -374,6 +374,11 @@ packages:
     resolution: {integrity: sha512-IkO+/KEUvwbVpiURZg+P7zF74z5Jxe0UgJxVni+RtoHQ6IZieXaO02kmadomap/q+l6bc/jdPGGqTjhuZnuz1Q==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
+  '@gyral/core@0.2.0':
+    resolution: {integrity: sha512-b55rDInpMBt3j7rThc8DJLzmZAWrWXx9If4+Qz4SuyUAdyvBVGqaDIvY+lUxUfOUQBTXEzVDl+b2ukT8QNkb/w==}
+    peerDependencies:
+      lit: ^3.3.0
+
   '@gyral/core@file:vendor-combo/gyral-core-0.1.0-exp-combo.tgz':
     resolution: {integrity: sha512-dmzLAf7YY2AEM0YscTPIGkChvZQi7J/xS2XL16Wmlc4L3O0YcsWTLAel/sFR+sjYa0lxUJm4MI6OYh+HXwE1Aw==, tarball: file:vendor-combo/gyral-core-0.1.0-exp-combo.tgz}
     version: 0.1.0
@@ -386,27 +391,20 @@ packages:
     peerDependencies:
       lit: ^3.3.0
 
-  '@gyral/core@file:vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz':
-    resolution: {integrity: sha512-3o7EbmSi7PxyN8EP5IE9gugv5vxg8ofIquuvkP3EMOQ7nOz6Tb7H5cTMa9hUTVmV4QW4HRGTtbXyWUT0ebb5vw==, tarball: file:vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz}
-    version: 0.1.0
+  '@gyral/core@file:vendor-pipewise-v2/gyral-core-0.2.0-pipewise-v2.tgz':
+    resolution: {integrity: sha512-3mCTL6E782U7qgYZVm3sa89DnojL+loQ3+YzqtIzTh0BtjCk4mTew8m5RSVFbuC5AusB7e6Tjc4AOQwriGRHfQ==, tarball: file:vendor-pipewise-v2/gyral-core-0.2.0-pipewise-v2.tgz}
+    version: 0.2.0
     peerDependencies:
       lit: ^3.3.0
 
-  '@gyral/core@file:vendor-twotrack/gyral-core-0.1.0-exp-twotrack.tgz':
-    resolution: {integrity: sha512-BrTCN95Udin58wA7rAks0EiVCZzBwArc+Oof14G5d+c5F49HaHkBflkwuPVcGAWyG7utstY8lcNEPaXJIQmIMg==, tarball: file:vendor-twotrack/gyral-core-0.1.0-exp-twotrack.tgz}
-    version: 0.1.0
+  '@gyral/core@file:vendor-twotrack-v2/gyral-core-0.2.0-twotrack-v2.tgz':
+    resolution: {integrity: sha512-id7hHEiKN0VRiYmqRwgoL77iptBi+irokS9p7e4cSIo6GPK2OokX0bbK0GkwGfK/gH0ndPRjwWOKDrslzVkl2g==, tarball: file:vendor-twotrack-v2/gyral-core-0.2.0-twotrack-v2.tgz}
+    version: 0.2.0
     peerDependencies:
       lit: ^3.3.0
 
-  '@gyral/core@file:vendor/gyral-core-0.2.0-rc.tgz':
-    resolution: {integrity: sha512-BwyaJUL/oPDQymiJj4tC70AOkVRj/BZjB89aL4Q9+thdBXaZ1glKE3EhjcgC5kiZmSV8njua9Y8DvzbB0odUVQ==, tarball: file:vendor/gyral-core-0.2.0-rc.tgz}
-    version: 0.1.0
-    peerDependencies:
-      lit: ^3.3.0
-
-  '@gyral/time@file:vendor/gyral-time-0.2.0-rc.tgz':
-    resolution: {integrity: sha512-ugJRb7FCNN10DITNS2dV2w1E4FDmPzed/XFd3Uev/FsovAg8Y+mUkow0T/ezDeywPA82smpmzsY9Xa9kQNznog==, tarball: file:vendor/gyral-time-0.2.0-rc.tgz}
-    version: 0.1.0
+  '@gyral/time@0.2.0':
+    resolution: {integrity: sha512-1+4Fs1L5TXV86J246ebLL6ckZDFPWZKNp2h144IAVGZjTfeURkuFYzBr4uyNxaFaMPf7dDL1lbFoIVbw5W4A6w==}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -1289,8 +1287,8 @@ packages:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
 
-  pipewise@file:vendor-pipewise/pipewise-1.0.0.tgz:
-    resolution: {integrity: sha512-/Sx31s1KjgY9+K3A7qGaneoXGHYZ2HQJl10+9iz8yghSgxrhEwHdIw9G+oCJx+R5KkAk/3hEcZDruebBkJ3UkA==, tarball: file:vendor-pipewise/pipewise-1.0.0.tgz}
+  pipewise@file:vendor-pipewise-v2/pipewise-1.0.0.tgz:
+    resolution: {integrity: sha512-aUXpSUpI8G1xFHvI/+fUKmTdNtx3MfBRMAxemHV6hG7TGMIrFfni4CZAsWVZl7sImyfmO3Ybf5djut5HXfm0hw==, tarball: file:vendor-pipewise-v2/pipewise-1.0.0.tgz}
     version: 1.0.0
     engines: {node: '>=20'}
 
@@ -1437,10 +1435,10 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4'
 
-  two-track@file:vendor-twotrack/two-track-0.1.0.tgz:
-    resolution: {integrity: sha512-CstKHjOvXwQce2TM3l6VG+gib1gLSPgncPuKaM71HQffo4ZlgqcN7XVNCLvKLoIuJLCxULbwqxpeECpJMfyZCA==, tarball: file:vendor-twotrack/two-track-0.1.0.tgz}
+  two-track@file:vendor-twotrack-v2/two-track-0.1.0.tgz:
+    resolution: {integrity: sha512-NFvsIxc2b56kcnJl2Zt/r67pH4gwnQSjlx+VuvNuKmjr/1bmXz/hRSrivrKZEVp/jozOs2OQzESWK7dRnmfing==, tarball: file:vendor-twotrack-v2/two-track-0.1.0.tgz}
     version: 0.1.0
-    engines: {node: '>=22.18'}
+    engines: {node: '>=20'}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -1753,38 +1751,38 @@ snapshots:
       '@eslint/core': 1.2.1
       levn: 0.4.1
 
+  '@gyral/core@0.2.0(lit@3.3.3)':
+    dependencies:
+      '@standard-schema/spec': 1.1.0
+      lit: 3.3.3
+
   '@gyral/core@file:vendor-combo/gyral-core-0.1.0-exp-combo.tgz(lit@3.3.3)':
     dependencies:
       '@standard-schema/spec': 1.1.0
       lit: 3.3.3
-      pipewise: file:vendor-pipewise/pipewise-1.0.0.tgz
-      two-track: file:vendor-twotrack/two-track-0.1.0.tgz
+      pipewise: file:vendor-pipewise-v2/pipewise-1.0.0.tgz
+      two-track: file:vendor-twotrack-v2/two-track-0.1.0.tgz
 
   '@gyral/core@file:vendor-noeffect/gyral-core-0.1.0-exp-noeffect.tgz(lit@3.3.3)':
     dependencies:
       '@standard-schema/spec': 1.1.0
       lit: 3.3.3
 
-  '@gyral/core@file:vendor-pipewise/gyral-core-0.1.0-exp-pipewise.tgz(lit@3.3.3)':
+  '@gyral/core@file:vendor-pipewise-v2/gyral-core-0.2.0-pipewise-v2.tgz(lit@3.3.3)':
     dependencies:
       '@standard-schema/spec': 1.1.0
       lit: 3.3.3
-      pipewise: file:vendor-pipewise/pipewise-1.0.0.tgz
+      pipewise: file:vendor-pipewise-v2/pipewise-1.0.0.tgz
 
-  '@gyral/core@file:vendor-twotrack/gyral-core-0.1.0-exp-twotrack.tgz(lit@3.3.3)':
+  '@gyral/core@file:vendor-twotrack-v2/gyral-core-0.2.0-twotrack-v2.tgz(lit@3.3.3)':
     dependencies:
       '@standard-schema/spec': 1.1.0
       lit: 3.3.3
-      two-track: file:vendor-twotrack/two-track-0.1.0.tgz
+      two-track: file:vendor-twotrack-v2/two-track-0.1.0.tgz
 
-  '@gyral/core@file:vendor/gyral-core-0.2.0-rc.tgz(lit@3.3.3)':
+  '@gyral/time@0.2.0(lit@3.3.3)':
     dependencies:
-      '@standard-schema/spec': 1.1.0
-      lit: 3.3.3
-
-  '@gyral/time@file:vendor/gyral-time-0.2.0-rc.tgz(lit@3.3.3)':
-    dependencies:
-      '@gyral/core': file:vendor/gyral-core-0.2.0-rc.tgz(lit@3.3.3)
+      '@gyral/core': 0.2.0(lit@3.3.3)
     transitivePeerDependencies:
       - lit
 
@@ -2625,7 +2623,7 @@ snapshots:
 
   picomatch@4.0.7: {}
 
-  pipewise@file:vendor-pipewise/pipewise-1.0.0.tgz: {}
+  pipewise@file:vendor-pipewise-v2/pipewise-1.0.0.tgz: {}
 
   playwright-core@1.63.0: {}
 
@@ -2775,7 +2773,7 @@ snapshots:
     dependencies:
       typescript: 6.0.3
 
-  two-track@file:vendor-twotrack/two-track-0.1.0.tgz: {}
+  two-track@file:vendor-twotrack-v2/two-track-0.1.0.tgz: {}
 
   type-check@0.4.0:
     dependencies:

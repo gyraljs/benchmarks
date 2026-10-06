@@ -19,11 +19,7 @@
     "check": "pnpm typecheck && pnpm lint && pnpm format && pnpm build && pnpm test",
     "bench": "node scripts/bench.mjs",
     "report": "node scripts/report.mjs",
-    "validate:timing": "node scripts/validate-timing.mjs",
-    "profile:build": "node scripts/profile-build.mjs",
-    "profile:run": "node scripts/profile-run.mjs",
-    "profile:nodes": "node scripts/profile-nodes.mjs",
-    "profile:cpu": "node scripts/profile-cpu.mjs"
+    "validate:timing": "node scripts/validate-timing.mjs"
   },
   "devDependencies": {
     "@bench/shared": "workspace:*",
@@ -41,10 +37,10 @@
   "pnpm": {
     "overrides": {
       "lit-html": "3.3.0",
-      "@gyral/core": "file:vendor/gyral-core-0.2.0-rc.tgz",
-      "@gyral/time": "file:vendor/gyral-time-0.2.0-rc.tgz",
-      "two-track": "file:vendor-twotrack/two-track-0.1.0.tgz",
-      "pipewise": "file:vendor-pipewise/pipewise-1.0.0.tgz"
+      "@gyral/core": "0.2.0",
+      "@gyral/time": "0.2.0",
+      "two-track": "file:vendor-twotrack-v2/two-track-0.1.0.tgz",
+      "pipewise": "file:vendor-pipewise-v2/pipewise-1.0.0.tgz"
     }
   }
 }
