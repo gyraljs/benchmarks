@@ -1,0 +1,2559 @@
+{
+  "meta": {
+    "date": "2026-10-05",
+    "settings": {
+      "warmup": 2,
+      "runs": 10,
+      "cpu": 4
+    },
+    "browser": "153.0.8010.12",
+    "variants": {
+      "lit (app)": "lit/table/",
+      "lit shadow": "p-lit/table/?shadow=1",
+      "lit light": "p-lit/table/?shadow=0",
+      "lit shadow compact": "p-lit/table/?shadow=1&compact=1",
+      "lit light compact": "p-lit/table/?shadow=0&compact=1",
+      "lit shadow css": "p-lit/table/?shadow=1&css=1",
+      "lit light css": "p-lit/table/?shadow=0&css=1",
+      "gyral shadow": "p-gyral/table/?shadow=1",
+      "gyral light": "p-gyral/table/?shadow=0",
+      "gyral light compact": "p-gyral/table/?shadow=0&compact=1",
+      "svelte": "svelte/table/",
+      "solid": "solid/table/"
+    },
+    "drift": {
+      "limit": 0.05,
+      "spread": 0.042,
+      "maxLoad1": 2.72,
+      "busy": false,
+      "flagged": false
+    },
+    "probes": [
+      {
+        "at": "2026-10-05T21:10:45.635Z",
+        "label": "start",
+        "calibrationMs": 30.24,
+        "load1": 1.98,
+        "cpuMHz": 1923
+      },
+      {
+        "at": "2026-10-05T21:12:49.141Z",
+        "label": "create1k",
+        "calibrationMs": 30.05,
+        "load1": 1.42,
+        "cpuMHz": 2448
+      },
+      {
+        "at": "2026-10-05T21:17:44.074Z",
+        "label": "replace1k",
+        "calibrationMs": 30.2,
+        "load1": 2.72,
+        "cpuMHz": 4002
+      },
+      {
+        "at": "2026-10-05T21:18:48.949Z",
+        "label": "update10th",
+        "calibrationMs": 29.21,
+        "load1": 1.92,
+        "cpuMHz": 1643
+      },
+      {
+        "at": "2026-10-05T21:19:40.687Z",
+        "label": "select",
+        "calibrationMs": 29.35,
+        "load1": 1.19,
+        "cpuMHz": 2481
+      },
+      {
+        "at": "2026-10-05T21:20:37.879Z",
+        "label": "swap",
+        "calibrationMs": 29.98,
+        "load1": 1.32,
+        "cpuMHz": 2177
+      },
+      {
+        "at": "2026-10-05T21:28:29.150Z",
+        "label": "create10k",
+        "calibrationMs": 30.18,
+        "load1": 2.5,
+        "cpuMHz": 3200
+      },
+      {
+        "at": "2026-10-05T21:32:27.043Z",
+        "label": "clear1k",
+        "calibrationMs": 29.67,
+        "load1": 1.8,
+        "cpuMHz": 4025
+      },
+      {
+        "at": "2026-10-05T21:32:27.365Z",
+        "label": "end",
+        "calibrationMs": 29.01,
+        "load1": 1.8,
+        "cpuMHz": 2767
+      }
+    ]
+  },
+  "results": {
+    "lit (app)": {
+      "create1k": {
+        "n": 10,
+        "median": 266.08,
+        "p90": 275.11,
+        "min": 258.26,
+        "max": 292.02,
+        "mean": 267.96,
+        "sd": 9.84,
+        "samples": [
+          270.08,
+          265.68,
+          266.78,
+          264.88,
+          258.97,
+          292.02,
+          261.36,
+          258.26,
+          266.49,
+          275.11
+        ],
+        "breakdown": {
+          "script": 56.58,
+          "styleLayout": 164.29,
+          "paint": 40.27,
+          "idle": 3.19
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 306.21,
+        "p90": 323.18,
+        "min": 297.7,
+        "max": 324.67,
+        "mean": 309.75,
+        "sd": 10.39,
+        "samples": [
+          301.01,
+          307.07,
+          297.7,
+          305.35,
+          301.07,
+          314.68,
+          301.04,
+          324.67,
+          323.18,
+          321.77
+        ],
+        "breakdown": {
+          "script": 86.42,
+          "styleLayout": 171.4,
+          "paint": 45.21,
+          "idle": 3.64
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 76.63,
+        "p90": 78.07,
+        "min": 72.84,
+        "max": 82.91,
+        "mean": 76.19,
+        "sd": 3.27,
+        "samples": [
+          77.68,
+          75.58,
+          72.87,
+          77.86,
+          72.84,
+          73.52,
+          78.07,
+          82.91,
+          77.67,
+          72.93
+        ],
+        "breakdown": {
+          "script": 3.78,
+          "styleLayout": 42.52,
+          "paint": 27.35,
+          "idle": 2.13
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 15.24,
+        "p90": 15.57,
+        "min": 13.42,
+        "max": 15.99,
+        "mean": 14.97,
+        "sd": 0.79,
+        "samples": [
+          15.39,
+          15.24,
+          13.76,
+          15.24,
+          15.24,
+          13.42,
+          14.92,
+          15.99,
+          14.95,
+          15.57
+        ],
+        "breakdown": {
+          "script": 2.18,
+          "styleLayout": 0.02,
+          "paint": 6.07,
+          "idle": 6.36
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 39.38,
+        "p90": 41.02,
+        "min": 35.67,
+        "max": 41.36,
+        "mean": 38.94,
+        "sd": 2.02,
+        "samples": [
+          39.01,
+          35.67,
+          41.02,
+          37.86,
+          41.36,
+          37.64,
+          39.74,
+          40.25,
+          36.2,
+          40.7
+        ],
+        "breakdown": {
+          "script": 2.47,
+          "styleLayout": 14.37,
+          "paint": 20.52,
+          "idle": 1.98
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2825.81,
+        "p90": 2894.69,
+        "min": 2761.78,
+        "max": 2938.45,
+        "mean": 2830.83,
+        "sd": 60.33,
+        "samples": [
+          2763.11,
+          2806.11,
+          2767.38,
+          2845.47,
+          2938.45,
+          2851.02,
+          2806.15,
+          2874.13,
+          2894.69,
+          2761.78
+        ],
+        "breakdown": {
+          "script": 596.68,
+          "styleLayout": 1818.84,
+          "paint": 377.84,
+          "idle": 11.88
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 36.81,
+        "p90": 37.49,
+        "min": 35.55,
+        "max": 37.53,
+        "mean": 36.74,
+        "sd": 0.58,
+        "samples": [
+          36.67,
+          36.97,
+          36.43,
+          35.55,
+          37.49,
+          37.53,
+          36.22,
+          36.93,
+          36.78,
+          36.84
+        ],
+        "breakdown": {
+          "script": 32.46,
+          "styleLayout": 0.52,
+          "paint": 2.45,
+          "idle": 1.48
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "lit shadow": {
+      "create1k": {
+        "n": 10,
+        "median": 267.09,
+        "p90": 281.74,
+        "min": 258.42,
+        "max": 301.88,
+        "mean": 270.28,
+        "sd": 12.78,
+        "samples": [
+          267.36,
+          267.98,
+          266.83,
+          258.42,
+          281.74,
+          301.88,
+          260.69,
+          262.31,
+          265.97,
+          269.64
+        ],
+        "breakdown": {
+          "script": 55.69,
+          "styleLayout": 165.98,
+          "paint": 41.94,
+          "idle": 3.45
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 299.8,
+        "p90": 326.5,
+        "min": 294.35,
+        "max": 354.69,
+        "mean": 308.45,
+        "sd": 19.52,
+        "samples": [
+          326.5,
+          301.87,
+          297.04,
+          303.29,
+          294.43,
+          297.74,
+          294.35,
+          318.53,
+          354.69,
+          296.06
+        ],
+        "breakdown": {
+          "script": 86.62,
+          "styleLayout": 164.15,
+          "paint": 45.87,
+          "idle": 3.46
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 77.04,
+        "p90": 79.46,
+        "min": 74.3,
+        "max": 90.8,
+        "mean": 78.11,
+        "sd": 4.82,
+        "samples": [
+          77.21,
+          76.14,
+          78.9,
+          74.3,
+          74.47,
+          76.87,
+          78.29,
+          79.46,
+          90.8,
+          74.63
+        ],
+        "breakdown": {
+          "script": 3.71,
+          "styleLayout": 42.38,
+          "paint": 28.32,
+          "idle": 2.46
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 14.73,
+        "p90": 16.96,
+        "min": 13.32,
+        "max": 17.1,
+        "mean": 14.85,
+        "sd": 1.4,
+        "samples": [
+          14.39,
+          15.75,
+          15.07,
+          16.96,
+          13.77,
+          17.1,
+          13.4,
+          15.1,
+          13.32,
+          13.67
+        ],
+        "breakdown": {
+          "script": 2.25,
+          "styleLayout": 0.02,
+          "paint": 6.26,
+          "idle": 6.13
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 39.14,
+        "p90": 40.84,
+        "min": 36.38,
+        "max": 44.67,
+        "mean": 39.17,
+        "sd": 2.5,
+        "samples": [
+          36.77,
+          39.7,
+          39.97,
+          44.67,
+          36.41,
+          38.5,
+          39.88,
+          36.38,
+          38.57,
+          40.84
+        ],
+        "breakdown": {
+          "script": 2.53,
+          "styleLayout": 14.38,
+          "paint": 19.96,
+          "idle": 2.03
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2805.21,
+        "p90": 2846.24,
+        "min": 2745.86,
+        "max": 2878.28,
+        "mean": 2808.73,
+        "sd": 38.65,
+        "samples": [
+          2765.42,
+          2745.86,
+          2790.85,
+          2796.65,
+          2795.38,
+          2846.24,
+          2878.28,
+          2813.78,
+          2829.22,
+          2825.62
+        ],
+        "breakdown": {
+          "script": 596.23,
+          "styleLayout": 1815.85,
+          "paint": 371.27,
+          "idle": 12.34
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 36.47,
+        "p90": 38.61,
+        "min": 35.91,
+        "max": 39.04,
+        "mean": 36.91,
+        "sd": 1.11,
+        "samples": [
+          35.96,
+          36.47,
+          35.91,
+          36.9,
+          36.46,
+          39.04,
+          36.13,
+          38.61,
+          37.42,
+          36.23
+        ],
+        "breakdown": {
+          "script": 32,
+          "styleLayout": 0.58,
+          "paint": 2.3,
+          "idle": 1.65
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "lit light": {
+      "create1k": {
+        "n": 10,
+        "median": 266.19,
+        "p90": 280.68,
+        "min": 255.97,
+        "max": 281.82,
+        "mean": 266.81,
+        "sd": 9.28,
+        "samples": [
+          269.05,
+          281.82,
+          258.56,
+          267.35,
+          255.97,
+          256.05,
+          280.68,
+          271.68,
+          261.93,
+          265.02
+        ],
+        "breakdown": {
+          "script": 55.55,
+          "styleLayout": 164.95,
+          "paint": 39.82,
+          "idle": 3.37
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 301.04,
+        "p90": 345.85,
+        "min": 291.08,
+        "max": 395.37,
+        "mean": 315.81,
+        "sd": 32.63,
+        "samples": [
+          297.28,
+          299.58,
+          302.5,
+          299.09,
+          323.66,
+          291.23,
+          291.08,
+          345.85,
+          395.37,
+          312.46
+        ],
+        "breakdown": {
+          "script": 86.67,
+          "styleLayout": 169.19,
+          "paint": 43.86,
+          "idle": 3.51
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 75.92,
+        "p90": 78.1,
+        "min": 73.07,
+        "max": 78.48,
+        "mean": 75.79,
+        "sd": 1.87,
+        "samples": [
+          73.47,
+          77.03,
+          74.36,
+          78.1,
+          73.07,
+          76.75,
+          76.51,
+          78.48,
+          75.33,
+          74.78
+        ],
+        "breakdown": {
+          "script": 3.55,
+          "styleLayout": 42.42,
+          "paint": 28.5,
+          "idle": 2.25
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 15.21,
+        "p90": 16.66,
+        "min": 11.47,
+        "max": 17,
+        "mean": 14.99,
+        "sd": 1.62,
+        "samples": [
+          15.17,
+          15.36,
+          11.47,
+          16.1,
+          17,
+          14.33,
+          15.24,
+          16.66,
+          15.12,
+          13.48
+        ],
+        "breakdown": {
+          "script": 2.29,
+          "styleLayout": 0.01,
+          "paint": 6.17,
+          "idle": 7.05
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 39.53,
+        "p90": 42.53,
+        "min": 36.46,
+        "max": 47,
+        "mean": 40.13,
+        "sd": 3.32,
+        "samples": [
+          37.98,
+          42.36,
+          37.28,
+          38.25,
+          37.09,
+          47,
+          40.82,
+          42.53,
+          41.5,
+          36.46
+        ],
+        "breakdown": {
+          "script": 2.49,
+          "styleLayout": 14.42,
+          "paint": 19.85,
+          "idle": 2.09
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2787.98,
+        "p90": 2926.23,
+        "min": 2755.42,
+        "max": 3081.02,
+        "mean": 2831.9,
+        "sd": 102.31,
+        "samples": [
+          2795.51,
+          2755.42,
+          2768.99,
+          2780.45,
+          2761.69,
+          2926.23,
+          2809.11,
+          2776.96,
+          3081.02,
+          2863.64
+        ],
+        "breakdown": {
+          "script": 603.81,
+          "styleLayout": 1803.37,
+          "paint": 377.08,
+          "idle": 12.92
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 36.4,
+        "p90": 38.14,
+        "min": 35.94,
+        "max": 39.27,
+        "mean": 36.92,
+        "sd": 1.1,
+        "samples": [
+          35.94,
+          36.7,
+          36.2,
+          36.25,
+          36.1,
+          37.78,
+          36.52,
+          39.27,
+          38.14,
+          36.27
+        ],
+        "breakdown": {
+          "script": 32.41,
+          "styleLayout": 0.42,
+          "paint": 1.61,
+          "idle": 2.06
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "lit shadow compact": {
+      "create1k": {
+        "n": 10,
+        "median": 235.97,
+        "p90": 240.45,
+        "min": 230.65,
+        "max": 247.7,
+        "mean": 236.59,
+        "sd": 4.67,
+        "samples": [
+          233.15,
+          235.93,
+          234.49,
+          236.25,
+          247.7,
+          230.65,
+          236.96,
+          236.01,
+          234.31,
+          240.45
+        ],
+        "breakdown": {
+          "script": 44.78,
+          "styleLayout": 152.89,
+          "paint": 35.28,
+          "idle": 2.52
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 261.23,
+        "p90": 287.27,
+        "min": 256.71,
+        "max": 434.68,
+        "mean": 282.59,
+        "sd": 54.53,
+        "samples": [
+          258.04,
+          261.38,
+          263.99,
+          260.56,
+          256.71,
+          261.08,
+          258.38,
+          287.27,
+          283.84,
+          434.68
+        ],
+        "breakdown": {
+          "script": 62.44,
+          "styleLayout": 157.22,
+          "paint": 40.09,
+          "idle": 2.46
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 76.63,
+        "p90": 83.63,
+        "min": 67.58,
+        "max": 87.03,
+        "mean": 76.87,
+        "sd": 5.86,
+        "samples": [
+          75.69,
+          70.94,
+          78.28,
+          67.58,
+          72.29,
+          75.39,
+          87.03,
+          77.58,
+          80.34,
+          83.63
+        ],
+        "breakdown": {
+          "script": 3.59,
+          "styleLayout": 42.71,
+          "paint": 28.21,
+          "idle": 1.43
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 17.19,
+        "p90": 18.05,
+        "min": 16.28,
+        "max": 18.47,
+        "mean": 17.26,
+        "sd": 0.7,
+        "samples": [
+          18.47,
+          16.94,
+          17.64,
+          16.28,
+          16.51,
+          18.05,
+          16.63,
+          17.11,
+          17.28,
+          17.71
+        ],
+        "breakdown": {
+          "script": 2.6,
+          "styleLayout": 0.01,
+          "paint": 6.19,
+          "idle": 8.85
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 32.73,
+        "p90": 36.88,
+        "min": 31.28,
+        "max": 39.1,
+        "mean": 33.68,
+        "sd": 2.57,
+        "samples": [
+          36.88,
+          31.99,
+          39.1,
+          34.19,
+          32.03,
+          31.28,
+          34.41,
+          32.16,
+          33.31,
+          31.42
+        ],
+        "breakdown": {
+          "script": 2.75,
+          "styleLayout": 12.54,
+          "paint": 15.68,
+          "idle": 1.46
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2465.89,
+        "p90": 2501.79,
+        "min": 2391.53,
+        "max": 2555.38,
+        "mean": 2463.32,
+        "sd": 50.54,
+        "samples": [
+          2423.59,
+          2399.35,
+          2391.53,
+          2443.8,
+          2470.98,
+          2555.38,
+          2501.79,
+          2460.8,
+          2493.89,
+          2492.03
+        ],
+        "breakdown": {
+          "script": 432.69,
+          "styleLayout": 1686.46,
+          "paint": 325.81,
+          "idle": 6.88
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 27.89,
+        "p90": 28.65,
+        "min": 26.97,
+        "max": 29.12,
+        "mean": 28.01,
+        "sd": 0.63,
+        "samples": [
+          27.89,
+          26.97,
+          27.76,
+          27.57,
+          27.62,
+          28.65,
+          28.63,
+          29.12,
+          27.9,
+          27.95
+        ],
+        "breakdown": {
+          "script": 23.85,
+          "styleLayout": 0.28,
+          "paint": 2.02,
+          "idle": 1.83
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "lit light compact": {
+      "create1k": {
+        "n": 10,
+        "median": 240.29,
+        "p90": 247.07,
+        "min": 232.85,
+        "max": 259.34,
+        "mean": 241.11,
+        "sd": 8.38,
+        "samples": [
+          247.07,
+          232.85,
+          235.16,
+          259.34,
+          244.25,
+          233.33,
+          233.08,
+          238.6,
+          241.99,
+          245.45
+        ],
+        "breakdown": {
+          "script": 44.85,
+          "styleLayout": 156.23,
+          "paint": 35.33,
+          "idle": 2.95
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 263.16,
+        "p90": 284.88,
+        "min": 254.9,
+        "max": 320.47,
+        "mean": 270.35,
+        "sd": 19.79,
+        "samples": [
+          254.9,
+          265.11,
+          261.22,
+          258.13,
+          259.22,
+          257.89,
+          267.42,
+          274.25,
+          320.47,
+          284.88
+        ],
+        "breakdown": {
+          "script": 64.18,
+          "styleLayout": 155.29,
+          "paint": 41.39,
+          "idle": 3.09
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 73.1,
+        "p90": 80.2,
+        "min": 68.2,
+        "max": 89.26,
+        "mean": 74.99,
+        "sd": 6.14,
+        "samples": [
+          80.2,
+          74.64,
+          72.86,
+          73.34,
+          70.25,
+          71.96,
+          71.17,
+          77.98,
+          89.26,
+          68.2
+        ],
+        "breakdown": {
+          "script": 3.92,
+          "styleLayout": 41.33,
+          "paint": 26,
+          "idle": 1.96
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 17.92,
+        "p90": 18.74,
+        "min": 16.09,
+        "max": 18.92,
+        "mean": 17.82,
+        "sd": 0.88,
+        "samples": [
+          18.13,
+          18.32,
+          18.74,
+          17.36,
+          17.72,
+          18.57,
+          18.92,
+          17.11,
+          16.09,
+          17.28
+        ],
+        "breakdown": {
+          "script": 2.4,
+          "styleLayout": 0.01,
+          "paint": 6.36,
+          "idle": 8.92
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 32.87,
+        "p90": 35.64,
+        "min": 31.23,
+        "max": 36.35,
+        "mean": 33.11,
+        "sd": 1.85,
+        "samples": [
+          33.22,
+          33.14,
+          32.59,
+          35.64,
+          31.23,
+          36.35,
+          34.53,
+          31.4,
+          31.28,
+          31.75
+        ],
+        "breakdown": {
+          "script": 2.54,
+          "styleLayout": 12.35,
+          "paint": 16.5,
+          "idle": 1.34
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2443.1,
+        "p90": 2469.98,
+        "min": 2373.4,
+        "max": 2507.06,
+        "mean": 2442.34,
+        "sd": 36.87,
+        "samples": [
+          2373.4,
+          2419.95,
+          2458.82,
+          2444.57,
+          2507.06,
+          2467.79,
+          2469.98,
+          2441.63,
+          2427.45,
+          2412.7
+        ],
+        "breakdown": {
+          "script": 433,
+          "styleLayout": 1670.98,
+          "paint": 318.59,
+          "idle": 6.78
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 28.1,
+        "p90": 29.82,
+        "min": 27.46,
+        "max": 32.27,
+        "mean": 28.7,
+        "sd": 1.47,
+        "samples": [
+          28.66,
+          28.16,
+          27.77,
+          27.91,
+          27.46,
+          32.27,
+          29.82,
+          28.04,
+          29.32,
+          27.56
+        ],
+        "breakdown": {
+          "script": 23.65,
+          "styleLayout": 0.46,
+          "paint": 2.25,
+          "idle": 1.96
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "lit shadow css": {
+      "create1k": {
+        "n": 10,
+        "median": 259.9,
+        "p90": 267.95,
+        "min": 251.46,
+        "max": 297.2,
+        "mean": 263.59,
+        "sd": 12.76,
+        "samples": [
+          257.29,
+          260.27,
+          297.2,
+          265.75,
+          251.46,
+          267.95,
+          257.6,
+          259.53,
+          255.67,
+          263.21
+        ],
+        "breakdown": {
+          "script": 56.61,
+          "styleLayout": 157.9,
+          "paint": 42.2,
+          "idle": 3.01
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 301.88,
+        "p90": 321.23,
+        "min": 286.07,
+        "max": 354.11,
+        "mean": 306.63,
+        "sd": 19.6,
+        "samples": [
+          298.15,
+          354.11,
+          299.88,
+          286.07,
+          311.17,
+          287.77,
+          298.69,
+          303.88,
+          321.23,
+          305.37
+        ],
+        "breakdown": {
+          "script": 87.23,
+          "styleLayout": 163.36,
+          "paint": 49.12,
+          "idle": 3.44
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 96.16,
+        "p90": 99.56,
+        "min": 90.68,
+        "max": 100.61,
+        "mean": 95.82,
+        "sd": 3.68,
+        "samples": [
+          99.53,
+          95.57,
+          98.09,
+          100.61,
+          94.23,
+          91.64,
+          90.68,
+          99.56,
+          96.75,
+          91.5
+        ],
+        "breakdown": {
+          "script": 3.76,
+          "styleLayout": 59.93,
+          "paint": 28.9,
+          "idle": 2.11
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 10.52,
+        "p90": 13.92,
+        "min": 9.56,
+        "max": 14.31,
+        "mean": 11.15,
+        "sd": 1.67,
+        "samples": [
+          14.31,
+          10,
+          13.92,
+          9.56,
+          10.14,
+          10.91,
+          11.6,
+          10.01,
+          10.33,
+          10.7
+        ],
+        "breakdown": {
+          "script": 2.31,
+          "styleLayout": 1.01,
+          "paint": 5.23,
+          "idle": 1.65
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 40.44,
+        "p90": 45.88,
+        "min": 39.37,
+        "max": 50.94,
+        "mean": 42.06,
+        "sd": 3.66,
+        "samples": [
+          50.94,
+          39.95,
+          42.71,
+          39.82,
+          40.26,
+          40.45,
+          40.42,
+          45.88,
+          39.37,
+          40.77
+        ],
+        "breakdown": {
+          "script": 2.57,
+          "styleLayout": 15.33,
+          "paint": 20.71,
+          "idle": 1.98
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2795.34,
+        "p90": 2830.76,
+        "min": 2730.27,
+        "max": 2833.59,
+        "mean": 2788.14,
+        "sd": 39.09,
+        "samples": [
+          2730.27,
+          2755.28,
+          2777.81,
+          2813.53,
+          2833.59,
+          2830.76,
+          2771.75,
+          2820.15,
+          2735.37,
+          2812.86
+        ],
+        "breakdown": {
+          "script": 597.73,
+          "styleLayout": 1737.06,
+          "paint": 438.2,
+          "idle": 12.99
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 36.6,
+        "p90": 37.57,
+        "min": 35.01,
+        "max": 42.63,
+        "mean": 37.11,
+        "sd": 2.06,
+        "samples": [
+          36.46,
+          36.78,
+          37.27,
+          36.23,
+          37.57,
+          42.63,
+          35.01,
+          36.24,
+          36.15,
+          36.73
+        ],
+        "breakdown": {
+          "script": 32.36,
+          "styleLayout": 0.15,
+          "paint": 1.69,
+          "idle": 1.94
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "lit light css": {
+      "create1k": {
+        "n": 10,
+        "median": 258.57,
+        "p90": 262.05,
+        "min": 252.13,
+        "max": 262.3,
+        "mean": 258.03,
+        "sd": 3.39,
+        "samples": [
+          252.13,
+          256.75,
+          258.2,
+          258.94,
+          253.88,
+          262.05,
+          259.01,
+          261.07,
+          256,
+          262.3
+        ],
+        "breakdown": {
+          "script": 56.79,
+          "styleLayout": 155.99,
+          "paint": 42.2,
+          "idle": 3.3
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 299.25,
+        "p90": 311.59,
+        "min": 289.81,
+        "max": 313.75,
+        "mean": 300.33,
+        "sd": 8.79,
+        "samples": [
+          289.81,
+          313.75,
+          291.51,
+          297.44,
+          294.53,
+          301.07,
+          291.21,
+          307.9,
+          311.59,
+          304.54
+        ],
+        "breakdown": {
+          "script": 86.51,
+          "styleLayout": 160.78,
+          "paint": 48.16,
+          "idle": 3.26
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 96.71,
+        "p90": 99.32,
+        "min": 93.73,
+        "max": 110.38,
+        "mean": 97.86,
+        "sd": 4.71,
+        "samples": [
+          110.38,
+          98,
+          93.73,
+          95.48,
+          97.63,
+          97.74,
+          95.79,
+          95.68,
+          99.32,
+          94.83
+        ],
+        "breakdown": {
+          "script": 3.75,
+          "styleLayout": 60.08,
+          "paint": 30.6,
+          "idle": 2.6
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 10.24,
+        "p90": 10.44,
+        "min": 9.68,
+        "max": 12.11,
+        "mean": 10.3,
+        "sd": 0.69,
+        "samples": [
+          9.72,
+          9.68,
+          10.22,
+          10.12,
+          12.11,
+          10.33,
+          9.84,
+          10.32,
+          10.27,
+          10.44
+        ],
+        "breakdown": {
+          "script": 1.92,
+          "styleLayout": 1.31,
+          "paint": 5.74,
+          "idle": 1.33
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 41.66,
+        "p90": 44.5,
+        "min": 39.68,
+        "max": 46.54,
+        "mean": 42.29,
+        "sd": 2.04,
+        "samples": [
+          43.17,
+          41.72,
+          40.72,
+          46.54,
+          42.98,
+          40.77,
+          41.27,
+          44.5,
+          39.68,
+          41.6
+        ],
+        "breakdown": {
+          "script": 2.52,
+          "styleLayout": 16.23,
+          "paint": 21.52,
+          "idle": 2.21
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2790.9,
+        "p90": 2916.07,
+        "min": 2700.17,
+        "max": 3135.68,
+        "mean": 2818.74,
+        "sd": 127.73,
+        "samples": [
+          2714.86,
+          2700.17,
+          2722.47,
+          2803.26,
+          2787.81,
+          3135.68,
+          2825.3,
+          2792.08,
+          2789.73,
+          2916.07
+        ],
+        "breakdown": {
+          "script": 585.3,
+          "styleLayout": 1737.65,
+          "paint": 438.24,
+          "idle": 13.8
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 36.69,
+        "p90": 37.52,
+        "min": 35.46,
+        "max": 37.65,
+        "mean": 36.61,
+        "sd": 0.79,
+        "samples": [
+          36.1,
+          36.91,
+          36.71,
+          37.38,
+          37.52,
+          35.46,
+          36.11,
+          35.55,
+          37.65,
+          36.67
+        ],
+        "breakdown": {
+          "script": 32.56,
+          "styleLayout": 0.52,
+          "paint": 1.74,
+          "idle": 1.68
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "gyral shadow": {
+      "create1k": {
+        "n": 10,
+        "median": 263.06,
+        "p90": 281.66,
+        "min": 252.81,
+        "max": 290.4,
+        "mean": 265.91,
+        "sd": 11.61,
+        "samples": [
+          290.4,
+          259.23,
+          266.28,
+          263.77,
+          256.53,
+          262.35,
+          252.81,
+          259.42,
+          266.62,
+          281.66
+        ],
+        "breakdown": {
+          "script": 51.66,
+          "styleLayout": 165.15,
+          "paint": 40.75,
+          "idle": 3.09
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 311.5,
+        "p90": 322.61,
+        "min": 294.8,
+        "max": 327.03,
+        "mean": 309.51,
+        "sd": 11.27,
+        "samples": [
+          327.03,
+          312.16,
+          310.84,
+          295.46,
+          296.66,
+          294.8,
+          305.63,
+          322.61,
+          315.9,
+          314.06
+        ],
+        "breakdown": {
+          "script": 88.14,
+          "styleLayout": 172.66,
+          "paint": 47.12,
+          "idle": 3.83
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 79.3,
+        "p90": 85.19,
+        "min": 72.93,
+        "max": 85.55,
+        "mean": 78.89,
+        "sd": 4.2,
+        "samples": [
+          79.13,
+          76.53,
+          73.92,
+          72.93,
+          79.47,
+          85.55,
+          79.76,
+          80.04,
+          76.34,
+          85.19
+        ],
+        "breakdown": {
+          "script": 4.68,
+          "styleLayout": 42.81,
+          "paint": 28.76,
+          "idle": 2.46
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 15.33,
+        "p90": 16.42,
+        "min": 14.78,
+        "max": 16.45,
+        "mean": 15.44,
+        "sd": 0.62,
+        "samples": [
+          14.79,
+          14.93,
+          15.62,
+          15.36,
+          14.78,
+          15.8,
+          16.45,
+          15.3,
+          15,
+          16.42
+        ],
+        "breakdown": {
+          "script": 2.76,
+          "styleLayout": 0.02,
+          "paint": 6.35,
+          "idle": 5.98
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 40.17,
+        "p90": 44.75,
+        "min": 36.62,
+        "max": 45.66,
+        "mean": 40.75,
+        "sd": 3.37,
+        "samples": [
+          36.62,
+          37.28,
+          44.75,
+          40.11,
+          44.7,
+          45.66,
+          41.81,
+          39.14,
+          40.23,
+          37.18
+        ],
+        "breakdown": {
+          "script": 2.83,
+          "styleLayout": 14.41,
+          "paint": 20.67,
+          "idle": 2.38
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2833.48,
+        "p90": 2899.76,
+        "min": 2777.38,
+        "max": 2925.56,
+        "mean": 2842.29,
+        "sd": 51.62,
+        "samples": [
+          2781.31,
+          2813.07,
+          2867.15,
+          2825.16,
+          2841.8,
+          2925.56,
+          2801,
+          2777.38,
+          2899.76,
+          2890.71
+        ],
+        "breakdown": {
+          "script": 590.24,
+          "styleLayout": 1818.13,
+          "paint": 409.98,
+          "idle": 12.11
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 37.58,
+        "p90": 38.72,
+        "min": 36.63,
+        "max": 39.41,
+        "mean": 37.72,
+        "sd": 0.9,
+        "samples": [
+          38.34,
+          38.72,
+          36.91,
+          36.96,
+          37.7,
+          39.41,
+          37.04,
+          36.63,
+          37.46,
+          38.06
+        ],
+        "breakdown": {
+          "script": 33.21,
+          "styleLayout": 0.5,
+          "paint": 2.46,
+          "idle": 1.51
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "gyral light": {
+      "create1k": {
+        "n": 10,
+        "median": 260.57,
+        "p90": 271.92,
+        "min": 251.13,
+        "max": 301.62,
+        "mean": 265.37,
+        "sd": 14.12,
+        "samples": [
+          301.62,
+          256.22,
+          271.92,
+          260.51,
+          270.3,
+          258.81,
+          262.52,
+          260.63,
+          251.13,
+          260.04
+        ],
+        "breakdown": {
+          "script": 51.74,
+          "styleLayout": 164.93,
+          "paint": 41.12,
+          "idle": 3.17
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 307.06,
+        "p90": 316.57,
+        "min": 297.7,
+        "max": 336.32,
+        "mean": 309.05,
+        "sd": 12.21,
+        "samples": [
+          302.68,
+          298.94,
+          297.7,
+          299.17,
+          311.44,
+          298.96,
+          312.33,
+          336.32,
+          316.38,
+          316.57
+        ],
+        "breakdown": {
+          "script": 87.02,
+          "styleLayout": 168.18,
+          "paint": 46.92,
+          "idle": 3.55
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 78.17,
+        "p90": 80.79,
+        "min": 74.28,
+        "max": 82.33,
+        "mean": 78.09,
+        "sd": 2.47,
+        "samples": [
+          74.49,
+          82.33,
+          77.93,
+          80.79,
+          78.09,
+          79.17,
+          78.25,
+          78.36,
+          77.25,
+          74.28
+        ],
+        "breakdown": {
+          "script": 4.27,
+          "styleLayout": 42.82,
+          "paint": 28.46,
+          "idle": 2.23
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 15.61,
+        "p90": 17.16,
+        "min": 12.47,
+        "max": 18.97,
+        "mean": 15.26,
+        "sd": 2.1,
+        "samples": [
+          12.47,
+          14.44,
+          15.99,
+          16.52,
+          15.6,
+          18.97,
+          17.16,
+          15.63,
+          13.19,
+          12.61
+        ],
+        "breakdown": {
+          "script": 2.85,
+          "styleLayout": 0.02,
+          "paint": 6.26,
+          "idle": 6.3
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 37.09,
+        "p90": 41.4,
+        "min": 35.35,
+        "max": 43.75,
+        "mean": 38.49,
+        "sd": 2.6,
+        "samples": [
+          36.95,
+          36.72,
+          39.34,
+          37.06,
+          35.35,
+          41.4,
+          37.11,
+          40.14,
+          37.07,
+          43.75
+        ],
+        "breakdown": {
+          "script": 2.84,
+          "styleLayout": 14.39,
+          "paint": 18.55,
+          "idle": 1.68
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2808.61,
+        "p90": 2993.06,
+        "min": 2704.93,
+        "max": 3048.59,
+        "mean": 2837.87,
+        "sd": 113.23,
+        "samples": [
+          2744.97,
+          2779.42,
+          2801.09,
+          2747.88,
+          3048.59,
+          2921.39,
+          2821.2,
+          2816.13,
+          2704.93,
+          2993.06
+        ],
+        "breakdown": {
+          "script": 575.94,
+          "styleLayout": 1802.84,
+          "paint": 407.15,
+          "idle": 12.41
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 37.59,
+        "p90": 38.54,
+        "min": 36.89,
+        "max": 38.85,
+        "mean": 37.7,
+        "sd": 0.64,
+        "samples": [
+          37.24,
+          37.47,
+          38.1,
+          37.71,
+          36.89,
+          38.54,
+          38.85,
+          37.13,
+          37.87,
+          37.25
+        ],
+        "breakdown": {
+          "script": 33.31,
+          "styleLayout": 0.64,
+          "paint": 1.45,
+          "idle": 2.32
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "gyral light compact": {
+      "create1k": {
+        "n": 10,
+        "median": 229,
+        "p90": 230.91,
+        "min": 227.47,
+        "max": 240.84,
+        "mean": 230.11,
+        "sd": 3.91,
+        "samples": [
+          228.24,
+          229.94,
+          227.47,
+          230.91,
+          229.17,
+          228.84,
+          240.84,
+          227.82,
+          228.27,
+          229.57
+        ],
+        "breakdown": {
+          "script": 39.58,
+          "styleLayout": 151.87,
+          "paint": 34.96,
+          "idle": 2.92
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 261.63,
+        "p90": 359.35,
+        "min": 255.67,
+        "max": 464.36,
+        "mean": 293.28,
+        "sd": 67.83,
+        "samples": [
+          261.11,
+          288.52,
+          255.67,
+          262.77,
+          260.18,
+          262.15,
+          259.43,
+          259.3,
+          464.36,
+          359.35
+        ],
+        "breakdown": {
+          "script": 63.41,
+          "styleLayout": 157.8,
+          "paint": 39,
+          "idle": 2.89
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 74.35,
+        "p90": 76.99,
+        "min": 70.34,
+        "max": 78.08,
+        "mean": 74.23,
+        "sd": 2.5,
+        "samples": [
+          75.2,
+          76.14,
+          72.36,
+          71.07,
+          73.43,
+          74.14,
+          78.08,
+          70.34,
+          74.56,
+          76.99
+        ],
+        "breakdown": {
+          "script": 4.31,
+          "styleLayout": 41.43,
+          "paint": 25.36,
+          "idle": 2.17
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 13.18,
+        "p90": 17.99,
+        "min": 8.92,
+        "max": 18.66,
+        "mean": 13.46,
+        "sd": 4.18,
+        "samples": [
+          9.78,
+          17.55,
+          17.99,
+          16.24,
+          10.13,
+          9.24,
+          8.92,
+          9.73,
+          16.32,
+          18.66
+        ],
+        "breakdown": {
+          "script": 2.6,
+          "styleLayout": 0.02,
+          "paint": 6.05,
+          "idle": 4.02
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 34.42,
+        "p90": 36.64,
+        "min": 32.15,
+        "max": 37.32,
+        "mean": 34.67,
+        "sd": 1.82,
+        "samples": [
+          32.8,
+          32.15,
+          37.32,
+          36.08,
+          36.36,
+          34.47,
+          34.37,
+          33.39,
+          33.14,
+          36.64
+        ],
+        "breakdown": {
+          "script": 2.6,
+          "styleLayout": 12.93,
+          "paint": 17.58,
+          "idle": 1.25
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2423.05,
+        "p90": 2531.24,
+        "min": 2345.86,
+        "max": 2795.71,
+        "mean": 2448.74,
+        "sd": 133.14,
+        "samples": [
+          2366.18,
+          2369.95,
+          2441.58,
+          2345.86,
+          2795.71,
+          2423.16,
+          2424.23,
+          2366.51,
+          2422.94,
+          2531.24
+        ],
+        "breakdown": {
+          "script": 415.19,
+          "styleLayout": 1668.03,
+          "paint": 317.46,
+          "idle": 6.87
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 29.84,
+        "p90": 30.97,
+        "min": 27.87,
+        "max": 31.87,
+        "mean": 29.91,
+        "sd": 1.12,
+        "samples": [
+          29.51,
+          31.87,
+          30,
+          27.87,
+          29.39,
+          29.91,
+          28.97,
+          30.97,
+          30.85,
+          29.78
+        ],
+        "breakdown": {
+          "script": 25.3,
+          "styleLayout": 0.13,
+          "paint": 1.7,
+          "idle": 2.4
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "svelte": {
+      "create1k": {
+        "n": 10,
+        "median": 217.06,
+        "p90": 223.37,
+        "min": 212.98,
+        "max": 223.71,
+        "mean": 217.64,
+        "sd": 3.57,
+        "samples": [
+          223.37,
+          216.42,
+          218,
+          218.33,
+          215.93,
+          223.71,
+          216.55,
+          212.98,
+          213.53,
+          217.56
+        ],
+        "breakdown": {
+          "script": 27.92,
+          "styleLayout": 152.21,
+          "paint": 35.64,
+          "idle": 1.62
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 247.11,
+        "p90": 258.56,
+        "min": 238.53,
+        "max": 358.23,
+        "mean": 257.96,
+        "sd": 36.01,
+        "samples": [
+          255.15,
+          258.56,
+          239.85,
+          242.09,
+          242.06,
+          239.46,
+          238.53,
+          253.49,
+          358.23,
+          252.13
+        ],
+        "breakdown": {
+          "script": 50.26,
+          "styleLayout": 153.81,
+          "paint": 38.66,
+          "idle": 1.91
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 72.43,
+        "p90": 77.5,
+        "min": 69.95,
+        "max": 78.51,
+        "mean": 73.32,
+        "sd": 2.9,
+        "samples": [
+          69.95,
+          72.92,
+          77.5,
+          78.51,
+          72.5,
+          71.72,
+          75.52,
+          72.37,
+          71.82,
+          70.38
+        ],
+        "breakdown": {
+          "script": 4.58,
+          "styleLayout": 41.39,
+          "paint": 25.05,
+          "idle": 1.36
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 13.36,
+        "p90": 18.27,
+        "min": 10.95,
+        "max": 19.04,
+        "mean": 13.96,
+        "sd": 2.69,
+        "samples": [
+          11.74,
+          12.92,
+          11.8,
+          10.95,
+          13.94,
+          13.62,
+          14.22,
+          18.27,
+          13.1,
+          19.04
+        ],
+        "breakdown": {
+          "script": 5.11,
+          "styleLayout": 0.03,
+          "paint": 5.85,
+          "idle": 1.12
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 26.93,
+        "p90": 31.11,
+        "min": 25.64,
+        "max": 33.44,
+        "mean": 27.9,
+        "sd": 2.53,
+        "samples": [
+          33.44,
+          31.11,
+          25.64,
+          26.85,
+          28.78,
+          27.6,
+          25.99,
+          27.01,
+          26.4,
+          26.2
+        ],
+        "breakdown": {
+          "script": 2.7,
+          "styleLayout": 12.25,
+          "paint": 10.91,
+          "idle": 1.12
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2164.35,
+        "p90": 2234.11,
+        "min": 2145.37,
+        "max": 2261.18,
+        "mean": 2185.04,
+        "sd": 41.19,
+        "samples": [
+          2145.37,
+          2153.06,
+          2234.11,
+          2164.82,
+          2194.91,
+          2147.14,
+          2161.72,
+          2163.87,
+          2224.18,
+          2261.18
+        ],
+        "breakdown": {
+          "script": 273.38,
+          "styleLayout": 1585.46,
+          "paint": 307.96,
+          "idle": 4.26
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 22.79,
+        "p90": 23.1,
+        "min": 22.07,
+        "max": 24.31,
+        "mean": 22.82,
+        "sd": 0.61,
+        "samples": [
+          24.31,
+          22.82,
+          22.25,
+          22.07,
+          22.76,
+          23.1,
+          22.82,
+          22.52,
+          22.93,
+          22.6
+        ],
+        "breakdown": {
+          "script": 19.44,
+          "styleLayout": 0.08,
+          "paint": 2.07,
+          "idle": 0.84
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    },
+    "solid": {
+      "create1k": {
+        "n": 10,
+        "median": 237.83,
+        "p90": 258.31,
+        "min": 233.25,
+        "max": 268.92,
+        "mean": 243.31,
+        "sd": 11.92,
+        "samples": [
+          245.27,
+          247.06,
+          233.85,
+          233.25,
+          236.92,
+          233.88,
+          268.92,
+          238.22,
+          237.43,
+          258.31
+        ],
+        "breakdown": {
+          "script": 48.14,
+          "styleLayout": 152.97,
+          "paint": 34.8,
+          "idle": 1.68
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "replace1k": {
+        "n": 10,
+        "median": 262.55,
+        "p90": 294.76,
+        "min": 254.58,
+        "max": 319.45,
+        "mean": 272.15,
+        "sd": 21.01,
+        "samples": [
+          319.45,
+          254.58,
+          259.99,
+          256.69,
+          265.67,
+          264.41,
+          260.52,
+          260.68,
+          294.76,
+          284.77
+        ],
+        "breakdown": {
+          "script": 69.73,
+          "styleLayout": 153.27,
+          "paint": 37.71,
+          "idle": 1.73
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "update10th": {
+        "n": 10,
+        "median": 72.02,
+        "p90": 77.32,
+        "min": 67.85,
+        "max": 78.63,
+        "mean": 72.48,
+        "sd": 3.37,
+        "samples": [
+          67.85,
+          72.64,
+          78.63,
+          70.37,
+          71.17,
+          73.29,
+          71.4,
+          72.99,
+          77.32,
+          69.13
+        ],
+        "breakdown": {
+          "script": 2.99,
+          "styleLayout": 41.81,
+          "paint": 25.42,
+          "idle": 1.31
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "select": {
+        "n": 10,
+        "median": 7.33,
+        "p90": 15.7,
+        "min": 6.89,
+        "max": 17.88,
+        "mean": 9.18,
+        "sd": 4.05,
+        "samples": [
+          7.36,
+          7.1,
+          15.7,
+          7.47,
+          7.29,
+          7.54,
+          7.3,
+          17.88,
+          6.89,
+          7.29
+        ],
+        "breakdown": {
+          "script": 0.89,
+          "styleLayout": 0.01,
+          "paint": 5.76,
+          "idle": 0.85
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "swap": {
+        "n": 10,
+        "median": 31.65,
+        "p90": 40.27,
+        "min": 29.75,
+        "max": 42.03,
+        "mean": 33.59,
+        "sd": 4.33,
+        "samples": [
+          31.11,
+          35.68,
+          32.08,
+          40.27,
+          31.22,
+          29.75,
+          32.55,
+          30.14,
+          31.05,
+          42.03
+        ],
+        "breakdown": {
+          "script": 7.71,
+          "styleLayout": 11.7,
+          "paint": 10.99,
+          "idle": 1.4
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "create10k": {
+        "n": 10,
+        "median": 2333.46,
+        "p90": 2383.82,
+        "min": 2297.36,
+        "max": 2598.91,
+        "mean": 2356.04,
+        "sd": 90.3,
+        "samples": [
+          2301.82,
+          2298.93,
+          2347.39,
+          2327.54,
+          2598.91,
+          2361.96,
+          2297.36,
+          2339.39,
+          2303.28,
+          2383.82
+        ],
+        "breakdown": {
+          "script": 422.54,
+          "styleLayout": 1597.64,
+          "paint": 306.34,
+          "idle": 4.29
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      },
+      "clear1k": {
+        "n": 10,
+        "median": 24.38,
+        "p90": 24.91,
+        "min": 23.2,
+        "max": 30.78,
+        "mean": 24.86,
+        "sd": 2.15,
+        "samples": [
+          30.78,
+          23.2,
+          24.84,
+          24.58,
+          23.64,
+          24.91,
+          24.09,
+          24.69,
+          23.71,
+          24.18
+        ],
+        "breakdown": {
+          "script": 20.82,
+          "styleLayout": 0.57,
+          "paint": 2.11,
+          "idle": 0.95
+        },
+        "maxRafDelay": 0,
+        "commits": 1
+      }
+    }
+  }
+}

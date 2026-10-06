@@ -5,5 +5,5 @@
     "exactOptionalPropertyTypes": true,
     "noImplicitOverride": true
   },
-  "include": ["apps", "vite.config.ts"]
+  "include": ["apps", "profile", "vite.config.ts"]
 }

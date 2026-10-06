@@ -169,12 +169,15 @@ function summarizeSamples(list) {
  * `{ gyral: { create1k: {median, p90, ..., breakdown}, ... }, ... }`. Frameworks are
  * interleaved: each round times every framework once, in a shuffled order, so drift during
  * the run (thermal, background load) spreads over all of them instead of hitting whichever
- * runs last. `afterOperation(op)` runs between operations (machine-state probes).
+ * runs last. `afterOperation(op)` runs between operations (machine-state probes);
+ * `url(name)` overrides the page URL of each name (default `<base>/<name>/table/`);
+ * `beforeSample()` is awaited before every timed sample (the profiler's quiet-machine gate).
  */
 export async function runtime(browser, baseUrl, frameworks, options) {
   const { warmup, runs, cpu, log, timing = 'trace', afterOperation, operations } = options;
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
-  const url = (fw) => `${baseUrl}/${fw}/table/`;
+  // `options.url(name)`: profiling variants are URLs with a query (scripts/profile-run.mjs).
+  const url = options.url ?? ((fw) => `${baseUrl}/${fw}/table/`);
   const ops = operations ?? OPERATIONS;
   const samples = Object.fromEntries(frameworks.map((fw) => [fw, {}]));
   try {
@@ -185,6 +188,7 @@ export async function runtime(browser, baseUrl, frameworks, options) {
       }
       for (let round = 0; round < runs; round++) {
         for (const fw of shuffled(frameworks, round + 1)) {
+          await options.beforeSample?.();
           samples[fw][op.key].push(await sample(context, url(fw), op, cpu, timing));
         }
       }

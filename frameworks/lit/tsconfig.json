@@ -1,5 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": { "useDefineForClassFields": false, "noImplicitOverride": true },
-  "include": ["apps", "vite.config.ts"]
+  "include": ["apps", "profile", "vite.config.ts"]
 }
