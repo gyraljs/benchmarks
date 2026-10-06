@@ -1,5 +1,5 @@
 import { buildData, UPDATE_SUFFIX, type Row } from '@bench/shared/data';
-import { define, each, html } from '@gyral/core';
+import { define, each, html, intents } from '@gyral/core';
 
 interface State {
   readonly rows: readonly Row[];
@@ -24,23 +24,20 @@ const swapped = (rows: readonly Row[]): readonly Row[] => {
   return next;
 };
 
-// A pure row (each() skips rows whose item and pick are unchanged): it reads only its
-// arguments, so the intent names and the selection come through `pick`.
-interface Picked {
-  readonly select: string;
-  readonly remove: string;
-  readonly selected: boolean;
-}
-const RowView = (row: Row, p: Picked) => html`
-  <tr class=${p.selected ? 'danger' : ''}>
+// Intent names as a module constant (`intents<Msg>()`), so the row stays pure: it reads only
+// its arguments and module constants; the selection comes through `pick`.
+const i = intents<Msg>();
+
+const RowView = (row: Row, selected: boolean) => html`
+  <tr class=${selected ? 'danger' : ''}>
     <td class="col-id">${row.id}</td>
     <td>
-      <button class="lbl" type="button" value=${row.id} data-intent=${p.select}>
+      <button class="lbl" type="button" value=${row.id} data-intent=${i.Select}>
         ${row.label}
       </button>
     </td>
     <td>
-      <button class="remove" type="button" value=${row.id} data-intent=${p.remove}>x</button>
+      <button class="remove" type="button" value=${row.id} data-intent=${i.Remove}>x</button>
     </td>
   </tr>
 `;
@@ -72,7 +69,7 @@ const Table = define<State, Msg>('bench-table', {
     Select: (s, m) => ({ ...s, selected: m.id }),
     Remove: (s, m) => ({ ...s, rows: s.rows.filter((r) => r.id !== m.id) }),
   },
-  view: (s, i) => html`
+  view: (s) => html`
     <menu>
       <li><button id="run" type="button" data-intent=${i.Run}>Create 1,000 rows</button></li>
       <li>
@@ -91,7 +88,7 @@ const Table = define<State, Msg>('bench-table', {
           s.rows,
           (row) => row.id,
           RowView,
-          (row) => ({ select: i.Select, remove: i.Remove, selected: row.id === s.selected }),
+          (row) => row.id === s.selected,
         )}
       </tbody>
     </table>

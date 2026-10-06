@@ -43,7 +43,7 @@
       "pipewise": "file:vendor-pipewise-v2/pipewise-1.0.0.tgz",
       "@bench/gyral-next>@gyral/core": "file:vendor-next/gyral-core-next.tgz",
       "@bench/gyral-next>@gyral/time": "file:vendor-next/gyral-time-next.tgz",
-      "@gyral/time@0.3.0-next>@gyral/core": "file:vendor-next/gyral-core-next.tgz"
+      "@gyral/time@0.3.0-next.6>@gyral/core": "file:vendor-next/gyral-core-next.tgz"
     }
   }
 }

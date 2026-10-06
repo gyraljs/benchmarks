@@ -86,7 +86,11 @@ pnpm bench --only=gyral,gyral-next,lit
 ```
 
 The packs get the version `0.3.0-next` (root `pnpm.overrides` keep them apart from 0.2.0), and
-`vendor-next/SOURCE.json` records the commit they came from. First results:
+`vendor-next/SOURCE.json` records the commit they came from. Tarballs Gyral packed itself
+(`gyral-core-<version>.tgz`, `gyral-time-<version>.tgz`) can be copied unchanged over
+`vendor-next/gyral-core-next.tgz` and `gyral-time-next.tgz` instead; then set the version in the
+`@gyral/time@<version>>@gyral/core` override so `@gyral/time` gets the same core. Currently
+installed: 0.3.0-next.6, Gyral `next` 2cc2704. First results:
 [results/2026-10-06-gyral-next-spike/NOTES.md](results/2026-10-06-gyral-next-spike/NOTES.md).
 
 ## Ground rules

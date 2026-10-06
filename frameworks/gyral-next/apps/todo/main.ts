@@ -1,4 +1,4 @@
-import { define, each, html } from '@gyral/core';
+import { define, each, html, intents } from '@gyral/core';
 
 interface Todo {
   readonly id: number;
@@ -22,23 +22,21 @@ type Msg =
   | { readonly _tag: 'Remove'; readonly id: number }
   | { readonly _tag: 'Show'; readonly filter: Filter };
 
-// A pure row (each() skips rows whose item and pick are unchanged): the intent names come
-// through `pick`.
-interface Picked {
-  readonly toggle: string;
-  readonly remove: string;
-}
-const TodoItem = (t: Todo, p: Picked) => html`
+// Intent names as a module constant (`intents<Msg>()`), so the row stays pure: it reads only
+// its argument and module constants.
+const i = intents<Msg>();
+
+const TodoItem = (t: Todo) => html`
   <li class=${t.done ? 'completed' : ''}>
     <input
       class="toggle"
       type="checkbox"
       value=${t.id}
       ?checked=${t.done}
-      data-intent=${p.toggle}
+      data-intent=${i.Toggle}
     />
     <span class="title">${t.title}</span>
-    <button class="destroy" type="button" value=${t.id} data-intent=${p.remove}>×</button>
+    <button class="destroy" type="button" value=${t.id} data-intent=${i.Remove}>×</button>
   </li>
 `;
 
@@ -70,7 +68,7 @@ const Todos = define<State, Msg>('bench-todos', {
     Remove: (s, m) => ({ ...s, todos: s.todos.filter((t) => t.id !== m.id) }),
     Show: (s, m) => ({ ...s, filter: m.filter }),
   },
-  view: (s, i) => {
+  view: (s) => {
     const visible = s.todos.filter((t) =>
       s.filter === 'all' ? true : s.filter === 'active' ? !t.done : t.done,
     );
@@ -80,12 +78,7 @@ const Todos = define<State, Msg>('bench-todos', {
         <input id="new-todo" aria-label="New todo" value=${s.draft} data-intent=${i.Typed} />
       </form>
       <ul id="todo-list">
-        ${each(
-          visible,
-          (t) => t.id,
-          TodoItem,
-          () => ({ toggle: i.Toggle, remove: i.Remove }),
-        )}
+        ${each(visible, (t) => t.id, TodoItem)}
       </ul>
       <p>
         <span id="remaining">${left} left</span>
