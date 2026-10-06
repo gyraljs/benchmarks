@@ -57,7 +57,14 @@ export function frameworkVersions() {
   for (const fw of FRAMEWORKS) {
     out[fw] = {};
     for (const name of MAIN_PACKAGES[fw]) {
-      out[fw][name] = JSON.parse(readFileSync(packageJson(fw, name), 'utf8')).version;
+      // A package a build no longer has (e.g. effect, gone in Gyral 0.2.0) is recorded as 'none'.
+      let version = 'none';
+      try {
+        version = JSON.parse(readFileSync(packageJson(fw, name), 'utf8')).version;
+      } catch {
+        // not installed for this framework
+      }
+      out[fw][name] = version;
     }
   }
   return out;
