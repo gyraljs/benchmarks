@@ -73,6 +73,22 @@ pnpm bench           # the full run, about an hour (results/<date>/)
 
 `--only=gyral,react` limits any of `build` and `bench` to some frameworks.
 
+### Gyral 0.3 pre-release (`gyral-next`)
+
+`frameworks/gyral-next` is the same six apps on Gyral 0.3's own view layer (no Lit), built from
+tarballs packed from a Gyral checkout, never from npm, so 0.3 can be measured against the
+published 0.2.0 (`frameworks/gyral`) in the same run. To measure a newer Gyral:
+
+```sh
+node scripts/pack-gyral-next.mjs ../gyral-next   # a checkout of Gyral's `next` branch (default)
+pnpm install                                     # the lockfile records the new tarballs
+pnpm bench --only=gyral,gyral-next,lit
+```
+
+The packs get the version `0.3.0-next` (root `pnpm.overrides` keep them apart from 0.2.0), and
+`vendor-next/SOURCE.json` records the commit they came from. First results:
+[results/2026-10-06-gyral-next-spike/NOTES.md](results/2026-10-06-gyral-next-spike/NOTES.md).
+
 ## Ground rules
 
 - Every framework's current npm release, pinned exactly; Vite 8 production builds with each

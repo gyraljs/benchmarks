@@ -1,0 +1,10 @@
+{
+  "name": "@bench/gyral-next",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@bench/shared": "workspace:*",
+    "@gyral/core": "file:../../vendor-next/gyral-core-next.tgz",
+    "@gyral/time": "file:../../vendor-next/gyral-time-next.tgz"
+  }
+}

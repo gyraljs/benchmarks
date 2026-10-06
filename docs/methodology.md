@@ -106,6 +106,14 @@ runs.
 - Operations that take less than a frame include waiting for the frame that paints them
   (the **idle** column), as in js-framework-benchmark; read small differences there from the
   breakdown, not the total.
+- **Select row is frame-quantized and paints nothing of its own.** The table apps have no CSS,
+  so `class="danger"` changes nothing visible: the measured frame paints the clicked button's
+  `:active`/`:focus` change (about 6 ms at 4x, the same for every framework), and the idle is
+  the wait for Chrome's next BeginFrame, which restarts about one frame after the input when
+  the page was quiet, unless a frame was already due. Samples are bimodal (about 7–10 ms or
+  16–20 ms) for every framework, and which mode dominates varies between runs. An
+  implementation that renders after that frame would look faster here, not slower. Details:
+  [results/2026-10-06-gyral-next-spike/NOTES.md](../results/2026-10-06-gyral-next-spike/NOTES.md).
 
 ## Memory (keyed table app)
 
