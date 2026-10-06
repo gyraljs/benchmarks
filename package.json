@@ -37,8 +37,8 @@
   "pnpm": {
     "overrides": {
       "lit-html": "3.3.0",
-      "@gyral/core": "file:vendor/gyral-core-0.1.0-exp-effect4.tgz",
-      "@gyral/time": "file:vendor/gyral-time-0.1.0-exp-effect4.tgz"
+      "@gyral/core": "file:vendor/gyral-core-0.2.0-rc.tgz",
+      "@gyral/time": "file:vendor/gyral-time-0.2.0-rc.tgz"
     }
   }
 }
