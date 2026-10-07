@@ -11,6 +11,7 @@ const CHECKS = [
     'gyral-twotrack',
     'gyral-pipewise',
     'gyral-combo',
+    'gyral-next',
     'lit',
     'react',
     'preact',

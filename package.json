@@ -40,7 +40,10 @@
       "@gyral/core": "0.2.0",
       "@gyral/time": "0.2.0",
       "two-track": "file:vendor-twotrack-v2/two-track-0.1.0.tgz",
-      "pipewise": "file:vendor-pipewise-v2/pipewise-1.0.0.tgz"
+      "pipewise": "file:vendor-pipewise-v2/pipewise-1.0.0.tgz",
+      "@bench/gyral-next>@gyral/core": "file:vendor-next/gyral-core-next.tgz",
+      "@bench/gyral-next>@gyral/time": "file:vendor-next/gyral-time-next.tgz",
+      "@gyral/time@0.3.0>@gyral/core": "file:vendor-next/gyral-core-next.tgz"
     }
   }
 }

@@ -1,0 +1,27 @@
+diff --git a/packages/core/src/scheduler.ts b/packages/core/src/scheduler.ts
+index 9ca7f74..7babc2a 100644
+--- a/packages/core/src/scheduler.ts
++++ b/packages/core/src/scheduler.ts
+@@ -72,10 +72,21 @@ export function whenQuiet(): Promise<void> {
+   return quiet.promise;
+ }
+ 
++// SPIKE (gyral-g1r.8), temporary: `?gyral-flush=task|timeout|raf` picks when the flush runs.
++const SPIKE_FLUSH =
++  typeof location === 'undefined'
++    ? null
++    : new URLSearchParams(location.search).get('gyral-flush');
++const spikeChannel = typeof MessageChannel === 'undefined' ? null : new MessageChannel();
++if (spikeChannel !== null) spikeChannel.port1.onmessage = () => { start(); };
++
+ function schedule(): void {
+   if (phase !== IDLE) return;
+   phase = SCHEDULED;
+-  queueMicrotask(start);
++  if (SPIKE_FLUSH === 'task' && spikeChannel !== null) spikeChannel.port2.postMessage(null);
++  else if (SPIKE_FLUSH === 'timeout') setTimeout(start, 0);
++  else if (SPIKE_FLUSH === 'raf') requestAnimationFrame(start);
++  else queueMicrotask(start);
+ }
+ 
+ /** Marks `task` for the next flush. Marking an already-dirty host does nothing. */

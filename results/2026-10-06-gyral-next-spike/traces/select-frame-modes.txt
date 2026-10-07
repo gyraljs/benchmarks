@@ -1,0 +1,6 @@
+gyral-next  n=12 pending=1 | wait(pending)=0.04 wait(new)=5.45 | total all=17.19 pend=10.99 new=17.27 | clicktask=3.73
+gyral       n=12 pending=1 | wait(pending)=0.05 wait(new)=3.43 | total all=15.1 pend=11.07 new=15.41 | clicktask=3.48
+lit         n=12 pending=6 | wait(pending)=0.33 wait(new)=1.4 | total all=13.34 pend=15.86 new=12.74 | clicktask=3.56
+solid       n=12 pending=3 | wait(pending)=0.3 wait(new)=10.24 | total all=18.16 pend=7.79 new=18.45 | clicktask=1.11
+svelte      n=12 pending=4 | wait(pending)=0.05 wait(new)=6.37 | total all=18.59 pend=12.4 new=18.68 | clicktask=5.16
+vue         n=12 pending=0 | wait(pending)=- wait(new)=6.0 | total all=15.89 pend=- new=15.89 | clicktask=2.53

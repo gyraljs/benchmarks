@@ -9,7 +9,10 @@ Results go to `results/<date>/results.json` (all samples) and `results.md` (tabl
   with each framework's official Vite plugin and otherwise identical settings
   (`scripts/build.mjs`). Gyral uses `gyralVitePreset()`, as `npm create gyral` sets up.
 - All packages are the current npm releases on the run date, pinned exactly in each
-  `frameworks/<name>/package.json`. Gyral is `@gyral/core` 0.1.0 from npm.
+  `frameworks/<name>/package.json`, with two exceptions: lit-html is pinned to 3.3.0 for Lit
+  and Gyral 0.2.0 (root `pnpm.overrides`; see the last section), and the `gyral-next` variant
+  installs Gyral 0.3.0 from its release tarballs (`vendor-next/`) until 0.3.0 is on npm.
+  `frameworks/gyral` is `@gyral/core` 0.2.0 from npm.
 
 ## Bundle size
 
@@ -106,6 +109,14 @@ runs.
 - Operations that take less than a frame include waiting for the frame that paints them
   (the **idle** column), as in js-framework-benchmark; read small differences there from the
   breakdown, not the total.
+- **Select row is frame-quantized and paints nothing of its own.** The table apps have no CSS,
+  so `class="danger"` changes nothing visible: the measured frame paints the clicked button's
+  `:active`/`:focus` change (about 6 ms at 4x, the same for every framework), and the idle is
+  the wait for Chrome's next BeginFrame, which restarts about one frame after the input when
+  the page was quiet, unless a frame was already due. Samples are bimodal (about 7–10 ms or
+  16–20 ms) for every framework, and which mode dominates varies between runs. An
+  implementation that renders after that frame would look faster here, not slower. Details:
+  [results/2026-10-06-gyral-next-spike/NOTES.md](../results/2026-10-06-gyral-next-spike/NOTES.md).
 
 ## Memory (keyed table app)
 
@@ -137,6 +148,7 @@ item `repeat` removes ([lit/lit#5010](https://github.com/lit/lit/issues/5010),
 [lit/lit#5298](https://github.com/lit/lit/issues/5298)): `removePart()` removes an item's start
 marker and content but not its end marker. Lists with churn therefore accumulate nodes, and
 clearing or replacing rows gets slower each cycle. The in-page warm-up (five create+clear
-cycles) makes this visible in "clear" and "replace" for Lit and Gyral. The primary results use
-the versions users install today; a supplementary run with lit-html pinned to 3.3.0 shows the
-effect, when present in the results folder.
+cycles) makes this visible in "clear" and "replace" for Lit and Gyral. Results up to
+2026-10-05 used lit-html 3.3.3, the version users install today, with a supplementary run on
+3.3.0 (`results/2026-10-05-lit-html-3.3.0/`); later runs pin lit-html to 3.3.0 for Lit and Gyral
+0.2.0, as each run's "Framework versions" records.

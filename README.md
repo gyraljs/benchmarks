@@ -13,50 +13,79 @@ framework's official documentation, and checked by one shared correctness spec. 
 - **Startup**: a todo app on a cold cache with a throttled network and CPU, until the first
   todo can be added.
 
-## Results, 2026-10-05
+## Results, 2026-10-06: Gyral 0.3.0
 
-Full tables: [results/2026-10-05/results.md](results/2026-10-05/results.md). Every sample is in
-`results.json`. Headline numbers, Gyral 0.1.0 (on Effect 3) against the current releases:
+Full tables: [results/2026-10-06-gyral-0.3-final/results.md](results/2026-10-06-gyral-0.3-final/results.md);
+noise analysis and notes:
+[NOTES.md](results/2026-10-06-gyral-0.3-final/NOTES.md). Every sample is in `results.json`.
+Headline numbers, Gyral 0.3.0 and the published Gyral 0.2.0 against the current releases of the
+others, all measured in one run:
 
-|                                                    | Solid | Preact |  Lit | Svelte |  Vue | **Gyral** | React |
-| -------------------------------------------------- | ----: | -----: | ---: | -----: | ---: | --------: | ----: |
-| JS, gzip KiB: floor (framework alone)              |   3.7 |    4.7 |  5.8 |    9.0 | 23.0 |  **49.3** |  66.1 |
-| JS, gzip KiB: todo app                             |   6.6 |    6.1 |  7.3 |   14.2 | 25.0 |  **51.0** |  66.6 |
-| Todo app interactive, cold, throttled (ms, median) |   450 |    445 |  438 |    475 |  533 |   **725** |   801 |
-| Table runtime, geometric mean vs fastest           |  1.07 |   1.61 | 3.09 |   1.30 | 1.43 |  **3.03** |  1.90 |
-| JS heap after load (MB)                            |  1.13 |   1.17 | 1.20 |   1.19 | 1.32 |  **1.71** |  1.55 |
+|                                                    | Solid | Preact |  Lit | Svelte | **Gyral 0.3.0** | Gyral 0.2.0 |  Vue | React |
+| -------------------------------------------------- | ----: | -----: | ---: | -----: | --------------: | ----------: | ---: | ----: |
+| JS, gzip KiB: floor (framework alone)              |   3.7 |    4.7 |  5.8 |    9.0 |        **11.6** |        11.9 | 23.0 |  66.1 |
+| JS, gzip KiB: todo app                             |   6.6 |    6.1 |  7.3 |   14.2 |        **13.6** |        13.6 | 25.0 |  66.6 |
+| Todo app interactive, cold, throttled (ms, median) |   407 |    398 |  410 |    450 |         **425** |         445 |  503 |   739 |
+| Table runtime, geometric mean vs fastest           |  1.08 |   1.40 | 1.31 |   1.07 |        **1.03** |        1.20 | 1.20 |  1.53 |
+| Same, without select row                           |  1.09 |   1.26 | 1.28 |   1.01 |        **1.02** |        1.12 | 1.12 |  1.52 |
+| JS heap after load (MB)                            |  1.13 |   1.17 | 1.20 |   1.19 |        **1.18** |        1.26 | 1.32 |  1.55 |
+
+Gyral 0.3.0 is the `gyral-next` column in the results files. The run measured Gyral's
+0.3.0-next.6 packs. The 0.3.0 release packs `vendor-next/` holds now differ from them only in
+version numbers and changelogs (the built `dist/` is byte-identical), and the apps rebuilt with
+them have byte-identical bundles. 0.3.0 is tagged on GitHub but not yet on npm
+([below](#gyral-030-gyral-next)).
 
 What the numbers say:
 
-- **Size is Gyral's weak point.** Its floor is 49.3 KiB gzip, second only to React and about
-  43.5 KiB more than Lit, which it renders with. Gyral's runtime-size spike (ADR 0015 in the
-  Gyral repo) attributes about 38 KiB of that to the Effect 3 runtime and measured, in its own
-  setup, a counter at about 23 KiB with Effect 4, 15 KiB with Effect Micro and 10 KiB without
-  Effect. Those are context from that spike, not results of this repository.
-- **Startup follows size.** On a cold cache with a throttled network and CPU, the Gyral todo
-  app becomes interactive 275–290 ms after Lit, Preact and Solid, and about 75 ms before
-  React.
-- **Runtime is Lit's.** Gyral tracks plain Lit: within 4% on create, replace, update, remove,
-  create 10,000 and clear; 16% slower on swap and 17% faster on append (under one frame and
-  about 90 ms respectively, in opposite directions). Intents, messages and the Effect-based
-  interpreter add no consistent interaction cost here.
-- **lit-html 3.3.3 has a leak that dominates two operations.** Every row `repeat` removes leaves
-  an empty comment node behind ([lit/lit#5010](https://github.com/lit/lit/issues/5010)), so
-  after the warm-up cycles "clear 1,000 rows" takes about 3.7 s for Lit and Gyral (others: 26–40
-  ms) and "replace" about 2.2 s (others: 306–353 ms). With lit-html pinned to 3.3.0
-  ([variant run](results/2026-10-05-lit-html-3.3.0/results.md)), Gyral's clear is 56 ms and
-  replace 414 ms. Lit-based apps are still somewhat slower than the others at bulk creation
-  and removal.
-- **Memory:** Gyral starts with the largest JS heap (1.71 MB, the Effect runtime) but holds
-  1,000 rows in less heap than React, Preact, Vue or Solid.
+- **Runtime: Gyral 0.3.0 has the lowest geometric mean in this run, by a small margin** (1.03;
+  Svelte 1.07, Solid 1.08). It is fastest at update every 10th row, remove and clear; Svelte is
+  fastest at create, replace, create 10,000 and append. Without select row, Svelte (1.01) and
+  Gyral 0.3.0 (1.02) change places. Against 0.2.0 in the same run, no operation is slower: seven
+  are faster beyond noise (bootstrap interval and Mann–Whitney test, in the notes), and script
+  time is lower on every operation.
+- **Select row is frame-aligned: don't read its −44% against 0.2.0 as a speedup.** Samples are
+  bimodal (about 8–10 ms or 15–20 ms), depending on whether a frame was already due when the
+  click landed; 9 of 15 Gyral 0.3.0 samples fell in the fast mode, 1 of 15 for 0.2.0. See [the methodology's limits](docs/methodology.md#limits).
+- **Size is still Gyral's weak point.** The 0.3.0 floor is 11.6 KiB gzip counting every chunk
+  the build emits (0.2.0: 11.9; Lit 5.8, Svelte 9.0). 0.3.0's builds also emit two lazily
+  imported chunks (hydration for server-rendered pages, an invoker-commands shim) that a
+  client-only page in Chromium did not fetch; the entry chunk alone is 8.6 KiB (computed
+  separately, not by the harness). Counting all chunks, the search (+1.0 KiB) and table
+  (+0.2 KiB) apps are larger than with 0.2.0.
+- **Startup:** the todo app is interactive at 425 ms, 20 ms sooner than with 0.2.0, 15–18 ms
+  behind Lit and Solid and 27 ms behind Preact.
+- **Memory:** 0.3.0 starts with a smaller heap than 0.2.0 (1.18 vs 1.26 MB) but holds 1,000 rows
+  in slightly more (2.13 vs 2.05 MB); of the other frameworks, only Lit (1.98) holds them in
+  less.
 
-These runtime numbers use the older in-page "next frame" end point, which often missed the
-repaint for operations shorter than a frame (so "select row" is not meaningful there). Runtime
-timing is now **trace-based**, like js-framework-benchmark's
-([methodology](docs/methodology.md#trace-based-timing-default-since-2026-10-05)). A trace-based
-run on Gyral's experiment builds (Effect 4, lit-html 3.3.0; not the published 0.1.0) gives a
-geometric mean of Svelte 1.05, Solid 1.07, Vue 1.19, Lit 1.31, Gyral 1.33, Preact 1.40, React
-1.54: [results and notes](results/2026-10-05-lit-html-3.3.0-effect4-trace/NOTES.md).
+Caveats for this run:
+
+- **Machine:** drift was not flagged (calibration spread 3.3%, limit 5%; 1-minute load 2.2–3.3
+  on 12 cores), but other work ran on the machine, including an unrelated test worker at about
+  96% of one core, and the CPU governor was `powersave` (1.6–4.0 GHz between operations).
+  Interleaving spreads both over every framework. Compare frameworks within this run, not
+  absolute numbers across runs.
+- **lit-html is pinned to 3.3.0** for Lit and Gyral 0.2.0 (root `pnpm.overrides`), not the
+  current 3.3.3, whose `repeat` leaves an empty comment node behind for every removed item
+  ([lit/lit#5010](https://github.com/lit/lit/issues/5010)); in the 2026-10-05 run that made
+  "clear 1,000 rows" take about 3.7 s for Lit and Gyral. Gyral 0.3.0 does not use Lit.
+- **Gyral 0.3.0 comes from release tarballs, not npm,** until it is published.
+- Runtime is timed from Chrome performance traces, like js-framework-benchmark
+  ([methodology](docs/methodology.md#trace-based-timing-default-since-2026-10-05)); operations
+  shorter than a frame include waiting for the frame that paints them.
+
+Earlier runs, each comparable only within itself:
+
+- [2026-10-05](results/2026-10-05/results.md): Gyral 0.1.0 on Effect 3 (floor 49.3 KiB gzip),
+  lit-html 3.3.3, the older in-page end point, which often missed the repaint of operations
+  shorter than a frame. Gyral's runtime tracked Lit's.
+- [2026-10-05, trace-based](results/2026-10-05-lit-html-3.3.0-effect4-trace/NOTES.md): Gyral
+  experiment builds (Effect 4, lit-html 3.3.0), the first run with trace timing.
+- [2026-10-06, Gyral 0.2.0 confirmation](results/2026-10-06-release-0.2.0-a3/CONFIRMATION.md)
+  and [the Gyral 0.3 spike](results/2026-10-06-gyral-next-spike/NOTES.md) (a flagged run, under
+  load).
+
 How each number is measured, and the limits of the method:
 [docs/methodology.md](docs/methodology.md). The apps and per-framework choices:
 [docs/apps.md](docs/apps.md).
@@ -73,10 +102,60 @@ pnpm bench           # the full run, about an hour (results/<date>/)
 
 `--only=gyral,react` limits any of `build` and `bench` to some frameworks.
 
+### Gyral 0.3.0 (`gyral-next`)
+
+`frameworks/gyral-next` is the same six apps on Gyral 0.3's own view layer (no Lit). It
+installs `@gyral/core` and `@gyral/time` from tarballs in `vendor-next/`, not from npm, so 0.3
+could be measured against the published 0.2.0 (`frameworks/gyral`) in the same run before it
+was published. They are now Gyral's 0.3.0 release packs (tag `v0.3.0`, commit e79abd6), copied
+unchanged from `../gyral-tarballs/`; `vendor-next/SOURCE.json` records where they came from.
+
+**Naming.** The framework id stays `gyral-next`: the directory, `--only=`, the harness lists and
+every committed results file use it, and renaming it would make old and new results disagree.
+Hand-written reports call it Gyral 0.3.0; the generated `results.md` lists the installed version
+under "Framework versions". The tarballs keep their names
+(`vendor-next/gyral-{core,time}-next.tgz`) for the same reason: they are the `gyral-next`
+slot, whatever version is in them.
+
+To measure an unreleased Gyral (for example a checkout of its `next` branch):
+
+```sh
+node scripts/pack-gyral-next.mjs ../gyral-next   # packs as <version>-local, records the commit
+# set "@gyral/time@<version>-local>@gyral/core" in the root pnpm.overrides, as the script prints
+pnpm install                                     # the lockfile records the new tarballs
+pnpm bench --only=gyral,gyral-next,lit
+```
+
+Tarballs Gyral packed itself (`gyral-core-<version>.tgz`, `gyral-time-<version>.tgz`) can be
+copied unchanged over `vendor-next/gyral-core-next.tgz` and `gyral-time-next.tgz` instead (as
+for 0.3.0); then set that version in the `@gyral/time@<version>>@gyral/core` override, so
+`@gyral/time` gets the same core.
+
+**Once 0.3.0 is on npm** (planned, not done yet):
+
+1. Check that npm's 0.3.0 is what was measured: unpack `npm pack @gyral/core@0.3.0` and
+   `@gyral/time@0.3.0` and diff them against the tarballs in `vendor-next/`.
+2. Move `frameworks/gyral` to 0.3.0, since the ground rules measure every framework's current
+   npm release: bring over the `gyral-next` app sources (the 0.3 API: `each`, module-level
+   `intents<Msg>()`, form-state attributes), pin `@gyral/core` and `@gyral/time` to `0.3.0`,
+   drop `lit` from its dependencies and update `docs/apps.md`. The root overrides that pin
+   `@gyral/core`/`@gyral/time` to 0.2.0 also keep the 0.2-era variants (`gyral-noeffect`,
+   `-twotrack`, `-pipewise`, `-combo`) on 0.2.0, so scope them to those variants, or retire the
+   variants, instead of changing them globally.
+3. Remove `gyral-next`: `frameworks/gyral-next`, `vendor-next/`, `scripts/pack-gyral-next.mjs`
+   (back in git history when a later pre-release needs measuring), the three `gyral-next`
+   overrides, and its entries in `scripts/lib/config.mjs`, `scripts/typecheck.mjs`,
+   `tests/apps.spec.ts`, `docs/apps.md` and `AGENTS.md`. Committed results keep the
+   `gyral-next` id; they are never edited.
+4. `pnpm check`, then a full `pnpm bench` of every framework as the new headline run, since
+   `frameworks/gyral` changed. 0.2.0 vs 0.3.0 stays documented by the 2026-10-06 run.
+
 ## Ground rules
 
 - Every framework's current npm release, pinned exactly; Vite 8 production builds with each
-  framework's official plugin and otherwise identical settings.
+  framework's official plugin and otherwise identical settings. Two exceptions, both stated
+  with the results: lit-html is pinned to 3.3.0 for Lit and Gyral 0.2.0 (see above), and Gyral
+  0.3.0 comes from its release tarballs until it is on npm.
 - No UI, state or form libraries. Shared code (row data, a fake search API, validation rules)
   is the same for everyone, so the comparison is about the frameworks.
 - Results are reported as measured, including where Gyral loses.
