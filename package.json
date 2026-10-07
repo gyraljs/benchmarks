@@ -19,7 +19,11 @@
     "check": "pnpm typecheck && pnpm lint && pnpm format && pnpm build && pnpm test",
     "bench": "node scripts/bench.mjs",
     "report": "node scripts/report.mjs",
-    "validate:timing": "node scripts/validate-timing.mjs"
+    "validate:timing": "node scripts/validate-timing.mjs",
+    "profile:build": "node scripts/profile-build.mjs",
+    "profile:nodes": "node scripts/profile-nodes.mjs",
+    "profile:run": "node scripts/profile-run.mjs",
+    "profile:cpu": "node scripts/profile-cpu.mjs"
   },
   "devDependencies": {
     "@bench/shared": "workspace:*",

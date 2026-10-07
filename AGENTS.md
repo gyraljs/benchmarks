@@ -14,6 +14,7 @@ spec for all. This file is a map; the linked docs are the system of record.
 | `pnpm sizes`                             | Bundle sizes of the current build                                                                |
 | `pnpm test`                              | The correctness spec against every production build (Playwright)                                 |
 | `pnpm bench [--quick] [--only=…]`        | Build, then measure everything → `results/<date>/` (`results/quick/` for `--quick`)              |
+| `pnpm bench --label=<name>`              | Same, into `results/<date>-<name>/`                                                              |
 | `pnpm bench --timing=frame`              | Use the older in-page end point instead of trace timing (comparison runs)                        |
 | `pnpm validate:timing`                   | Check the timing method: synthetic busy loop (±2 ms) and both methods on real operations         |
 | `node scripts/rank-compare.mjs`          | Rank changes between two runs (`<out.md> <old dir> <new dir>`)                                   |
@@ -21,7 +22,9 @@ spec for all. This file is a map; the linked docs are the system of record.
 | `node scripts/trace-timeline.mjs`        | Main-thread timeline of one table operation per sample (`--only`, `--ops`, `--runs`, `--out`)    |
 | `pnpm profile:*`                         | Profiling variants of the table app: build, nodes, run, cpu ([docs/profile.md](docs/profile.md)) |
 
-First run needs `pnpm exec playwright install chromium`. A full `pnpm bench` takes about an hour.
+First run needs `pnpm exec playwright install chromium`. A full `pnpm bench` of the eight
+compared frameworks takes about 25 minutes. Commands that drive Chromium run under the shared
+machine lock (`flock /tmp/gyral-bench.lock …`).
 
 ## Where things are
 

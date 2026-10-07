@@ -1,7 +1,8 @@
 # Methodology
 
 `pnpm bench` builds every app, measures bundle sizes, then drives Chromium with Playwright.
-Results go to `results/<date>/results.json` (all samples) and `results.md` (tables).
+Results go to `results/<date>/results.json` (all samples) and `results.md` (tables);
+`--label=<name>` writes `results/<date>-<name>/` instead.
 
 ## Builds
 
@@ -20,6 +21,9 @@ Results go to `results/<date>/results.json` (all samples) and `results.md` (tabl
   on its own as a server would send it: gzip level 9 and brotli quality 11, plus the raw
   minified size (`scripts/sizes.mjs`).
 - `floor` is the cost of the framework itself: an app that renders one paragraph.
+- Lazily imported chunks count too. Gyral 0.3.0's builds emit two (server-render hydration and
+  an invoker-commands shim) that a client-only page in current Chromium doesn't fetch; the
+  run notes give its entry-chunk-only size separately. Every other build emits one chunk.
 
 ## Runtime (keyed table app)
 
@@ -141,14 +145,15 @@ heap only: DOM nodes are not included.
 `pnpm check` runs it in the gate. A broken implementation fails the gate before it can be
 benchmarked.
 
-## Known upstream issue affecting Lit and Gyral
+## Known upstream issue affecting Lit and Gyral 0.2.0
 
 lit-html 3.3.1 to 3.3.3 (the current release) leaves one empty comment node in the DOM for every
 item `repeat` removes ([lit/lit#5010](https://github.com/lit/lit/issues/5010),
 [lit/lit#5298](https://github.com/lit/lit/issues/5298)): `removePart()` removes an item's start
 marker and content but not its end marker. Lists with churn therefore accumulate nodes, and
 clearing or replacing rows gets slower each cycle. The in-page warm-up (five create+clear
-cycles) makes this visible in "clear" and "replace" for Lit and Gyral. Results up to
-2026-10-05 used lit-html 3.3.3, the version users install today, with a supplementary run on
-3.3.0 (`results/2026-10-05-lit-html-3.3.0/`); later runs pin lit-html to 3.3.0 for Lit and Gyral
-0.2.0, as each run's "Framework versions" records.
+cycles) makes this visible in "clear" and "replace" for Lit and Gyral 0.2.0 (and the 0.1.0
+experiments), which render with lit-html. Gyral 0.3.0 has its own view layer and does not use
+lit-html. Results up to 2026-10-05 used lit-html 3.3.3, the version users install today, with a
+supplementary run on 3.3.0 (`results/2026-10-05-lit-html-3.3.0/`); later runs pin lit-html to
+3.3.0 for Lit and Gyral 0.2.0, as each run's "Framework versions" records.

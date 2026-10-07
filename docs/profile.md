@@ -8,7 +8,9 @@ JavaScript to modules. First used for Gyral and Lit (bead gyral-1kq,
 ## Variants
 
 `frameworks/{lit,gyral}/profile/table/` is the benchmark's table with three switches read from
-the page URL (`shared/src/profile.ts`), so one build serves every combination:
+the page URL (`shared/src/profile.ts`), so one build serves every combination. `frameworks/gyral`
+is Gyral 0.2.0, which renders with lit-html; Gyral 0.3.0 (`gyral-next`) has no profiling
+variant.
 
 | query       | meaning                                                                                  |
 | ----------- | ---------------------------------------------------------------------------------------- |
@@ -39,7 +41,7 @@ All of them drive Chromium: run them under the machine lock, one at a time.
   suites, a desktop browser) skews samples even when the lock is held. Drift probes are
   recorded; a flagged run is deleted and re-run, never reported.
 - CPU profiles sample every 100 µs. Frames are bucketed by module URL: lit-html (and
-  lit-element, reactive-element), @gyral/core, effect, the app, native DOM methods (named
-  frames without a URL, such as `importNode`), garbage collection, and `(program)` (the
+  lit-element, reactive-element), @gyral/core, effect (Gyral 0.1.0 builds only), the app,
+  native DOM methods (named frames without a URL, such as `importNode`), garbage collection, and `(program)` (the
   renderer outside JS: style, layout, paint). The page's polling helper shows up as about 1 ms
   of native time.
