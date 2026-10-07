@@ -1,9 +1,9 @@
 {
-  "checkout": "../gyral-next",
-  "branch": "next",
-  "commit": "2cc27048789723fd55307a4143e636c05d12db8b",
-  "dirty": false,
-  "packed": "2026-10-06T23:03:57.554Z",
-  "version": "0.3.0-next.6",
-  "tarballs": "../gyral-tarballs/gyral-{core,time}-0.3.0-next.6.tgz, copied unchanged (SOURCE-0.3.0-next.6.json)"
+  "release": "v0.3.0",
+  "commit": "e79abd6d0b41241ef9c614134b23cf8ba0156154",
+  "version": "0.3.0",
+  "packed": "2026-10-07T11:05:56.573Z",
+  "tarballs": "../gyral-tarballs/gyral-{core,time}-0.3.0.tgz, Gyral's release packs, copied unchanged (SOURCE-0.3.0.json)",
+  "npm": "not yet published (2026-10-07)",
+  "runtime": "dist/ identical to 0.3.0-next.6 (Gyral next 2cc2704, the final run's pack); only package.json versions and CHANGELOG.md differ"
 }

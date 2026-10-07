@@ -9,7 +9,10 @@ Results go to `results/<date>/results.json` (all samples) and `results.md` (tabl
   with each framework's official Vite plugin and otherwise identical settings
   (`scripts/build.mjs`). Gyral uses `gyralVitePreset()`, as `npm create gyral` sets up.
 - All packages are the current npm releases on the run date, pinned exactly in each
-  `frameworks/<name>/package.json`. Gyral is `@gyral/core` 0.1.0 from npm.
+  `frameworks/<name>/package.json`, with two exceptions: lit-html is pinned to 3.3.0 for Lit
+  and Gyral 0.2.0 (root `pnpm.overrides`; see the last section), and the `gyral-next` variant
+  installs Gyral 0.3.0 from its release tarballs (`vendor-next/`) until 0.3.0 is on npm.
+  `frameworks/gyral` is `@gyral/core` 0.2.0 from npm.
 
 ## Bundle size
 
@@ -145,6 +148,7 @@ item `repeat` removes ([lit/lit#5010](https://github.com/lit/lit/issues/5010),
 [lit/lit#5298](https://github.com/lit/lit/issues/5298)): `removePart()` removes an item's start
 marker and content but not its end marker. Lists with churn therefore accumulate nodes, and
 clearing or replacing rows gets slower each cycle. The in-page warm-up (five create+clear
-cycles) makes this visible in "clear" and "replace" for Lit and Gyral. The primary results use
-the versions users install today; a supplementary run with lit-html pinned to 3.3.0 shows the
-effect, when present in the results folder.
+cycles) makes this visible in "clear" and "replace" for Lit and Gyral. Results up to
+2026-10-05 used lit-html 3.3.3, the version users install today, with a supplementary run on
+3.3.0 (`results/2026-10-05-lit-html-3.3.0/`); later runs pin lit-html to 3.3.0 for Lit and Gyral
+0.2.0, as each run's "Framework versions" records.

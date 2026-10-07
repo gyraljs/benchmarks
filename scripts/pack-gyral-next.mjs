@@ -1,19 +1,24 @@
 // node scripts/pack-gyral-next.mjs [gyral checkout]: packs @gyral/core and @gyral/time from a
 // Gyral checkout (default ../gyral-next, the `next` worktree) into vendor-next/, the tarballs
-// frameworks/gyral-next installs. Then run `pnpm install` (the lockfile records their hashes).
+// the `gyral-next` variant (frameworks/gyral-next) installs. Then set the root override
+// `@gyral/time@<version>>@gyral/core` to the version printed below and run `pnpm install` (the
+// lockfile records the tarballs' hashes).
 //
-// The packs get the version 0.3.0-next (and @gyral/time depends on that version), so the root
-// overrides can tell them from the published 0.2.0 that frameworks/gyral measures. The commit
-// they came from is recorded in vendor-next/SOURCE.json.
+// vendor-next/ currently holds Gyral's own 0.3.0 release packs, copied unchanged
+// (vendor-next/SOURCE.json); this script is for measuring an unreleased Gyral checkout. The packs
+// get the checkout's version plus `-local` (and @gyral/time depends on that version), so reports
+// can't mistake them for a release and the root overrides can tell them from the published
+// 0.2.0 that frameworks/gyral measures. The commit they came from is recorded in SOURCE.json.
 import { execFileSync } from 'node:child_process';
 import { copyFileSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, relative, resolve } from 'node:path';
 import { ROOT } from './lib/config.mjs';
 
-const VERSION = '0.3.0-next';
 const gyral = resolve(process.argv[2] ?? join(ROOT, '..', 'gyral-next'));
 const out = join(ROOT, 'vendor-next');
+const coreManifest = join(gyral, 'packages', 'core', 'package.json');
+const VERSION = `${JSON.parse(readFileSync(coreManifest, 'utf8')).version}-local`;
 
 const run = (cmd, args, cwd) => execFileSync(cmd, args, { cwd, encoding: 'utf8' }).trim();
 
@@ -46,4 +51,5 @@ const source = {
 };
 writeFileSync(join(out, 'SOURCE.json'), `${JSON.stringify(source, null, 2)}\n`);
 console.log(`${source.branch} ${source.commit}${source.dirty ? ' (dirty)' : ''}`);
-console.log('Now run `pnpm install` to refresh the lockfile.');
+console.log(`Now set "@gyral/time@${VERSION}>@gyral/core" in the root pnpm.overrides`);
+console.log('(in place of the current @gyral/time@…>@gyral/core key) and run `pnpm install`.');

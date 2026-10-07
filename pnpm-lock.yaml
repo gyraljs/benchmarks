@@ -12,7 +12,7 @@ overrides:
   pipewise: file:vendor-pipewise-v2/pipewise-1.0.0.tgz
   '@bench/gyral-next>@gyral/core': file:vendor-next/gyral-core-next.tgz
   '@bench/gyral-next>@gyral/time': file:vendor-next/gyral-time-next.tgz
-  '@gyral/time@0.3.0-next.6>@gyral/core': file:vendor-next/gyral-core-next.tgz
+  '@gyral/time@0.3.0>@gyral/core': file:vendor-next/gyral-core-next.tgz
 
 importers:
 
@@ -401,8 +401,8 @@ packages:
       lit: ^3.3.0
 
   '@gyral/core@file:vendor-next/gyral-core-next.tgz':
-    resolution: {integrity: sha512-y6rusnpUcU13cq3/dyTvQ96GQ5DtTK00s9j+69O+cF1zAvB8KrJPuVIC6rsC7tz0jxMoIWoaalOa4olcofCnJg==, tarball: file:vendor-next/gyral-core-next.tgz}
-    version: 0.3.0-next.6
+    resolution: {integrity: sha512-MMHIrpOR5r7DAa3dwSmQwMHziiXv7P5alKpqI9xQObD+SL0Gb2/Sm7ADAIz3ja48I1TlqDfh0x0pmky+5UiSFQ==, tarball: file:vendor-next/gyral-core-next.tgz}
+    version: 0.3.0
     peerDependencies:
       eslint: ^9.0.0 || ^10.0.0
       parse5: ^7.0.0 || ^8.0.0
@@ -437,8 +437,8 @@ packages:
     resolution: {integrity: sha512-1+4Fs1L5TXV86J246ebLL6ckZDFPWZKNp2h144IAVGZjTfeURkuFYzBr4uyNxaFaMPf7dDL1lbFoIVbw5W4A6w==}
 
   '@gyral/time@file:vendor-next/gyral-time-next.tgz':
-    resolution: {integrity: sha512-+ZyoA/NXHHTvMj+p/cNMSVkfZSDyqXqPAU7nPGMg8G+dKHBYpQ5+2vDHXP0+m6uiVclKemXqrNHmkiv1AoKVYQ==, tarball: file:vendor-next/gyral-time-next.tgz}
-    version: 0.3.0-next.6
+    resolution: {integrity: sha512-Fl5oqbaIT3S4t17696rPrWGntyEPZM23+UP5Z7m9iauXM9GjDL+4X+gxmJsNyUq7p/nXx1RtDBjaTbeXMnzj6g==, tarball: file:vendor-next/gyral-time-next.tgz}
+    version: 0.3.0
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
