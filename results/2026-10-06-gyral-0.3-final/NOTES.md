@@ -22,7 +22,7 @@ published) are measured together and compared only within that run. This is that
   on 12 cores (flag threshold 6). The spike run had 78% spread and load up to 23.8.
 - Other work on the machine, left running: an unrelated `vitest` worker in
   `two-track-fp-skill-examples/ecommerce` spinning at ~96% of one core the whole time (8 h 45 min
-  old at the start), other agents' sessions, a browser and Discord. An ESLint and `pnpm check`
+  old at the start), other idle desktop applications. An ESLint and `pnpm check`
   in `gyral-shop` ran a few minutes before the bench and were gone when it started. A per-minute log
   showed load 2.2–3.3 throughout, with the spinning worker as the only steady consumer besides
   headless Chromium. It takes one of 12 cores, and the calibration workload stayed within

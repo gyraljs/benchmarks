@@ -30,14 +30,14 @@ release** packs in the `gyral-next` slot (the 2026-10-06 final run measured 0.3.
 - CPU governor `powersave`; the probes saw 2.4–4.0 GHz between operations (final run: 1.6–4.0).
 - **Two earlier attempts were stopped and thrown away.** Before the run, the machine was quiet
   (load 0.43). Then a Playwright smoke test of another repository
-  (`starwars.run-site-v2`, `scripts/smoke.mjs`, several headless Chromium renderers) ran outside
+  (another project's Playwright smoke test, with several headless Chromium renderers) ran outside
   the shared lock, twice: load reached 8.9 in the first attempt (swap rows +50% for every
   framework) and the second attempt's create 1,000 rows was 37% slower for 0.2.0 than in this
   run. Both would have been flagged (load above 6), so they were stopped after a few operations
   and their output was not kept. The third attempt held the lock and waited until the machine
   had been quiet for two minutes (load below 2.5, no headless Chromium from other repositories)
   before starting. A per-minute log during it showed load 1.3–2.2, no other Chromium, and only
-  the usual desktop work (a browser, Discord, other agents' idle sessions).
+  the usual idle desktop applications.
 
 ## Every framework (medians, ms)
 
