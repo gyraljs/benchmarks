@@ -1,5 +1,5 @@
 // node scripts/pack-gyral-next.mjs [gyral checkout]: packs @gyral/core and @gyral/time from a
-// Gyral checkout (default ../gyral-next, the `next` worktree) into vendor-next/, the tarballs
+// Gyral checkout (default ../gyral) into vendor-next/, the tarballs
 // the `gyral-next` variant (frameworks/gyral-next) installs. Then set the root override
 // `@gyral/time@<version>>@gyral/core` to the version printed below and run `pnpm install` (the
 // lockfile records the tarballs' hashes).
@@ -15,7 +15,7 @@ import { tmpdir } from 'node:os';
 import { join, relative, resolve } from 'node:path';
 import { ROOT } from './lib/config.mjs';
 
-const gyral = resolve(process.argv[2] ?? join(ROOT, '..', 'gyral-next'));
+const gyral = resolve(process.argv[2] ?? join(ROOT, '..', 'gyral'));
 const out = join(ROOT, 'vendor-next');
 const coreManifest = join(gyral, 'packages', 'core', 'package.json');
 const VERSION = `${JSON.parse(readFileSync(coreManifest, 'utf8')).version}-local`;
