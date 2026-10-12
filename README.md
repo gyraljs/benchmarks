@@ -149,13 +149,13 @@ scripts/                     build, sizes, serve, bench, report, profiling and c
 scripts/lib/                 the measurement code: runtime, trace, memory, startup, drift, stats
 results/<date>[-<label>]/    committed runs: results.json (every sample), results.md, NOTES.md
 docs/                        methodology, the apps and their contract, profiling
-vendor*/                     tarballs installed instead of npm packages (vendor-next/ is Gyral
-                             0.3.0; the others are earlier Gyral experiment and RC builds)
+vendor-next/                 Gyral 0.3.0's release tarballs, installed instead of npm (gyral-next)
 ```
 
-Besides the seven compared frameworks, `frameworks/` holds Gyral experiment variants
-(`gyral-noeffect`, `gyral-twotrack`, `gyral-pipewise`, `gyral-combo`) from earlier runs. They
-share Gyral's app sources and are not part of the headline.
+The Gyral experiment variants of earlier runs (`gyral-noeffect`, `gyral-twotrack`,
+`gyral-pipewise`, `gyral-combo`), their vendored tarballs and their comparison scripts were
+retired on 2026-10-12. Their results stay in `results/`, and the code is in git history: commit
+72ee36a is the last one that has them (`git checkout 72ee36a`).
 
 ### How a run flows
 
@@ -223,9 +223,8 @@ pnpm bench           # the full run (results/<date>/); ~25 min for the eight com
 | `node scripts/trace-timeline.mjs [--only=…] [--ops=…]` | The main-thread timeline of a table operation, task by task                  |
 | `pnpm profile:build`, `:nodes`, `:run`, `:cpu`         | Profiling variants of the table app ([docs/profile.md](docs/profile.md))     |
 
-Without `--only`, `build` and `bench` cover every package in `frameworks/`, including the
-experiment variants. The headline run used
-`pnpm bench --label=full --only=gyral,gyral-next,lit,solid,svelte,vue,preact,react`.
+Without `--only`, `build` and `bench` cover every package in `frameworks/`. The headline run
+used `pnpm bench --label=full --only=gyral,gyral-next,lit,solid,svelte,vue,preact,react`.
 
 **Keep the machine quiet.** Close other browsers and test suites and wait for a low load
 average before a timed run. Commands that drive Chromium can share a lock so that two of them
