@@ -1,5 +1,5 @@
 import { buildData, UPDATE_SUFFIX, type Row } from '@bench/shared/data';
-import { define, html, repeat } from '@gyral/core';
+import { define, each, html, intentsOf, type TemplateResult } from '@gyral/core';
 
 interface State {
   readonly rows: readonly Row[];
@@ -24,19 +24,49 @@ const swapped = (rows: readonly Row[]): readonly Row[] => {
   return next;
 };
 
+/** A row id from a button's `value`; anything else is ignored. */
+const rowId = (value: string | undefined): number | undefined => {
+  const id = Number(value);
+  return Number.isInteger(id) ? id : undefined;
+};
+
+// The component's intent names as a module constant (`intentsOf`), so the row stays pure: it
+// reads only its arguments and module constants; the selection comes through `pick`.
+const i = intentsOf<typeof Table>();
+
+const RowView = (row: Row, selected: boolean): TemplateResult => html`
+  <tr class=${selected ? 'danger' : ''}>
+    <td class="col-id">${row.id}</td>
+    <td>
+      <button class="lbl" type="button" value=${row.id} data-intent=${i.Select}>
+        ${row.label}
+      </button>
+    </td>
+    <td>
+      <button class="remove" type="button" value=${row.id} data-intent=${i.Remove}>x</button>
+    </td>
+  </tr>
+`;
+
 // Building rows is the same shared code every implementation calls; Gyral's own guideline
-// would make randomness a command (the `random` driver), which only adds work here.
-const Table = define<State, Msg>('bench-table', {
+// would make randomness a command (a random driver), which only adds work here.
+const Table = define<State, Msg>()('bench-table', {
   init: () => ({ rows: [], selected: undefined }),
   intent: {
-    Run: () => ({ _tag: 'Run' }),
-    RunLots: () => ({ _tag: 'RunLots' }),
-    Add: () => ({ _tag: 'Add' }),
-    Update: () => ({ _tag: 'Update' }),
-    Clear: () => ({ _tag: 'Clear' }),
-    Swap: () => ({ _tag: 'Swap' }),
-    Select: ({ value }) => ({ _tag: 'Select', id: Number(value) }),
-    Remove: ({ value }) => ({ _tag: 'Remove', id: Number(value) }),
+    Run: true,
+    RunLots: true,
+    Add: true,
+    Update: true,
+    Clear: true,
+    Swap: true,
+    Select: ({ value }) => {
+      const id = rowId(value);
+      return id === undefined ? undefined : { _tag: 'Select', id };
+    },
+    Remove: ({ value }) => {
+      const id = rowId(value);
+      return id === undefined ? undefined : { _tag: 'Remove', id };
+    },
   },
   update: {
     Run: () => ({ rows: buildData(1000), selected: undefined }),
@@ -51,6 +81,7 @@ const Table = define<State, Msg>('bench-table', {
     Select: (s, m) => ({ ...s, selected: m.id }),
     Remove: (s, m) => ({ ...s, rows: s.rows.filter((r) => r.id !== m.id) }),
   },
+  // The view uses its own `i`; the module constant is for the rows.
   view: (s, i) => html`
     <menu>
       <li><button id="run" type="button" data-intent=${i.Run}>Create 1,000 rows</button></li>
@@ -66,24 +97,11 @@ const Table = define<State, Msg>('bench-table', {
     </menu>
     <table>
       <tbody id="tbody">
-        ${repeat(
+        ${each(
           s.rows,
           (row) => row.id,
-          (row) => html`
-            <tr class=${row.id === s.selected ? 'danger' : ''}>
-              <td class="col-id">${row.id}</td>
-              <td>
-                <button class="lbl" type="button" value=${row.id} data-intent=${i.Select}>
-                  ${row.label}
-                </button>
-              </td>
-              <td>
-                <button class="remove" type="button" value=${row.id} data-intent=${i.Remove}>
-                  x
-                </button>
-              </td>
-            </tr>
-          `,
+          RowView,
+          (row) => row.id === s.selected,
         )}
       </tbody>
     </table>

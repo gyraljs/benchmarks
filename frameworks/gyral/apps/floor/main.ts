@@ -1,8 +1,7 @@
-import { define, html, type Stateless } from '@gyral/core';
+import { define, html } from '@gyral/core';
 
-const App = define<Stateless, never>('bench-app', {
-  intent: {},
-  update: {},
+// No state and no messages: neither `intent` nor `update` is needed (Gyral 0.3.1).
+const App = define()('bench-app', {
   view: () => html`<p id="hello">Hello</p>`,
 });
 document.getElementById('app')?.append(new App());

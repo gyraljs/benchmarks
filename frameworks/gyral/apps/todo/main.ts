@@ -1,4 +1,4 @@
-import { define, html, live, liveBoolean, repeat } from '@gyral/core';
+import { define, each, html, intentsOf, type TemplateResult } from '@gyral/core';
 
 interface Todo {
   readonly id: number;
@@ -22,13 +22,43 @@ type Msg =
   | { readonly _tag: 'Remove'; readonly id: number }
   | { readonly _tag: 'Show'; readonly filter: Filter };
 
-const Todos = define<State, Msg>('bench-todos', {
+/** A todo id from a control's `value`; anything else is ignored. */
+const todoId = (value: string | undefined): number | undefined => {
+  const id = Number(value);
+  return Number.isInteger(id) ? id : undefined;
+};
+
+// The component's intent names as a module constant (`intentsOf`), so the row stays pure: it
+// reads only its argument and module constants.
+const i = intentsOf<typeof Todos>();
+
+const TodoItem = (t: Todo): TemplateResult => html`
+  <li class=${t.done ? 'completed' : ''}>
+    <input
+      class="toggle"
+      type="checkbox"
+      value=${t.id}
+      ?checked=${t.done}
+      data-intent=${i.Toggle}
+    />
+    <span class="title">${t.title}</span>
+    <button class="destroy" type="button" value=${t.id} data-intent=${i.Remove}>×</button>
+  </li>
+`;
+
+const Todos = define<State, Msg>()('bench-todos', {
   init: () => ({ todos: [], filter: 'all', draft: '', nextId: 1 }),
   intent: {
     Typed: ({ value }) => ({ _tag: 'Typed', text: value ?? '' }),
-    Add: () => ({ _tag: 'Add' }),
-    Toggle: ({ value }) => ({ _tag: 'Toggle', id: Number(value) }),
-    Remove: ({ value }) => ({ _tag: 'Remove', id: Number(value) }),
+    Add: true,
+    Toggle: ({ value }) => {
+      const id = todoId(value);
+      return id === undefined ? undefined : { _tag: 'Toggle', id };
+    },
+    Remove: ({ value }) => {
+      const id = todoId(value);
+      return id === undefined ? undefined : { _tag: 'Remove', id };
+    },
     Show: ({ value }) => (isFilter(value) ? { _tag: 'Show', filter: value } : undefined),
   },
   update: {
@@ -50,6 +80,7 @@ const Todos = define<State, Msg>('bench-todos', {
     Remove: (s, m) => ({ ...s, todos: s.todos.filter((t) => t.id !== m.id) }),
     Show: (s, m) => ({ ...s, filter: m.filter }),
   },
+  // The view uses its own `i`; the module constant is for the rows.
   view: (s, i) => {
     const visible = s.todos.filter((t) =>
       s.filter === 'all' ? true : s.filter === 'active' ? !t.done : t.done,
@@ -57,26 +88,10 @@ const Todos = define<State, Msg>('bench-todos', {
     const left = s.todos.filter((t) => !t.done).length;
     return html`
       <form id="add-form" data-intent=${i.Add}>
-        <input id="new-todo" aria-label="New todo" .value=${live(s.draft)} data-intent=${i.Typed} />
+        <input id="new-todo" aria-label="New todo" value=${s.draft} data-intent=${i.Typed} />
       </form>
       <ul id="todo-list">
-        ${repeat(
-          visible,
-          (t) => t.id,
-          (t) => html`
-            <li class=${t.done ? 'completed' : ''}>
-              <input
-                class="toggle"
-                type="checkbox"
-                value=${t.id}
-                ?checked=${liveBoolean(t.done)}
-                data-intent=${i.Toggle}
-              />
-              <span class="title">${t.title}</span>
-              <button class="destroy" type="button" value=${t.id} data-intent=${i.Remove}>×</button>
-            </li>
-          `,
-        )}
+        ${each(visible, (t) => t.id, TodoItem)}
       </ul>
       <p>
         <span id="remaining">${left} left</span>

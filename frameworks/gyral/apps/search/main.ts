@@ -1,5 +1,5 @@
 import { DEBOUNCE_MS, searchWords } from '@bench/shared/search';
-import { command, defineDriver, define, html, repeat, type Command } from '@gyral/core';
+import { command, defineDriver, define, each, html, type Command } from '@gyral/core';
 import { debounce } from '@gyral/time';
 
 /** The fake search API as a driver; its lane switches, so a newer query aborts the old one. */
@@ -26,7 +26,7 @@ const search = (query: string): Command<Msg> =>
     onSuccess: (results) => ({ _tag: 'Found', query, results }),
   });
 
-const Search = define<State, Msg>('bench-search', {
+const Search = define<State, Msg>()('bench-search', {
   init: () => ({ query: '', results: [], status: 'idle' }),
   intent: {
     Typed: ({ value }) => ({ _tag: 'Typed', query: value ?? '' }),
@@ -57,7 +57,7 @@ const Search = define<State, Msg>('bench-search', {
         }
       </p>
       <ul id="results">
-        ${repeat(
+        ${each(
           s.results,
           (r) => r,
           (r) => html`<li>${r}</li>`,

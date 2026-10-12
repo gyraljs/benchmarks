@@ -6,7 +6,7 @@ import {
   type Field,
   type SignupValues,
 } from '@bench/shared/signup';
-import { define, html, live, liveBoolean, nothing } from '@gyral/core';
+import { define, html, nothing } from '@gyral/core';
 
 const FIELDS: readonly { field: Exclude<Field, 'terms'>; label: string; type: string }[] = [
   { field: 'email', label: 'Email', type: 'email' },
@@ -26,7 +26,9 @@ type Msg =
   | { readonly _tag: 'Agreed'; readonly terms: boolean }
   | { readonly _tag: 'Submit' };
 
-const Signup = define<State, Msg>('bench-signup', {
+// One `Edited` intent for the three text fields, told apart by `name` (Gyral's "several
+// controls, one message"). Validation is the shared rules, run in the view, as everywhere else.
+const Signup = define<State, Msg>()('bench-signup', {
   init: () => ({ values: EMPTY_SIGNUP, submitted: false, success: undefined }),
   intent: {
     Edited: ({ target, value }) => {
@@ -34,7 +36,7 @@ const Signup = define<State, Msg>('bench-signup', {
       return isTextField(name) ? { _tag: 'Edited', field: name, value: value ?? '' } : undefined;
     },
     Agreed: ({ checked }) => ({ _tag: 'Agreed', terms: checked === true }),
-    Submit: () => ({ _tag: 'Submit' }),
+    Submit: true,
   },
   update: {
     Edited: (s, m) => ({ ...s, values: { ...s.values, [m.field]: m.value } }),
@@ -61,7 +63,7 @@ const Signup = define<State, Msg>('bench-signup', {
                 id=${f.field}
                 name=${f.field}
                 type=${f.type}
-                .value=${live(s.values[f.field])}
+                value=${s.values[f.field]}
                 aria-invalid=${errors[f.field] !== undefined}
                 data-intent=${i.Edited}
               />
@@ -74,7 +76,7 @@ const Signup = define<State, Msg>('bench-signup', {
             id="terms"
             name="terms"
             type="checkbox"
-            ?checked=${liveBoolean(s.values.terms)}
+            ?checked=${s.values.terms}
             aria-invalid=${errors.terms !== undefined}
             data-intent=${i.Agreed}
           />

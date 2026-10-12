@@ -5,11 +5,11 @@ interface State {
 }
 type Msg = { readonly _tag: 'Increment' } | { readonly _tag: 'Decrement' };
 
-const Counter = define<State, Msg>('bench-counter', {
+const Counter = define<State, Msg>()('bench-counter', {
   init: () => ({ count: 0 }),
   intent: {
-    Increment: () => ({ _tag: 'Increment' }),
-    Decrement: () => ({ _tag: 'Decrement' }),
+    Increment: true,
+    Decrement: true,
   },
   update: {
     Increment: (s) => ({ count: s.count + 1 }),
