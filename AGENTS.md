@@ -22,7 +22,7 @@ spec for all. This file is a map; the linked docs are the system of record.
 | `pnpm profile:*`                  | Profiling variants of the table app: build, nodes, run, cpu ([docs/profile.md](docs/profile.md)) |
 
 First run needs `pnpm exec playwright install chromium`. A full `pnpm bench` of all eight
-packages (Gyral 0.3.1 in `gyral`, Gyral 0.3.0 in `gyral-0.3.0`, and the six other frameworks)
+packages (Gyral 0.3.2 in `gyral`, Gyral 0.3.0 in `gyral-0.3.0`, and the six other frameworks)
 takes about 25 minutes. Commands that drive Chromium run under the shared
 machine lock (`flock /tmp/gyral-bench.lock …`).
 
