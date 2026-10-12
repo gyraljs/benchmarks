@@ -21,23 +21,24 @@ spec for all. This file is a map; the linked docs are the system of record.
 | `node scripts/trace-timeline.mjs` | Main-thread timeline of one table operation per sample (`--only`, `--ops`, `--runs`, `--out`)    |
 | `pnpm profile:*`                  | Profiling variants of the table app: build, nodes, run, cpu ([docs/profile.md](docs/profile.md)) |
 
-First run needs `pnpm exec playwright install chromium`. A full `pnpm bench` of the eight
-compared frameworks takes about 25 minutes. Commands that drive Chromium run under the shared
+First run needs `pnpm exec playwright install chromium`. A full `pnpm bench` of all eight
+packages (Gyral 0.3.1 in `gyral`, Gyral 0.3.0 in `gyral-0.3.0`, and the six other frameworks)
+takes about 25 minutes. Commands that drive Chromium run under the shared
 machine lock (`flock /tmp/gyral-bench.lock …`).
 
 ## Where things are
 
-| Path                                       | Contents                                                                   |
-| ------------------------------------------ | -------------------------------------------------------------------------- |
-| [docs/methodology.md](docs/methodology.md) | How each number is measured, and its limits                                |
-| [docs/apps.md](docs/apps.md)               | The six apps, their shared DOM contract, per-framework idioms              |
-| [docs/profile.md](docs/profile.md)         | Profiling variants: what they change, commands, method notes               |
-| [CONTRIBUTING.md](CONTRIBUTING.md)         | Adding a framework or app, committing a run, measuring an unreleased Gyral |
-| `shared/src`                               | Shared app code: table data, fake search API, signup validation            |
-| `frameworks/<name>`                        | One package per framework: `vite.config.ts`, `apps/<app>/`                 |
-| `scripts/`                                 | build, sizes, serve, bench; `scripts/lib/` holds the measurement code      |
-| `tests/apps.spec.ts`                       | One behavioural spec for every implementation                              |
-| `results/<date>/`                          | Committed results: `results.json` (all samples) and `results.md`           |
+| Path                                       | Contents                                                              |
+| ------------------------------------------ | --------------------------------------------------------------------- |
+| [docs/methodology.md](docs/methodology.md) | How each number is measured, and its limits                           |
+| [docs/apps.md](docs/apps.md)               | The six apps, their shared DOM contract, per-framework idioms         |
+| [docs/profile.md](docs/profile.md)         | Profiling variants: what they change, commands, method notes          |
+| [CONTRIBUTING.md](CONTRIBUTING.md)         | Adding a framework or app, committing a run, moving the Gyral slots   |
+| `shared/src`                               | Shared app code: table data, fake search API, signup validation       |
+| `frameworks/<name>`                        | One package per framework: `vite.config.ts`, `apps/<app>/`            |
+| `scripts/`                                 | build, sizes, serve, bench; `scripts/lib/` holds the measurement code |
+| `tests/apps.spec.ts`                       | One behavioural spec for every implementation                         |
+| `results/<date>/`                          | Committed results: `results.json` (all samples) and `results.md`      |
 
 ## Rules
 

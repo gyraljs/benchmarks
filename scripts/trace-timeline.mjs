@@ -22,7 +22,7 @@ const keys = (arg('ops') ?? 'select').split(',');
 const runs = Number(arg('runs') ?? 3);
 const cpu = Number(arg('cpu') ?? 4);
 const out = arg('out');
-// --url=gyral-next=gyral-next/table/?flush=task: a framework name mapped to another page.
+// --url=gyral=p-gyral/table/?shadow=0: a framework name mapped to another page.
 const urls = Object.fromEntries(
   (arg('url') ?? '')
     .split(',')

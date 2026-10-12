@@ -59,8 +59,10 @@ What it is not:
 
 ## Results, 2026-10-07: Gyral 0.3.0
 
-Gyral 0.3.0 and the published Gyral 0.2.0 against the current releases of the others, all
-measured in one run. Full tables: [results.md](results/2026-10-07-full/results.md); noise
+Gyral 0.3.0 and Gyral 0.2.0 against the then-current releases of the others, all measured in
+one run. The repository has moved on since: `frameworks/gyral` is now Gyral 0.3.1, Gyral 0.3.0
+is kept as `gyral-0.3.0`, and the other frameworks are on newer releases
+([the slots](#the-gyral-slots)); the next full run will replace this section. Full tables: [results.md](results/2026-10-07-full/results.md); noise
 analysis and notes: [NOTES.md](results/2026-10-07-full/NOTES.md); every sample is in
 `results.json`.
 
@@ -74,8 +76,8 @@ analysis and notes: [NOTES.md](results/2026-10-07-full/NOTES.md); every sample i
 | JS heap after load (MB)                            |  1.13 |   1.17 | 1.20 |   1.19 |        **1.18** |        1.26 | 1.32 |  1.55 |
 
 Lower is better in every row; a geometric mean of 1.00 would mean fastest at every operation.
-Gyral 0.3.0 is the `gyral-next` column in the results files: Gyral's 0.3.0 release packs,
-tagged on GitHub but not yet on npm ([why it has its own slot](#gyral-030-is-gyral-next)).
+Gyral 0.3.0 is the `gyral-next` column in that run's files: Gyral's 0.3.0 release packs,
+measured before 0.3.0 was published. The 0.3.0 on npm has the same files.
 
 What the numbers say:
 
@@ -120,20 +122,24 @@ Caveats for this run:
   current 3.3.3, whose `repeat` leaves an empty comment node behind for every removed item
   ([lit/lit#5010](https://github.com/lit/lit/issues/5010)). In the 2026-10-05 run that made
   "clear 1,000 rows" take about 3.7 s for Lit and Gyral 0.1.0. Gyral 0.3.0 does not use Lit.
-- **Gyral 0.3.0 comes from release tarballs, not npm,** until it is published.
+- **Gyral 0.3.0 came from its release tarballs** in this run, three days before it reached
+  npm; npm's 0.3.0 has the same files.
 - **Runtime is timed from Chrome performance traces,** like js-framework-benchmark
   ([methodology](docs/methodology.md#trace-based-timing-default-since-2026-10-05)), so
   operations shorter than a frame include waiting for the frame that paints them.
 
-### Gyral 0.3.0 is `gyral-next`
+### The Gyral slots
 
-`frameworks/gyral-next` is the same six apps on Gyral 0.3's own view layer (no Lit). It
-installs `@gyral/core` and `@gyral/time` from tarballs in `vendor-next/` rather than npm, so
-0.3 could be measured against the published 0.2.0 (`frameworks/gyral`) in the same run before
-it was published. They are Gyral's 0.3.0 release packs (tag `v0.3.0`, commit e79abd6), copied
-unchanged; `vendor-next/SOURCE.json` records where they came from. The id stays `gyral-next`
-so that old and new results files agree. [CONTRIBUTING.md](CONTRIBUTING.md#measure-an-unreleased-gyral-gyral-next)
-explains how to measure another unreleased Gyral, and the plan for when 0.3.0 reaches npm.
+Two Gyral packages are measured, both installed from npm and pinned exactly:
+
+- `frameworks/gyral` is the current release, **Gyral 0.3.1**, written to its documentation
+  (`define<State, Msg>()(tag, spec)`, `intentsOf` for pure list rows, `clientOnly` builds).
+- `frameworks/gyral-0.3.0` is the previous release, **Gyral 0.3.0**, with the app sources
+  measured on 2026-10-07, so a run shows what the newest release changed.
+
+Older results use other ids: up to 2026-10-07, `gyral-next` is Gyral 0.3.0 (from its release
+packs) and `gyral` is Gyral 0.2.0. [CONTRIBUTING.md](CONTRIBUTING.md#compare-gyral-releases-gyral-030)
+describes how the slots move when Gyral releases again.
 
 ## How it works
 
@@ -205,7 +211,7 @@ pnpm install
 pnpm exec playwright install chromium
 pnpm check           # typecheck, lint, format, build, correctness tests
 pnpm bench --quick   # a few samples, to try the harness (results/quick/, not committed)
-pnpm bench           # the full run (results/<date>/); ~25 min for the eight compared frameworks
+pnpm bench           # the full run (results/<date>/); about 25 min for all eight packages
 ```
 
 | Command                                                | What it does                                                                 |
@@ -222,8 +228,8 @@ pnpm bench           # the full run (results/<date>/); ~25 min for the eight com
 | `node scripts/trace-timeline.mjs [--only=…] [--ops=…]` | The main-thread timeline of a table operation, task by task                  |
 | `pnpm profile:build`, `:nodes`, `:run`, `:cpu`         | Profiling variants of the table app ([docs/profile.md](docs/profile.md))     |
 
-Without `--only`, `build` and `bench` cover every package in `frameworks/`. The headline run
-used `pnpm bench --label=full --only=gyral,gyral-next,lit,solid,svelte,vue,preact,react`.
+Without `--only`, `build` and `bench` cover every package in `frameworks/`: the two Gyral slots
+and the six other frameworks. A headline run is `pnpm bench --label=full`, under the lock below.
 
 **Keep the machine quiet.** Close other browsers and test suites and wait for a low load
 average before a timed run. Commands that drive Chromium can share a lock so that two of them
@@ -237,9 +243,11 @@ were discarded because something didn't.
   Nobody tunes one framework, or skips a documented best practice in another, to change a
   result. A change needed for one framework only is explained in [docs/apps.md](docs/apps.md).
 - **Current npm releases, pinned exactly;** Vite 8 production builds with each framework's
-  official plugin and otherwise identical settings. Two exceptions, both stated with the
-  results: lit-html is pinned to 3.3.0 for Lit and Gyral 0.2.0 (see the caveats above), and
-  Gyral 0.3.0 comes from its vendored release tarballs until it is on npm.
+  official plugin and otherwise identical settings. Nothing is vendored or packed locally. Two
+  deliberate exceptions, stated with the results: lit-html is pinned to 3.3.0 for Lit (its
+  current 3.3.3 leaks a comment node per removed list item,
+  [lit/lit#5010](https://github.com/lit/lit/issues/5010)), and the `gyral-0.3.0` slot keeps
+  the previous Gyral release next to the current one.
 - **Every app passes the correctness spec** before it is benchmarked.
 - **Results are committed, never edited.** Each run is one folder and one commit
   (`results: …`); to change a number, re-run and commit a new folder. `pnpm report` can
@@ -249,7 +257,7 @@ were discarded because something didn't.
 - **Code:** files of 300 lines or fewer, no `any`, and `pnpm check` passes.
 
 [CONTRIBUTING.md](CONTRIBUTING.md) has the procedures: adding a framework or an app, running
-and committing a benchmark, comparing runs, and measuring an unreleased Gyral.
+and committing a benchmark, comparing runs, and moving the Gyral slots to a new release.
 
 ## Earlier runs
 

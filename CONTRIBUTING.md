@@ -25,9 +25,9 @@ file has the procedures.
    live in `shared/src` and are used unchanged by every framework. No UI, state or form
    libraries.
 4. **Current npm releases, pinned exactly**, built by Vite 8 with each framework's official
-   plugin and otherwise identical settings. The exceptions are stated in the README and with
-   every result: lit-html pinned to 3.3.0 for Lit and Gyral 0.2.0, and Gyral 0.3.0 installed
-   from its release tarballs until it is on npm.
+   plugin and otherwise identical settings. Nothing is vendored or packed locally. The
+   exceptions are stated in the README and with every result: lit-html pinned to 3.3.0 for Lit,
+   and the `gyral-0.3.0` slot, which keeps the previous Gyral release next to the current one.
 5. **Report results as measured,** including where Gyral loses. Context from elsewhere (for
    example a spike in Gyral's own repository) may be cited as context, never as a result of
    this repository.
