@@ -5,7 +5,7 @@ import { expect, test, type Page } from '@playwright/test';
 // same selectors work for Lit and Gyral (shadow DOM) and the others (light DOM).
 const FRAMEWORKS = [
   'gyral',
-  'gyral-next',
+  'gyral-0.3.0',
   'lit',
   'react',
   'preact',

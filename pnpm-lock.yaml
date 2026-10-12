@@ -6,11 +6,6 @@ settings:
 
 overrides:
   lit-html: 3.3.0
-  '@gyral/core': 0.2.0
-  '@gyral/time': 0.2.0
-  '@bench/gyral-next>@gyral/core': file:vendor-next/gyral-core-next.tgz
-  '@bench/gyral-next>@gyral/time': file:vendor-next/gyral-time-next.tgz
-  '@gyral/time@0.3.0>@gyral/core': file:vendor-next/gyral-core-next.tgz
 
 importers:
 
@@ -65,17 +60,17 @@ importers:
         specifier: 3.3.3
         version: 3.3.3
 
-  frameworks/gyral-next:
+  frameworks/gyral-0.3.0:
     dependencies:
       '@bench/shared':
         specifier: workspace:*
         version: link:../../shared
       '@gyral/core':
-        specifier: file:../../vendor-next/gyral-core-next.tgz
-        version: file:vendor-next/gyral-core-next.tgz(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))
+        specifier: 0.3.0
+        version: 0.3.0(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))
       '@gyral/time':
-        specifier: file:../../vendor-next/gyral-time-next.tgz
-        version: file:vendor-next/gyral-time-next.tgz(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))
+        specifier: 0.3.0
+        version: 0.3.0(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))
 
   frameworks/lit:
     dependencies:
@@ -320,9 +315,8 @@ packages:
     peerDependencies:
       lit: ^3.3.0
 
-  '@gyral/core@file:vendor-next/gyral-core-next.tgz':
-    resolution: {integrity: sha512-MMHIrpOR5r7DAa3dwSmQwMHziiXv7P5alKpqI9xQObD+SL0Gb2/Sm7ADAIz3ja48I1TlqDfh0x0pmky+5UiSFQ==, tarball: file:vendor-next/gyral-core-next.tgz}
-    version: 0.3.0
+  '@gyral/core@0.3.0':
+    resolution: {integrity: sha512-DFTS2UhbI67lS/fCOUD0can+aTgWLtaTCoHPU9avHrqzVetsF0Oqe17zQ+Uiv3EvnsyUi2XMp09WsEUptkOjtg==}
     peerDependencies:
       eslint: ^9.0.0 || ^10.0.0
       parse5: ^7.0.0 || ^8.0.0
@@ -338,9 +332,8 @@ packages:
   '@gyral/time@0.2.0':
     resolution: {integrity: sha512-1+4Fs1L5TXV86J246ebLL6ckZDFPWZKNp2h144IAVGZjTfeURkuFYzBr4uyNxaFaMPf7dDL1lbFoIVbw5W4A6w==}
 
-  '@gyral/time@file:vendor-next/gyral-time-next.tgz':
-    resolution: {integrity: sha512-Fl5oqbaIT3S4t17696rPrWGntyEPZM23+UP5Z7m9iauXM9GjDL+4X+gxmJsNyUq7p/nXx1RtDBjaTbeXMnzj6g==, tarball: file:vendor-next/gyral-time-next.tgz}
-    version: 0.3.0
+  '@gyral/time@0.3.0':
+    resolution: {integrity: sha512-KszySQfXHfx9lNuk1VfrJUoR6cMAyb1e3lEU4tIWfytFMAnzZ4C2rER1JJUVwZGZs4aYse4svTX94caxsbL85Q==}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -1682,7 +1675,7 @@ snapshots:
       '@standard-schema/spec': 1.1.0
       lit: 3.3.3
 
-  '@gyral/core@file:vendor-next/gyral-core-next.tgz(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))':
+  '@gyral/core@0.3.0(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))':
     dependencies:
       '@standard-schema/spec': 1.1.0
     optionalDependencies:
@@ -1696,9 +1689,9 @@ snapshots:
     transitivePeerDependencies:
       - lit
 
-  '@gyral/time@file:vendor-next/gyral-time-next.tgz(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))':
+  '@gyral/time@0.3.0(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))':
     dependencies:
-      '@gyral/core': file:vendor-next/gyral-core-next.tgz(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))
+      '@gyral/core': 0.3.0(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.2(@types/node@24.19.1))
     transitivePeerDependencies:
       - eslint
       - parse5

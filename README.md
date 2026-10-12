@@ -149,7 +149,6 @@ scripts/                     build, sizes, serve, bench, report, profiling and c
 scripts/lib/                 the measurement code: runtime, trace, memory, startup, drift, stats
 results/<date>[-<label>]/    committed runs: results.json (every sample), results.md, NOTES.md
 docs/                        methodology, the apps and their contract, profiling
-vendor-next/                 Gyral 0.3.0's release tarballs, installed instead of npm (gyral-next)
 ```
 
 The Gyral experiment variants of earlier runs (`gyral-noeffect`, `gyral-twotrack`,

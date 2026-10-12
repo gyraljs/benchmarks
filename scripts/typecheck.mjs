@@ -5,7 +5,7 @@ import { ROOT } from './lib/config.mjs';
 
 const CHECKS = [
   ['.', 'tsc', ['-p', 'tsconfig.json']],
-  ...['gyral', 'gyral-next', 'lit', 'react', 'preact', 'solid'].map((fw) => [
+  ...['gyral', 'gyral-0.3.0', 'lit', 'react', 'preact', 'solid'].map((fw) => [
     `frameworks/${fw}`,
     'tsc',
     ['-p', 'tsconfig.json'],

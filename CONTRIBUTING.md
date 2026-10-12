@@ -85,53 +85,27 @@ Commit subjects in this repository start with what they touch: `results:`, `expe
 (a variant framework or a comparison script), `harness:`, `docs:`, or `feat(bench):` for new
 harness features.
 
-## Measure an unreleased Gyral (`gyral-next`)
+## Compare Gyral releases (`gyral-0.3.0`)
 
-`frameworks/gyral-next` installs `@gyral/core` and `@gyral/time` from the tarballs in
-`vendor-next/` instead of npm, so a Gyral release can be measured against the published one in
-the same run before it is on npm. It currently holds Gyral's 0.3.0 release packs (tag
-`v0.3.0`, commit e79abd6), copied unchanged; `vendor-next/SOURCE.json` records where they came
-from.
+`frameworks/gyral` is the current Gyral release. `frameworks/gyral-0.3.0` keeps the previous
+release, Gyral 0.3.0 from npm, with the app sources measured on 2026-10-07, so every run shows
+what the newest release changed. Both install `@gyral/core` and `@gyral/time` from npm, pinned
+exactly; this repository installs no vendored or locally packed Gyral.
 
-**Naming.** The framework id stays `gyral-next`: the directory, `--only=`, the harness lists
-and every committed results file use it, and renaming it would make old and new results
-disagree. Hand-written reports call it by its version (Gyral 0.3.0); the generated
-`results.md` lists the installed version under "Framework versions". The tarballs keep their
-names (`vendor-next/gyral-{core,time}-next.tgz`) for the same reason.
+**Ids in older results.** Runs up to 2026-10-07 have no `gyral-0.3.0` column: there,
+`gyral-next` is Gyral 0.3.0 (its release packs, identical to npm's 0.3.0 apart from a trailing
+newline in `package.json`), and `gyral` is Gyral 0.2.0. Every `results.md` lists the installed
+versions under "Framework versions". Committed results keep their ids; they are never edited.
 
-To measure a Gyral checkout (for example its `next` branch):
+When Gyral releases again:
 
-```sh
-node scripts/pack-gyral-next.mjs <path to a Gyral checkout>   # packs as <version>-local
-# set "@gyral/time@<version>-local>@gyral/core" in the root pnpm.overrides, as the script prints
-pnpm install                                                  # the lockfile records the tarballs
-pnpm bench --only=gyral,gyral-next,lit
-```
+1. Copy `frameworks/gyral` to `frameworks/gyral-<its current version>` (package name
+   `@bench/gyral-<version>`), and remove the older comparison slot unless it is still needed.
+2. Move `frameworks/gyral` to the new release: exact versions in `package.json`, app changes
+   the release's migration guide asks for, and its row in [docs/apps.md](docs/apps.md).
+3. Update the slot lists in `scripts/lib/config.mjs`, `scripts/typecheck.mjs` and
+   `tests/apps.spec.ts`, then `pnpm install`, `pnpm check` and a full run.
 
-The path defaults to a sibling directory, `../gyral-next`. Tarballs Gyral packed itself
-(`gyral-core-<version>.tgz`, `gyral-time-<version>.tgz`) can instead be copied unchanged over
-`vendor-next/gyral-core-next.tgz` and `gyral-time-next.tgz`, as for 0.3.0; then set that
-version in the `@gyral/time@<version>>@gyral/core` override, so `@gyral/time` gets the same
-core.
-
-### Once Gyral 0.3.0 is on npm
-
-Planned, not done yet:
-
-1. Check that npm's 0.3.0 is what was measured: unpack `npm pack @gyral/core@0.3.0` and
-   `@gyral/time@0.3.0` and diff them against the tarballs in `vendor-next/`.
-2. Move `frameworks/gyral` to 0.3.0, since the rules measure every framework's current npm
-   release: bring over the `gyral-next` app sources (the 0.3 API: `each`, module-level
-   `intents<Msg>()`, form-state attributes), pin `@gyral/core` and `@gyral/time` to `0.3.0`,
-   drop `lit` from its dependencies and update `docs/apps.md`. The root overrides that pin
-   `@gyral/core`/`@gyral/time` to 0.2.0 also keep the 0.2-era variants (`gyral-noeffect`,
-   `-twotrack`, `-pipewise`, `-combo`) on 0.2.0, so scope them to those variants, or retire the
-   variants, instead of changing them globally.
-3. Remove `gyral-next`: `frameworks/gyral-next`, `vendor-next/`, `scripts/pack-gyral-next.mjs`
-   (it stays in git history for the next pre-release), the three `gyral-next` overrides, and its
-   entries in `scripts/lib/config.mjs`, `scripts/typecheck.mjs`, `tests/apps.spec.ts`,
-   `docs/apps.md` and `AGENTS.md`. Committed results keep the `gyral-next` id; they are never
-   edited.
-4. `pnpm check`, then a full `pnpm bench` of every framework as the new headline run, since
-   `frameworks/gyral` changed. 0.2.0 vs 0.3.0 stays documented by the 2026-10-06 and 2026-10-07
-   runs.
+To measure a Gyral pre-release, publish it to npm under a dist-tag (for example `next`) and pin
+its exact version in a slot. The earlier workflow that packed an unreleased checkout into
+`vendor-next/` (`scripts/pack-gyral-next.mjs`) is in git history (commit 72ee36a).
