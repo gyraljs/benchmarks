@@ -106,7 +106,7 @@ When Gyral releases again:
 3. Update the slot lists in `scripts/lib/config.mjs`, `scripts/typecheck.mjs` and
    `tests/apps.spec.ts`, then `pnpm install`, `pnpm check` and a full run.
 
-A release that only adds to the current one, like 0.3.2 after 0.3.1, needs step 2 alone:
+A release that only adds to the current one, like 0.3.2 or 0.3.3 after 0.3.1, needs step 2 alone:
 `frameworks/gyral` moves to it and the comparison slot (`gyral-0.3.0`) stays.
 
 To measure a Gyral pre-release, publish it to npm under a dist-tag (for example `next`) and pin
