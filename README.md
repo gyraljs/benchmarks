@@ -6,11 +6,11 @@ correctness spec, then measured for bundle size, runtime, memory and startup.
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node >= 24](https://img.shields.io/badge/node-%3E%3D24-339933?logo=nodedotjs&logoColor=white)](package.json)
 [![pnpm 10](https://img.shields.io/badge/pnpm-10.33.2-F69220?logo=pnpm&logoColor=white)](https://pnpm.io)
-[![Last run: 2026-10-07](https://img.shields.io/badge/last%20run-2026--10--07-informational)](results/2026-10-07-full/NOTES.md)
+[![Last run: 2026-10-12](https://img.shields.io/badge/last%20run-2026--10--12-informational)](results/2026-10-12-full/NOTES.md)
 [![Frameworks: Gyral, React, Preact, Vue, Svelte, Solid, Lit](https://img.shields.io/badge/frameworks-Gyral%20%C2%B7%20React%20%C2%B7%20Preact%20%C2%B7%20Vue%20%C2%B7%20Svelte%20%C2%B7%20Solid%20%C2%B7%20Lit-6f42c1)](docs/apps.md)
 
 - [Why this exists](#why-this-exists)
-- [Results, 2026-10-07: Gyral 0.3.0](#results-2026-10-07-gyral-030)
+- [Results, 2026-10-12: Gyral 0.3.1](#results-2026-10-12-gyral-031)
 - [How it works](#how-it-works)
 - [Run it](#run-it)
 - [Conventions](#conventions)
@@ -57,73 +57,50 @@ What it is not:
 - **Client-side rendering only.** Server rendering, hydration and real-world apps are out of
   scope.
 
-## Results, 2026-10-07: Gyral 0.3.0
+## Results, 2026-10-12: Gyral 0.3.1
 
-Gyral 0.3.0 and Gyral 0.2.0 against the then-current releases of the others, all measured in
-one run. The repository has moved on since: `frameworks/gyral` is now Gyral 0.3.1, Gyral 0.3.0
-is kept as `gyral-0.3.0`, and the other frameworks are on newer releases
-([the slots](#the-gyral-slots)); the next full run will replace this section. Full tables: [results.md](results/2026-10-07-full/results.md); noise
-analysis and notes: [NOTES.md](results/2026-10-07-full/NOTES.md); every sample is in
-`results.json`.
+Gyral 0.3.1 and Gyral 0.3.0, both from npm, against the current releases of the others, all
+measured in one run. Full tables: [results.md](results/2026-10-12-full/results.md); notes:
+[NOTES.md](results/2026-10-12-full/NOTES.md); every sample is in `results.json`.
 
-|                                                    | Solid | Preact |  Lit | Svelte | **Gyral 0.3.0** | Gyral 0.2.0 |  Vue | React |
-| -------------------------------------------------- | ----: | -----: | ---: | -----: | --------------: | ----------: | ---: | ----: |
-| JS, gzip KiB: floor (framework alone)              |   3.7 |    4.7 |  5.8 |    9.0 |        **11.6** |        11.9 | 23.0 |  66.1 |
-| JS, gzip KiB: todo app                             |   6.6 |    6.1 |  7.3 |   14.2 |        **13.6** |        13.6 | 25.0 |  66.6 |
-| Todo app interactive, cold, throttled (ms, median) |   405 |    396 |  407 |    447 |         **423** |         443 |  502 |   735 |
-| Table runtime, geometric mean vs fastest           |  1.08 |   1.38 | 1.31 |   1.07 |        **1.03** |        1.21 | 1.20 |  1.55 |
-| Same, without select row                           |  1.10 |   1.25 | 1.27 |   1.02 |        **1.03** |        1.13 | 1.11 |  1.53 |
-| JS heap after load (MB)                            |  1.13 |   1.17 | 1.20 |   1.19 |        **1.18** |        1.26 | 1.32 |  1.55 |
+|                                                    | Solid | Preact |  Lit | **Gyral 0.3.1** | Gyral 0.3.0 | Svelte |  Vue | React |
+| -------------------------------------------------- | ----: | -----: | ---: | --------------: | ----------: | -----: | ---: | ----: |
+| JS, gzip KiB: floor (framework alone)              |   3.7 |    4.8 |  5.8 |         **7.9** |        11.7 |    9.0 | 23.0 |  66.1 |
+| JS, gzip KiB: todo app                             |   6.6 |    6.1 |  7.3 |         **9.9** |        13.6 |   14.2 | 25.0 |  66.6 |
+| Todo app interactive, cold, throttled (ms, median) |   421 |    406 |  419 |         **438** |         436 |    463 |  516 |   752 |
+| Table runtime, geometric mean vs fastest           |  1.08 |   1.37 | 1.30 |        **1.07** |        1.05 |   1.08 | 1.17 |  1.51 |
+| Same, without select row                           |  1.09 |   1.25 | 1.27 |        **1.01** |        1.02 |   1.02 | 1.11 |  1.52 |
+| JS heap after load (MB)                            |  1.16 |   1.21 | 1.23 |        **1.22** |        1.22 |   1.23 | 1.36 |  1.58 |
 
 Lower is better in every row; a geometric mean of 1.00 would mean fastest at every operation.
-Gyral 0.3.0 is the `gyral-next` column in that run's files: Gyral's 0.3.0 release packs,
-measured before 0.3.0 was published. The 0.3.0 on npm has the same files.
+The row without select row is computed from the medians in the notes, not by the harness.
 
 What the numbers say:
 
-- **Runtime: Gyral 0.3.0 has the lowest geometric mean in this run, by a small margin** (1.03;
-  Svelte 1.07, Solid 1.08). It is fastest at update every 10th row, remove and clear; Svelte is
-  fastest at create, replace, create 10,000 and append. Without select row, Svelte (1.02) and
-  Gyral 0.3.0 (1.03) change places. Against 0.2.0 in the same run, no operation is slower:
-  seven are faster beyond noise (bootstrap interval and Mann–Whitney test, in the notes; six of
-  eight without select), and script time is lower on every operation.
-- **Select row is frame-aligned: don't read its −49% against 0.2.0 as a speedup.** Samples are
-  bimodal (about 7–10 ms or 15–20 ms), depending on whether a frame was already due when the
-  click landed. 12 of 15 Gyral 0.3.0 samples fell in the fast mode, against 3 of 15 for 0.2.0,
-  and the split moves between runs for every framework. See
-  [the methodology's limits](docs/methodology.md#limits).
-- **Size is still Gyral's weak point.** The 0.3.0 floor is 11.6 KiB gzip counting every chunk
-  the build emits (0.2.0: 11.9; Lit 5.8, Svelte 9.0). 0.3.0's builds also emit two lazily
-  imported chunks (hydration for server-rendered pages, an invoker-commands shim) that a
-  client-only page in Chromium did not fetch; the entry chunk alone is 8.6 KiB (computed
-  separately, not by the harness). Counting all chunks, the search (+1.0 KiB) and table
-  (+0.2 KiB) apps are larger than with 0.2.0.
-- **Startup:** the todo app is interactive at 423 ms, 20 ms sooner than with 0.2.0, 16–18 ms
-  behind Lit and Solid and 27 ms behind Preact.
-- **Memory:** 0.3.0 starts with a smaller heap than 0.2.0 (1.18 vs 1.26 MB) but holds 1,000
-  rows in slightly more (2.13 vs 2.05 MB); of the other frameworks, only Lit (1.98) holds them
-  in less.
-- **Where Gyral 0.3.0 loses:** Svelte is faster at five of the nine operations (create,
-  replace, swap, create 10,000, append) and leads without select row; Vue is faster at swap.
-  Solid, Preact and Lit ship far less JavaScript and are interactive sooner.
-
-The previous headline, the 2026-10-06 final run (0.3.0-next.6, whose built code is identical
-to 0.3.0), gave the same ranking: every geometric mean within 0.02, identical sizes and memory
-([comparison in the notes](results/2026-10-07-full/NOTES.md#compared-with-the-2026-10-06-final-run)).
+- **Runtime: 0.3.1 runs at 0.3.0's speed.** Every operation except select row is within 3% of
+  0.3.0, and script time within 0.7 ms below 10,000 rows. Gyral, Svelte and Solid lead again:
+  Svelte is fastest at create, replace, swap and create 10,000, Gyral at remove and clear.
+  Without select row, Gyral 0.3.1 has the lowest geometric mean (1.01; Svelte and 0.3.0 1.02).
+- **Select row is frame-aligned: don't read 13.7 vs 11.4 ms as a regression.** Samples are
+  bimodal, depending on whether a frame was already due when the click landed, and the split
+  moves between runs for every framework ([the methodology's limits](docs/methodology.md#limits)).
+- **Size: the floor drops from 11.7 to 7.9 KiB gzip,** almost entirely from `clientOnly` builds
+  (0.3.1's preset option, used by create-gyral's client-rendered template), which drop the
+  hydration and fallback chunks. Built with the default preset, 0.3.1 is about 0.3 KiB larger
+  than 0.3.0. Gyral is now smaller than Svelte for every app; Lit, Preact and Solid still ship
+  less.
+- **Startup and memory are unchanged from 0.3.0:** interactive at 438 ms (Preact 406, Lit 419,
+  Solid 421, Svelte 463), and the same heap (only Lit holds 1,000 rows in less).
 
 Caveats for this run:
 
-- **Machine:** drift was not flagged (calibration spread 4.1%, limit 5%; 1-minute load 1.3–2.1
-  on 12 cores), but the CPU governor was `powersave` (2.4–4.0 GHz between operations).
-  Interleaving spreads that over every framework. Two earlier attempts were stopped and
-  discarded when another repository's browser tests ran outside the benchmark lock. Compare
-  frameworks within this run, not absolute numbers across runs.
-- **lit-html is pinned to 3.3.0** for Lit and Gyral 0.2.0 (root `pnpm.overrides`), not the
-  current 3.3.3, whose `repeat` leaves an empty comment node behind for every removed item
-  ([lit/lit#5010](https://github.com/lit/lit/issues/5010)). In the 2026-10-05 run that made
-  "clear 1,000 rows" take about 3.7 s for Lit and Gyral 0.1.0. Gyral 0.3.0 does not use Lit.
-- **Gyral 0.3.0 came from its release tarballs** in this run, three days before it reached
-  npm; npm's 0.3.0 has the same files.
+- **Machine drift was flagged** (calibration spread 5.6%, limit 5%; load up to 6.2 on 12
+  cores): other repositories' self-hosted CI runners share this machine. Interleaving spreads
+  the noise over every framework, so compare frameworks within this run, not absolute numbers
+  across runs.
+- **lit-html is pinned to 3.3.0** for Lit (root `pnpm.overrides`), not the current 3.3.3, whose
+  `repeat` leaves an empty comment node behind for every removed item
+  ([lit/lit#5010](https://github.com/lit/lit/issues/5010)). Gyral doesn't use Lit.
 - **Runtime is timed from Chrome performance traces,** like js-framework-benchmark
   ([methodology](docs/methodology.md#trace-based-timing-default-since-2026-10-05)), so
   operations shorter than a frame include waiting for the frame that paints them.
@@ -263,8 +240,10 @@ and committing a benchmark, comparing runs, and moving the Gyral slots to a new 
 
 Each is comparable only within itself.
 
+- [2026-10-07, full](results/2026-10-07-full/NOTES.md): Gyral 0.3.0 release packs against
+  0.2.0 and the others, the previous headline (geometric mean 1.03; floor 11.6 KiB gzip).
 - [2026-10-06, Gyral 0.3 final](results/2026-10-06-gyral-0.3-final/NOTES.md): the speed gate
-  for Gyral 0.3 (0.3.0-next.6 vs 0.2.0), the previous headline.
+  for Gyral 0.3 (0.3.0-next.6 vs 0.2.0).
 - [2026-10-05](results/2026-10-05/results.md): Gyral 0.1.0 on Effect 3 (floor 49.3 KiB gzip),
   lit-html 3.3.3, and the older in-page end point, which often missed the repaint of
   operations shorter than a frame. Gyral's runtime tracked Lit's.
