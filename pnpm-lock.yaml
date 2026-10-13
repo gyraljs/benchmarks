@@ -51,11 +51,11 @@ importers:
         specifier: workspace:*
         version: link:../../shared
       '@gyral/core':
-        specifier: 0.3.3
-        version: 0.3.3(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))
+        specifier: 0.3.4
+        version: 0.3.4(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))
       '@gyral/time':
-        specifier: 0.3.3
-        version: 0.3.3(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))
+        specifier: 0.3.4
+        version: 0.3.4(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))
 
   frameworks/gyral-0.3.0:
     dependencies:
@@ -321,8 +321,8 @@ packages:
       vite:
         optional: true
 
-  '@gyral/core@0.3.3':
-    resolution: {integrity: sha512-JMqdUaX8iN/gqbPgaitJOxTwK66eiyHhkyaVQPThKaOfnlquiRVOxDUSt57T0qGd+k6iEeOHJ/pvIbBq+S0AtQ==}
+  '@gyral/core@0.3.4':
+    resolution: {integrity: sha512-VSsC+9Ch6C55eazDsi0j6DftaD3Xpc1dZB3wuqMGpCH9dCvAmmoZoSFQ5eGyIy+JSB+7+6Vu5Orp6yHBDJdDuA==}
     hasBin: true
     peerDependencies:
       eslint: ^9.0.0 || ^10.0.0
@@ -339,8 +339,8 @@ packages:
   '@gyral/time@0.3.0':
     resolution: {integrity: sha512-KszySQfXHfx9lNuk1VfrJUoR6cMAyb1e3lEU4tIWfytFMAnzZ4C2rER1JJUVwZGZs4aYse4svTX94caxsbL85Q==}
 
-  '@gyral/time@0.3.3':
-    resolution: {integrity: sha512-ZzT30GjjhbPDXTXMXyBdeB9RyYCpAK6HF+YQvv7ckTdg/+u7Vo3zf9TSjss1AK1pxTYOcayAK/HwxqCNSk1dZw==}
+  '@gyral/time@0.3.4':
+    resolution: {integrity: sha512-civZEshkShB5FJkxxjyTnwts9KwLdBTdy8adVFzKdKaUFCPAJISSgNPwNUx7PEppUN0m/aGBnzWh/TBfDO5vmQ==}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -1685,7 +1685,7 @@ snapshots:
       parse5: 7.3.0
       vite: 8.3.4(@types/node@24.19.2)
 
-  '@gyral/core@0.3.3(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))':
+  '@gyral/core@0.3.4(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))':
     dependencies:
       '@standard-schema/spec': 1.1.0
     optionalDependencies:
@@ -1701,9 +1701,9 @@ snapshots:
       - parse5
       - vite
 
-  '@gyral/time@0.3.3(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))':
+  '@gyral/time@0.3.4(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))':
     dependencies:
-      '@gyral/core': 0.3.3(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))
+      '@gyral/core': 0.3.4(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@24.19.2))
     transitivePeerDependencies:
       - eslint
       - parse5
