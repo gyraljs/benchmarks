@@ -9,7 +9,7 @@ JavaScript to modules. First used for Gyral and Lit (bead gyral-1kq,
 
 `frameworks/{lit,gyral}/profile/table/` is the benchmark's table with three switches read from
 the page URL (`shared/src/profile.ts`), so one build serves every combination. `frameworks/gyral`
-is the current Gyral (0.3.6, its own view layer); its variant was ported from the Gyral 0.2.0
+is the current Gyral (0.3.7, its own view layer); its variant was ported from the Gyral 0.2.0
 one (lit-html) on 2026-10-12, so earlier profiles such as `results/2026-10-05-profile/` are of
 Gyral on lit-html. `gyral-0.3.0` has no profiling variant.
 

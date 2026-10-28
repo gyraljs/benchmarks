@@ -60,8 +60,8 @@ What it is not:
 ## Results, 2026-10-12: Gyral 0.3.1
 
 Gyral 0.3.1 and Gyral 0.3.0, both from npm, against the current releases of the others, all
-measured in one run. This run measured 0.3.1 in the `gyral` slot, which has since moved to 0.3.6
-([The Gyral slots](#the-gyral-slots)); 0.3.2 through 0.3.6 build byte-identical apps. Full tables: [results.md](results/2026-10-12-full/results.md); notes:
+measured in one run. This run measured 0.3.1 in the `gyral` slot, which has since moved to 0.3.7
+([The Gyral slots](#the-gyral-slots)); 0.3.2 through 0.3.6 build byte-identical apps, and 0.3.7's are 8 to 31 bytes larger per app (JS, gzip -9). Full tables: [results.md](results/2026-10-12-full/results.md); notes:
 [NOTES.md](results/2026-10-12-full/NOTES.md); every sample is in `results.json`.
 
 |                                                    | Solid | Preact |  Lit | **Gyral 0.3.1** | Gyral 0.3.0 | Svelte |  Vue | React |
@@ -110,9 +110,9 @@ Caveats for this run:
 
 Two Gyral packages are measured, both installed from npm and pinned exactly:
 
-- `frameworks/gyral` is the current release, **Gyral 0.3.6**, written to the 0.3.1
+- `frameworks/gyral` is the current release, **Gyral 0.3.7**, written to the 0.3.1
   documentation (`define<State, Msg>()(tag, spec)`, `intentsOf` for pure list rows, `clientOnly`
-  builds). 0.3.2 through 0.3.6 only add to 0.3.1 (0.3.3 changes only `@gyral/mcp`; 0.3.4 fixes server rendering and the build-time component scan; 0.3.5 and 0.3.6 add template checks and development warnings): the app sources are unchanged and build to the same bytes.
+  builds). 0.3.2 through 0.3.6 only add to 0.3.1 (0.3.3 changes only `@gyral/mcp`; 0.3.4 fixes server rendering and the build-time component scan; 0.3.5 and 0.3.6 add template checks and development warnings), and 0.3.7's behavior changes (init commands after the first render, light-DOM page children, template rule 16) need nothing from these apps: the app sources are unchanged. Through 0.3.6 they build to the same bytes; 0.3.7's builds are 8 to 31 bytes larger per app (JS, gzip -9), below the 0.1 KiB that `pnpm sizes` shows.
 - `frameworks/gyral-0.3.0` is the previous release, **Gyral 0.3.0**, with the app sources
   measured on 2026-10-07, so a run shows what the newest release changed.
 
