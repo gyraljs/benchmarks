@@ -5,3 +5,16 @@ packages:
 # Adopt a version only once it is two weeks old (Gyral's ADR 0032,
 # https://github.com/gyraljs/gyral/blob/main/docs/design-docs/0032-dependency-updates.md).
 minimumReleaseAge: 20160
+
+# Gyral 0.3.7 (published 2026-10-28) is the owner-approved, verified release that
+# frameworks/gyral measures, so it comes in early (ADR 0032's exception for a Gyral release).
+# pnpm 12 checks the lockfile against the age gate too. Remove these once 0.3.7 is two weeks
+# old (2026-11-11) or the slot moves to 0.3.8. frameworks/gyral-0.3.0 needs none.
+minimumReleaseAgeExclude:
+  - '@gyral/core@0.3.7'
+  - '@gyral/time@0.3.7'
+
+# lit-html 3.3.1 to 3.3.3 leave an empty comment node behind for every item `repeat` removes
+# (lit/lit#5010), so Lit is measured on 3.3.0 (README, docs/methodology.md).
+overrides:
+  lit-html: 3.3.0

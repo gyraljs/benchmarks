@@ -14,7 +14,7 @@ Results go to `results/<date>/results.json` (all samples) and `results.md` (tabl
   option.
 - All packages are the current npm releases on the run date, pinned exactly in each
   `frameworks/<name>/package.json`; nothing is vendored or packed locally. Two exceptions:
-  lit-html is pinned to 3.3.0 for Lit (root `pnpm.overrides`; see the last section), and
+  lit-html is pinned to 3.3.0 for Lit (`overrides` in `pnpm-workspace.yaml`; see the last section), and
   `frameworks/gyral-0.3.0` keeps the previous Gyral release (0.3.0) next to the current one
   (`frameworks/gyral`, 0.3.7).
 

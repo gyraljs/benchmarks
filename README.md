@@ -5,7 +5,7 @@ correctness spec, then measured for bundle size, runtime, memory and startup.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node >= 24](https://img.shields.io/badge/node-%3E%3D24-339933?logo=nodedotjs&logoColor=white)](package.json)
-[![pnpm 10](https://img.shields.io/badge/pnpm-10.33.2-F69220?logo=pnpm&logoColor=white)](https://pnpm.io)
+[![pnpm 12](https://img.shields.io/badge/pnpm-12.14.0-F69220?logo=pnpm&logoColor=white)](https://pnpm.io)
 [![Last run: 2026-10-12](https://img.shields.io/badge/last%20run-2026--10--12-informational)](results/2026-10-12-full/NOTES.md)
 [![Frameworks: Gyral, React, Preact, Vue, Svelte, Solid, Lit](https://img.shields.io/badge/frameworks-Gyral%20%C2%B7%20React%20%C2%B7%20Preact%20%C2%B7%20Vue%20%C2%B7%20Svelte%20%C2%B7%20Solid%20%C2%B7%20Lit-6f42c1)](docs/apps.md)
 
@@ -14,6 +14,7 @@ correctness spec, then measured for bundle size, runtime, memory and startup.
 - [How it works](#how-it-works)
 - [Run it](#run-it)
 - [Conventions](#conventions)
+- [Dependencies](#dependencies)
 - [Earlier runs](#earlier-runs)
 
 ## Why this exists
@@ -99,7 +100,7 @@ Caveats for this run:
   cores): other repositories' self-hosted CI runners share this machine. Interleaving spreads
   the noise over every framework, so compare frameworks within this run, not absolute numbers
   across runs.
-- **lit-html is pinned to 3.3.0** for Lit (root `pnpm.overrides`), not the current 3.3.3, whose
+- **lit-html is pinned to 3.3.0** for Lit (`overrides` in `pnpm-workspace.yaml`), not the current 3.3.3, whose
   `repeat` leaves an empty comment node behind for every removed item
   ([lit/lit#5010](https://github.com/lit/lit/issues/5010)). Gyral doesn't use Lit.
 - **Runtime is timed from Chrome performance traces,** like js-framework-benchmark
@@ -182,7 +183,7 @@ where a comparison needs one.
 
 ## Run it
 
-You need Node 24 or later, pnpm 10 and a machine that runs Playwright's Chromium. The numbers
+You need Node 24 or later, pnpm 12 and a machine that runs Playwright's Chromium. The numbers
 in this repository come from Linux, and the lock below uses `flock` (util-linux).
 
 ```sh
@@ -237,6 +238,31 @@ were discarded because something didn't.
 
 [CONTRIBUTING.md](CONTRIBUTING.md) has the procedures: adding a framework or an app, running
 and committing a benchmark, comparing runs, and moving the Gyral slots to a new release.
+
+## Dependencies
+
+A version comes in only once it has been published for two weeks (`minimumReleaseAge` in
+`pnpm-workspace.yaml`, Gyral's ADR 0032); pnpm 12 also checks the lockfile against it on every
+install. Besides the two exceptions above, TypeScript stays on 6.0 (typescript-eslint supports
+only `<6.1`), and Gyral 0.3.7, the owner-verified release in `frameworks/gyral`, comes in early
+through exact `minimumReleaseAgeExclude` entries until 2026-11-11 or 0.3.8.
+
+**2026-10-29, for Gyral 0.3.8 (epic gyral-337).** Every dependency moved to its newest version
+that is two weeks old, with the transitive tree resolved afresh: React and React DOM 19.3.1, Vue
+3.5.44, `@babel/core` 8.0.7 (Preact), Playwright 1.64.1, `@types/node` 26.6.5 and
+typescript-eslint 8.71.2; in the tree, the Solid compiler (babel-preset-solid 1.9.16) and
+rolldown 1.2.14 under Vite 8.3.4. Svelte 5.57.2, Solid 1.9.17, Preact 11.0.1 and Lit 3.3.3 were
+already the newest such releases. pnpm moved from 10.33.2 to 12.14.0, and the lit-html override
+from `package.json` to `pnpm-workspace.yaml`. The Preact preset (2.10.6, its newest release)
+still declares a peer of `@babel/core` 7.x, so installs warn of an unmet peer, but it runs Babel
+only when given a `babel` option, which this config doesn't pass: the Preact builds are
+byte-identical on 7.29.7 and 8.0.7. Held back as too young: eslint 10.13.0 and svelte-check
+4.7.7 (until 2026-10-30), typescript-eslint 8.72 (11-02), Vite 8.3.5 and pnpm 12.15 (11-04),
+Preact 11.0.2 and `@babel/core` 8.0.9 (11-06), Svelte 5.57.3 (11-09), Preact 11.1 (11-10) and
+`@types/node` 26.6.6 (11-11). seroval 1.6.11 (11-01) fixes two advisories in solid-js's
+dependency, but only Solid's server renderer loads seroval, and these apps render on the
+client, so it waits. No run has measured these versions yet; each run's `results.md` lists the
+versions it measured.
 
 ## Earlier runs
 
