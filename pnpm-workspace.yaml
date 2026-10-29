@@ -1,3 +1,7 @@
 packages:
   - shared
   - frameworks/*
+
+# Adopt a version only once it is two weeks old (Gyral's ADR 0032,
+# https://github.com/gyraljs/gyral/blob/main/docs/design-docs/0032-dependency-updates.md).
+minimumReleaseAge: 20160
