@@ -49,4 +49,6 @@ machine lock (`flock /tmp/gyral-bench.lock …`).
 - Never edit committed results by hand. Re-run `pnpm bench` and commit the new folder.
 - Report results as measured, including where Gyral loses. Cite context (e.g. Gyral's ADR 0015
   runtime spike) as context, never as a measured result of this repo.
+- A dependency version comes in only once it is two weeks old (`minimumReleaseAge` in
+  `pnpm-workspace.yaml`, Gyral's ADR 0032). The `gyral-0.3.0` slot stays on 0.3.0 on purpose.
 - Files ≤ 300 lines; no `any`.
