@@ -3,7 +3,7 @@
   "private": true,
   "license": "MIT",
   "type": "module",
-  "packageManager": "pnpm@10.33.2",
+  "packageManager": "pnpm@12.14.0",
   "engines": {
     "node": ">=24"
   },
@@ -28,19 +28,14 @@
   "devDependencies": {
     "@bench/shared": "workspace:*",
     "@eslint/js": "10.0.1",
-    "@playwright/test": "1.64.0",
-    "@types/node": "24.19.2",
+    "@playwright/test": "1.64.1",
+    "@types/node": "26.6.5",
     "eslint": "10.12.0",
     "globals": "17.13.0",
     "prettier": "3.9.10",
     "prettier-plugin-svelte": "4.1.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.71.1",
+    "typescript-eslint": "8.71.2",
     "vite": "8.3.4"
-  },
-  "pnpm": {
-    "overrides": {
-      "lit-html": "3.3.0"
-    }
   }
 }
