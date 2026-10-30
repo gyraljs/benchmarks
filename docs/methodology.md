@@ -8,15 +8,15 @@ Results go to `results/<date>/results.json` (all samples) and `results.md` (tabl
 
 - Vite 8 production build (`vite build`, Vite's default target and minifier) for every app,
   with each framework's official Vite plugin and otherwise identical settings
-  (`scripts/build.mjs`). Gyral uses `gyralVitePreset()` as `npm create gyral` sets it up for
-  each release: `gyralVitePreset({ clientOnly: true })` for Gyral 0.3.7 (its client-rendered
-  template; no hydration code), plain `gyralVitePreset()` for Gyral 0.3.0, which had no such
-  option.
+  (`scripts/build.mjs`). Gyral uses its Vite plugins as `npm create gyral` sets them up for
+  each release: `plugins: [gyral({ clientOnly: true })]` for Gyral 0.3.8 (its client-rendered
+  template; no hydration code), plain `gyralVitePreset()` for Gyral 0.3.0, which had neither
+  `gyral()` nor that option.
 - All packages are the current npm releases on the run date, pinned exactly in each
   `frameworks/<name>/package.json`; nothing is vendored or packed locally. Two exceptions:
   lit-html is pinned to 3.3.0 for Lit (`overrides` in `pnpm-workspace.yaml`; see the last section), and
   `frameworks/gyral-0.3.0` keeps the previous Gyral release (0.3.0) next to the current one
-  (`frameworks/gyral`, 0.3.7).
+  (`frameworks/gyral`, 0.3.8).
 
 ## Bundle size
 
@@ -26,7 +26,7 @@ Results go to `results/<date>/results.json` (all samples) and `results.md` (tabl
 - `floor` is the cost of the framework itself: an app that renders one paragraph.
 - Lazily imported chunks count too. Gyral 0.3.0's builds emit two (server-render hydration and
   an invoker-commands shim) that a client-only page in current Chromium doesn't fetch; run
-  notes give its entry-chunk-only size separately. Every other build, Gyral 0.3.1's through 0.3.7's included,
+  notes give its entry-chunk-only size separately. Every other build, Gyral 0.3.1's through 0.3.8's included,
   emits one chunk.
 
 ## Runtime (keyed table app)

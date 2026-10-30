@@ -4,7 +4,7 @@
   "type": "module",
   "dependencies": {
     "@bench/shared": "workspace:*",
-    "@gyral/core": "0.3.7",
-    "@gyral/time": "0.3.7"
+    "@gyral/core": "0.3.8",
+    "@gyral/time": "0.3.8"
   }
 }

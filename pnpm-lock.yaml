@@ -209,11 +209,11 @@ importers:
         specifier: workspace:*
         version: link:../../shared
       '@gyral/core':
-        specifier: 0.3.7
-        version: 0.3.7(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5))
+        specifier: 0.3.8
+        version: 0.3.8(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5))
       '@gyral/time':
-        specifier: 0.3.7
-        version: 0.3.7(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5))
+        specifier: 0.3.8
+        version: 0.3.8(@gyral/core@0.3.8(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5)))
 
   frameworks/gyral-0.3.0:
     dependencies:
@@ -536,8 +536,8 @@ packages:
       vite:
         optional: true
 
-  '@gyral/core@0.3.7':
-    resolution: {integrity: sha512-Hj6SokLKxrw7JxCRrzvk2mw3YIeGekSbiYq8SMJojTYCE93ZHlopuXUaT4336GZF7LM2T8UMiQtIWV2Y1SHtgA==}
+  '@gyral/core@0.3.8':
+    resolution: {integrity: sha512-ropgXPkujMoeCaqnpU1Zcf6LstLwAkBY0w/w5dM5WMvOCjwQ+vHDLB5/7QY/Mje5uSbz9vQolL/ry7HkN8/4Lw==}
     hasBin: true
     peerDependencies:
       eslint: ^9.0.0 || ^10.0.0
@@ -554,8 +554,10 @@ packages:
   '@gyral/time@0.3.0':
     resolution: {integrity: sha512-KszySQfXHfx9lNuk1VfrJUoR6cMAyb1e3lEU4tIWfytFMAnzZ4C2rER1JJUVwZGZs4aYse4svTX94caxsbL85Q==}
 
-  '@gyral/time@0.3.7':
-    resolution: {integrity: sha512-AncReAo7G0PWS9JCVf0Z4Hj2j66kJcn2x7K/t6v5fIK4ccVcUqHIfm4kAUENuB1YQsEkBkK/MdL/4ikwLd+U1w==}
+  '@gyral/time@0.3.8':
+    resolution: {integrity: sha512-BBuTy40RhJ4WgJLgpA7woJY7bN8bPJNJs5RleU48YUrv7v0HgG3Ya9oIMfO8FX7yEak1hsNRNXbDCIvsQfUvfQ==}
+    peerDependencies:
+      '@gyral/core': 0.3.8
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -2022,7 +2024,7 @@ snapshots:
       parse5: 7.3.0
       vite: 8.3.4(@types/node@26.6.5)
 
-  '@gyral/core@0.3.7(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5))':
+  '@gyral/core@0.3.8(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5))':
     dependencies:
       '@standard-schema/spec': 1.1.0
     optionalDependencies:
@@ -2038,13 +2040,9 @@ snapshots:
       - parse5
       - vite
 
-  '@gyral/time@0.3.7(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5))':
+  '@gyral/time@0.3.8(@gyral/core@0.3.8(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5)))':
     dependencies:
-      '@gyral/core': 0.3.7(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5))
-    transitivePeerDependencies:
-      - eslint
-      - parse5
-      - vite
+      '@gyral/core': 0.3.8(eslint@10.12.0)(parse5@7.3.0)(vite@8.3.4(@types/node@26.6.5))
 
   '@humanfs/core@0.19.2':
     dependencies:
